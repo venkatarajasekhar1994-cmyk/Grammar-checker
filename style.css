@@ -1,0 +1,16 @@
+body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 10px; box-sizing: border-box; }
+.container { width: 100%; max-width: 600px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+h1 { color: #0056b3; text-align: center; margin-top: 0; font-size: 24px; }
+#loadingMessage { text-align: center; color: #888; font-style: italic; margin-bottom: 10px; padding: 10px; background: #f9f9f9; border-radius: 4px; }
+textarea { width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; }
+textarea:disabled { background-color: #f9f9f9; }
+button { width: 100%; padding: 12px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+button:disabled { background-color: #c0c0c0; }
+#results { margin-top: 20px; }
+.result-card { padding: 15px; background-color: #f9f9f9; border-left: 5px solid #007bff; border-radius: 4px; margin-bottom: 10px; }
+.result-card.error { border-left-color: #d8000c; }
+.result-card.spell-error { border-left-color: #f5a623; }
+.highlight-error { background-color: #ffe9e9; color: #d8000c; font-weight: bold; }
+.highlight-correction { background-color: #e9f5e9; color: #006400; font-weight: bold; }
+
+

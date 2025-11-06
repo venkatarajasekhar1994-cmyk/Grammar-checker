@@ -1,0 +1,2102 @@
+{
+  "0": {
+    "Rule No": 1,
+    "English Rule": "A singular subject takes a singular verb",
+    "Telugu Rule": "ఏకవచన కర్త ఏకవచన క్రియను తీసుకుంటుంది",
+    "When to Use": "When subject is singular (he, she, it, one person/thing)",
+    "Example": "She walks to school."
+  },
+  "1": {
+    "Rule No": 2,
+    "English Rule": "A plural subject takes a plural verb",
+    "Telugu Rule": "బహువచన కర్త బహువచన క్రియను తీసుకుంటుంది",
+    "When to Use": "When subject is plural (they, we, multiple people/things)",
+    "Example": "They walk to school."
+  },
+  "2": {
+    "Rule No": 3,
+    "English Rule": "Use 'is/was' with singular subjects",
+    "Telugu Rule": "ఏకవచన కర్తలతో 'is/was' ఉపయోగించండి",
+    "When to Use": "With he, she, it, or singular nouns",
+    "Example": "He is a teacher."
+  },
+  "3": {
+    "Rule No": 4,
+    "English Rule": "Use 'are/were' with plural subjects",
+    "Telugu Rule": "బహువచన కర్తలతో 'are/were' ఉపయోగించండి",
+    "When to Use": "With they, we, you, or plural nouns",
+    "Example": "They are students."
+  },
+  "4": {
+    "Rule No": 5,
+    "English Rule": "Add 's' or 'es' to verbs with he/she/it in present tense",
+    "Telugu Rule": "వర్తమాన కాలంలో he/she/it తో క్రియలకు 's' లేదా 'es' జోడించండి",
+    "When to Use": "In present simple with third person singular",
+    "Example": "She goes daily."
+  },
+  "5": {
+    "Rule No": 6,
+    "English Rule": "Don't add 's/es' with I, you, we, they",
+    "Telugu Rule": "I, you, we, they తో 's/es' జోడించవద్దు",
+    "When to Use": "In present simple with all subjects except he/she/it",
+    "Example": "I go daily."
+  },
+  "6": {
+    "Rule No": 7,
+    "English Rule": "Collective nouns can be singular or plural",
+    "Telugu Rule": "సమూహ నామవాచకాలు ఏకవచనం లేదా బహువచనం కావచ్చు",
+    "When to Use": "With words like team, family, group",
+    "Example": "The team is winning."
+  },
+  "7": {
+    "Rule No": 8,
+    "English Rule": "Everyone, somebody, nobody take singular verbs",
+    "Telugu Rule": "Everyone, somebody, nobody ఏకవచన క్రియలను తీసుకుంటాయి",
+    "When to Use": "With indefinite pronouns",
+    "Example": "Everyone is here."
+  },
+  "8": {
+    "Rule No": 9,
+    "English Rule": "Neither/either takes singular verb when alone",
+    "Telugu Rule": "Neither/either ఒంటరిగా ఉన్నప్పుడు ఏకవచన క్రియను తీసుకుంటుంది",
+    "When to Use": "When neither/either stands alone as subject",
+    "Example": "Neither is correct."
+  },
+  "9": {
+    "Rule No": 10,
+    "English Rule": "Subjects joined by 'and' take plural verb",
+    "Telugu Rule": "'and' తో కలిపిన కర్తలు బహువచన క్రియను తీసుకుంటాయి",
+    "When to Use": "When two or more subjects connected by 'and'",
+    "Example": "John and Mary are friends."
+  },
+  "10": {
+    "Rule No": 11,
+    "English Rule": "With 'or/nor', verb agrees with nearest subject",
+    "Telugu Rule": "'or/nor' తో, క్రియ దగ్గరి కర్తతో సరిపోలాలి",
+    "When to Use": "When subjects joined by or/nor",
+    "Example": "Neither he nor they are coming."
+  },
+  "11": {
+    "Rule No": 12,
+    "English Rule": "There is + singular, There are + plural",
+    "Telugu Rule": "There is + ఏకవచనం, There are + బహువచనం",
+    "When to Use": "When starting sentences with 'there'",
+    "Example": "There is a book. There are books."
+  },
+  "12": {
+    "Rule No": 13,
+    "English Rule": "Title of books/movies takes singular verb",
+    "Telugu Rule": "పుస్తకాల/సినిమాల పేర్లు ఏకవచన క్రియను తీసుకుంటాయి",
+    "When to Use": "With titles, even if they look plural",
+    "Example": "The Avengers is a movie."
+  },
+  "13": {
+    "Rule No": 14,
+    "English Rule": "Money/time amounts take singular verb",
+    "Telugu Rule": "డబ్బు/సమయ మొత్తాలు ఏకవచన క్రియను తీసుకుంటాయి",
+    "When to Use": "When talking about total amounts",
+    "Example": "Five dollars is enough."
+  },
+  "14": {
+    "Rule No": 15,
+    "English Rule": "Each, every + singular noun takes singular verb",
+    "Telugu Rule": "Each, every + ఏకవచన నామవాచకం ఏకవచన క్రియను తీసుకుంటుంది",
+    "When to Use": "With each/every + singular noun",
+    "Example": "Each student has a book."
+  },
+  "15": {
+    "Rule No": 16,
+    "English Rule": "Use 'a' before consonant sounds",
+    "Telugu Rule": "హల్లు ధ్వనుల ముందు 'a' ఉపయోగించండి",
+    "When to Use": "Before words starting with consonant sounds",
+    "Example": "a book, a university"
+  },
+  "16": {
+    "Rule No": 17,
+    "English Rule": "Use 'an' before vowel sounds",
+    "Telugu Rule": "అచ్చు ధ్వనుల ముందు 'an' ఉపయోగించండి",
+    "When to Use": "Before words starting with vowel sounds",
+    "Example": "an apple, an hour"
+  },
+  "17": {
+    "Rule No": 18,
+    "English Rule": "Use 'the' for specific things known to speaker and listener",
+    "Telugu Rule": "మాట్లాడేవారికి మరియు వినేవారికి తెలిసిన నిర్దిష్ట విషయాల కోసం 'the' ఉపయోగించండి",
+    "When to Use": "When both know what you're talking about",
+    "Example": "The sun rises in the east."
+  },
+  "18": {
+    "Rule No": 19,
+    "English Rule": "Use 'a/an' for non-specific things (one of many)",
+    "Telugu Rule": "అనేక వాటిలో ఒకదానిని సూచించడానికి 'a/an' ఉపయోగించండి",
+    "When to Use": "When talking about any one thing, not specific",
+    "Example": "I saw a cat (any cat)."
+  },
+  "19": {
+    "Rule No": 20,
+    "English Rule": "Use 'the' before superlatives",
+    "Telugu Rule": "అత్యున్నత స్థాయి విశేషణాల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "With words like best, worst, tallest",
+    "Example": "She is the best student."
+  },
+  "20": {
+    "Rule No": 21,
+    "English Rule": "Use 'the' before ordinal numbers",
+    "Telugu Rule": "క్రమ సంఖ్యల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "With first, second, third, etc.",
+    "Example": "He is the first person."
+  },
+  "21": {
+    "Rule No": 22,
+    "English Rule": "Use 'the' before unique things",
+    "Telugu Rule": "ఏకైక వస్తువుల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "With sun, moon, earth, sky",
+    "Example": "The moon is bright."
+  },
+  "22": {
+    "Rule No": 23,
+    "English Rule": "Don't use 'the' before most countries",
+    "Telugu Rule": "చాలా దేశాల ముందు 'the' ఉపయోగించవద్దు",
+    "When to Use": "With single-word country names",
+    "Example": "India is large (not 'the India')."
+  },
+  "23": {
+    "Rule No": 24,
+    "English Rule": "Use 'the' before country names with 'of', 'republic', 'kingdom'",
+    "Telugu Rule": "'of', 'republic', 'kingdom' ఉన్న దేశాల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "With United States, United Kingdom, etc.",
+    "Example": "The United States"
+  },
+  "24": {
+    "Rule No": 25,
+    "English Rule": "Don't use articles before meals in general",
+    "Telugu Rule": "సాధారణంగా భోజనాల ముందు ఆర్టికల్స్ ఉపయోగించవద్దు",
+    "When to Use": "When talking about meals generally",
+    "Example": "I have breakfast at 8."
+  },
+  "25": {
+    "Rule No": 26,
+    "English Rule": "Use 'a/an' for jobs/professions",
+    "Telugu Rule": "ఉద్యోగాలు/వృత్తుల కోసం 'a/an' ఉపయోగించండి",
+    "When to Use": "When stating someone's job",
+    "Example": "She is a doctor."
+  },
+  "26": {
+    "Rule No": 27,
+    "English Rule": "Use 'the' before musical instruments",
+    "Telugu Rule": "సంగీత వాద్యాల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "When talking about playing instruments",
+    "Example": "He plays the piano."
+  },
+  "27": {
+    "Rule No": 28,
+    "English Rule": "Don't use 'the' before sports",
+    "Telugu Rule": "క్రీడల ముందు 'the' ఉపయోగించవద్దు",
+    "When to Use": "When talking about playing sports",
+    "Example": "I play cricket (not 'the cricket')."
+  },
+  "28": {
+    "Rule No": 29,
+    "English Rule": "Use 'the' before rivers, oceans, seas",
+    "Telugu Rule": "నదులు, సముద్రాల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "With geographical water bodies",
+    "Example": "The Ganges, the Pacific Ocean"
+  },
+  "29": {
+    "Rule No": 30,
+    "English Rule": "Don't use 'the' before languages",
+    "Telugu Rule": "భాషల ముందు 'the' ఉపయోగించవద్దు",
+    "When to Use": "When talking about languages",
+    "Example": "I speak English (not 'the English')."
+  },
+  "30": {
+    "Rule No": 31,
+    "English Rule": "Use 'a' with hundred, thousand, million",
+    "Telugu Rule": "hundred, thousand, million తో 'a' ఉపయోగించండి",
+    "When to Use": "When saying numbers like 100, 1000",
+    "Example": "a hundred people"
+  },
+  "31": {
+    "Rule No": 32,
+    "English Rule": "Use 'the' when something is mentioned second time",
+    "Telugu Rule": "రెండవసారి ప్రస్తావించినప్పుడు 'the' ఉపయోగించండి",
+    "When to Use": "After introducing something with a/an",
+    "Example": "I saw a dog. The dog was brown."
+  },
+  "32": {
+    "Rule No": 33,
+    "English Rule": "Don't use articles before proper nouns (names)",
+    "Telugu Rule": "సంజ్ఞా నామాల (పేర్ల) ముందు ఆర్టికల్స్ ఉపయోగించవద్దు",
+    "When to Use": "With people's names, cities",
+    "Example": "Ravi lives in Delhi."
+  },
+  "33": {
+    "Rule No": 34,
+    "English Rule": "Use 'the' before family names (plural)",
+    "Telugu Rule": "కుటుంబ పేర్ల (బహువచనం) ముందు 'the' ఉపయోగించండి",
+    "When to Use": "When talking about a whole family",
+    "Example": "The Sharmas are coming."
+  },
+  "34": {
+    "Rule No": 35,
+    "English Rule": "Use 'the' with adjectives to make them plural nouns",
+    "Telugu Rule": "విశేషణాలను బహువచన నామవాచకాలుగా మార్చడానికి 'the' ఉపయోగించండి",
+    "When to Use": "To refer to groups of people",
+    "Example": "The poor need help (poor people)."
+  },
+  "35": {
+    "Rule No": 36,
+    "English Rule": "Use present simple for habits and routines",
+    "Telugu Rule": "అలవాట్లు మరియు రోజువారీ పనుల కోసం వర్తమాన సాధారణ కాలం ఉపయోగించండి",
+    "When to Use": "For daily activities, regular actions",
+    "Example": "I wake up at 6 AM every day."
+  },
+  "36": {
+    "Rule No": 37,
+    "English Rule": "Use present simple for universal truths",
+    "Telugu Rule": "సార్వత్రిక సత్యాల కోసం వర్తమాన సాధారణ కాలం ఉపయోగించండి",
+    "When to Use": "For scientific facts, general truths",
+    "Example": "The sun rises in the east."
+  },
+  "37": {
+    "Rule No": 38,
+    "English Rule": "Present simple: Subject + V1 (I/you/we/they)",
+    "Telugu Rule": "వర్తమాన సాధారణం: కర్త + మొదటి రూపం క్రియ (I/you/we/they)",
+    "When to Use": "With I, you, we, they",
+    "Example": "They work hard."
+  },
+  "38": {
+    "Rule No": 39,
+    "English Rule": "Present simple: Subject + V1+s/es (he/she/it)",
+    "Telugu Rule": "వర్తమాన సాధారణం: కర్త + క్రియ+s/es (he/she/it)",
+    "When to Use": "With he, she, it",
+    "Example": "She works hard."
+  },
+  "39": {
+    "Rule No": 40,
+    "English Rule": "Present simple negative: don't/doesn't + V1",
+    "Telugu Rule": "వర్తమాన సాధారణ ప్రతికూలం: don't/doesn't + మొదటి రూపం",
+    "When to Use": "For negative sentences in present",
+    "Example": "I don't like coffee."
+  },
+  "40": {
+    "Rule No": 41,
+    "English Rule": "Use present continuous for actions happening now",
+    "Telugu Rule": "ఇప్పుడు జరుగుతున్న చర్యల కోసం వర్తమాన నిరంతర కాలం ఉపయోగించండి",
+    "When to Use": "For actions in progress at speaking moment",
+    "Example": "I am studying now."
+  },
+  "41": {
+    "Rule No": 42,
+    "English Rule": "Present continuous: am/is/are + V1+ing",
+    "Telugu Rule": "వర్తమాన నిరంతరం: am/is/are + క్రియ+ing",
+    "When to Use": "For ongoing present actions",
+    "Example": "He is eating lunch."
+  },
+  "42": {
+    "Rule No": 43,
+    "English Rule": "Use present continuous for future plans",
+    "Telugu Rule": "భవిష్యత్తు ప్రణాళికల కోసం వర్తమాన నిరంతర కాలం ఉపయోగించండి",
+    "When to Use": "For scheduled future events",
+    "Example": "I am meeting him tomorrow."
+  },
+  "43": {
+    "Rule No": 44,
+    "English Rule": "Don't use continuous with stative verbs",
+    "Telugu Rule": "స్థితి క్రియలతో నిరంతర కాలం ఉపయోగించవద్దు",
+    "When to Use": "With know, love, hate, want, need, etc.",
+    "Example": "I know (not 'am knowing')."
+  },
+  "44": {
+    "Rule No": 45,
+    "English Rule": "Use present perfect for past actions with present result",
+    "Telugu Rule": "వర్తమాన ఫలితంతో గత చర్యల కోసం వర్తమాన పరిపూర్ణ కాలం ఉపయోగించండి",
+    "When to Use": "When past action affects present",
+    "Example": "I have finished my homework (now I'm free)."
+  },
+  "45": {
+    "Rule No": 46,
+    "English Rule": "Present perfect: have/has + V3",
+    "Telugu Rule": "వర్తమాన పరిపూర్ణం: have/has + మూడవ రూపం",
+    "When to Use": "For completed actions with present connection",
+    "Example": "She has visited India."
+  },
+  "46": {
+    "Rule No": 47,
+    "English Rule": "Use present perfect with just, already, yet",
+    "Telugu Rule": "just, already, yet తో వర్తమాన పరిపూర్ణ కాలం ఉపయోగించండి",
+    "When to Use": "For recently completed actions",
+    "Example": "I have just arrived."
+  },
+  "47": {
+    "Rule No": 48,
+    "English Rule": "Use present perfect with for/since",
+    "Telugu Rule": "for/since తో వర్తమాన పరిపూర్ణ కాలం ఉపయోగించండి",
+    "When to Use": "For actions from past continuing to present",
+    "Example": "I have lived here for 5 years."
+  },
+  "48": {
+    "Rule No": 49,
+    "English Rule": "Present perfect continuous: have/has been + V1+ing",
+    "Telugu Rule": "వర్తమాన పరిపూర్ణ నిరంతరం: have/has been + క్రియ+ing",
+    "When to Use": "For ongoing actions from past to present",
+    "Example": "I have been waiting for an hour."
+  },
+  "49": {
+    "Rule No": 50,
+    "English Rule": "Use for + duration, since + starting point",
+    "Telugu Rule": "for + వ్యవధి, since + ప్రారంభ సమయం",
+    "When to Use": "To show time period or starting point",
+    "Example": "For 3 hours, since morning"
+  },
+  "50": {
+    "Rule No": 51,
+    "English Rule": "Use past simple for completed past actions",
+    "Telugu Rule": "పూర్తయిన గత చర్యల కోసం గత సాధారణ కాలం ఉపయోగించండి",
+    "When to Use": "For finished actions in the past",
+    "Example": "I visited Delhi last year."
+  },
+  "51": {
+    "Rule No": 52,
+    "English Rule": "Past simple: Subject + V2 (regular: V1+ed)",
+    "Telugu Rule": "గత సాధారణం: కర్త + రెండవ రూపం (క్రమమైనది: క్రియ+ed)",
+    "When to Use": "For past actions",
+    "Example": "He worked yesterday."
+  },
+  "52": {
+    "Rule No": 53,
+    "English Rule": "Use past simple with yesterday, ago, last",
+    "Telugu Rule": "yesterday, ago, last తో గత సాధారణ కాలం ఉపయోగించండి",
+    "When to Use": "With specific past time expressions",
+    "Example": "She came two days ago."
+  },
+  "53": {
+    "Rule No": 54,
+    "English Rule": "Past simple negative: didn't + V1",
+    "Telugu Rule": "గత సాధారణ ప్రతికూలం: didn't + మొదటి రూపం",
+    "When to Use": "For negative past sentences",
+    "Example": "I didn't go to school."
+  },
+  "54": {
+    "Rule No": 55,
+    "English Rule": "Past continuous: was/were + V1+ing",
+    "Telugu Rule": "గత నిరంతరం: was/were + క్రియ+ing",
+    "When to Use": "For actions in progress at specific past time",
+    "Example": "I was studying at 8 PM."
+  },
+  "55": {
+    "Rule No": 56,
+    "English Rule": "Use past continuous for interrupted actions",
+    "Telugu Rule": "అంతరాయం కలిగిన చర్యల కోసం గత నిరంతర కాలం ఉపయోగించండి",
+    "When to Use": "When one past action interrupts another",
+    "Example": "I was sleeping when he called."
+  },
+  "56": {
+    "Rule No": 57,
+    "English Rule": "Past perfect: had + V3",
+    "Telugu Rule": "గత పరిపూర్ణం: had + మూడవ రూపం",
+    "When to Use": "For action completed before another past action",
+    "Example": "I had finished before he arrived."
+  },
+  "57": {
+    "Rule No": 58,
+    "English Rule": "Use past perfect to show which action happened first",
+    "Telugu Rule": "ఏ చర్య ముందు జరిగిందో చూపించడానికి గత పరిపూర్ణ కాలం ఉపయోగించండి",
+    "When to Use": "To show sequence of past events",
+    "Example": "After I had eaten, I left."
+  },
+  "58": {
+    "Rule No": 59,
+    "English Rule": "Past perfect continuous: had been + V1+ing",
+    "Telugu Rule": "గత పరిపూర్ణ నిరంతరం: had been + క్రియ+ing",
+    "When to Use": "For continuous action before past moment",
+    "Example": "I had been working for 2 hours."
+  },
+  "59": {
+    "Rule No": 60,
+    "English Rule": "Future simple: will + V1",
+    "Telugu Rule": "భవిష్యత్ సాధారణం: will + మొదటి రూపం",
+    "When to Use": "For future predictions and decisions",
+    "Example": "I will help you tomorrow."
+  },
+  "60": {
+    "Rule No": 61,
+    "English Rule": "Use shall with I/we for offers and suggestions",
+    "Telugu Rule": "ప్రతిపాదనలు మరియు సూచనల కోసం I/we తో shall ఉపయోగించండి",
+    "When to Use": "For formal future or offers",
+    "Example": "Shall we go?"
+  },
+  "61": {
+    "Rule No": 62,
+    "English Rule": "Future simple negative: will not/won't + V1",
+    "Telugu Rule": "భవిష్యత్ సాధారణ ప్రతికూలం: will not/won't + మొదటి రూపం",
+    "When to Use": "For negative future statements",
+    "Example": "I won't go there."
+  },
+  "62": {
+    "Rule No": 63,
+    "English Rule": "Future continuous: will be + V1+ing",
+    "Telugu Rule": "భవిష్యత్ నిరంతరం: will be + క్రియ+ing",
+    "When to Use": "For actions in progress at future time",
+    "Example": "I will be working at 5 PM tomorrow."
+  },
+  "63": {
+    "Rule No": 64,
+    "English Rule": "Future perfect: will have + V3",
+    "Telugu Rule": "భవిష్యత్ పరిపూర్ణం: will have + మూడవ రూపం",
+    "When to Use": "For actions completed before future time",
+    "Example": "I will have finished by 6 PM."
+  },
+  "64": {
+    "Rule No": 65,
+    "English Rule": "Future perfect continuous: will have been + V1+ing",
+    "Telugu Rule": "భవిష్యత్ పరిపూర్ణ నిరంతరం: will have been + క్రియ+ing",
+    "When to Use": "For continuous action until future time",
+    "Example": "I will have been working for 10 hours."
+  },
+  "65": {
+    "Rule No": 66,
+    "English Rule": "Use 'going to' for planned future actions",
+    "Telugu Rule": "ప్రణాళికాబద్ధమైన భవిష్యత్ చర్యల కోసం 'going to' ఉపయోగించండి",
+    "When to Use": "For intentions and plans already made",
+    "Example": "I am going to visit him next week."
+  },
+  "66": {
+    "Rule No": 67,
+    "English Rule": "Use 'going to' for predictions with evidence",
+    "Telugu Rule": "సాక్ష్యంతో అంచనాల కోసం 'going to' ఉపయోగించండి",
+    "When to Use": "When there's evidence for prediction",
+    "Example": "It's going to rain (dark clouds visible)."
+  },
+  "67": {
+    "Rule No": 68,
+    "English Rule": "Use 'will' for instant decisions",
+    "Telugu Rule": "తక్షణ నిర్ణయాల కోసం 'will' ఉపయోగించండి",
+    "When to Use": "For decisions made at moment of speaking",
+    "Example": "I will help you (deciding now)."
+  },
+  "68": {
+    "Rule No": 69,
+    "English Rule": "Use 'will' for promises and offers",
+    "Telugu Rule": "వాగ్దానాలు మరియు ప్రతిపాదనల కోసం 'will' ఉపయోగించండి",
+    "When to Use": "When making promises",
+    "Example": "I will call you later."
+  },
+  "69": {
+    "Rule No": 70,
+    "English Rule": "Don't use 'will' after if, when, before, after, until",
+    "Telugu Rule": "if, when, before, after, until తర్వాత 'will' ఉపయోగించవద్దు",
+    "When to Use": "In time and conditional clauses",
+    "Example": "When he comes (not 'will come'), I will tell him."
+  },
+  "70": {
+    "Rule No": 71,
+    "English Rule": "Use present simple for scheduled future events",
+    "Telugu Rule": "షెడ్యూల్ చేసిన భవిష్యత్ ఈవెంట్స్ కోసం వర్తమాన సాధారణం ఉపయోగించండి",
+    "When to Use": "For timetables, schedules",
+    "Example": "The train leaves at 6 PM."
+  },
+  "71": {
+    "Rule No": 72,
+    "English Rule": "Use 'would' for past habits",
+    "Telugu Rule": "గత అలవాట్ల కోసం 'would' ఉపయోగించండి",
+    "When to Use": "For repeated past actions",
+    "Example": "When I was young, I would play cricket."
+  },
+  "72": {
+    "Rule No": 73,
+    "English Rule": "Use 'used to' for past habits and states",
+    "Telugu Rule": "గత అలవాట్లు మరియు స్థితుల కోసం 'used to' ఉపయోగించండి",
+    "When to Use": "For past habits now stopped",
+    "Example": "I used to smoke (but not now)."
+  },
+  "73": {
+    "Rule No": 74,
+    "English Rule": "Don't mix time references in one sentence",
+    "Telugu Rule": "ఒక వాక్యంలో కాల సూచనలను కలపవద్దు",
+    "When to Use": "Keep tense consistent unless showing time change",
+    "Example": "He said he was tired (not 'is')."
+  },
+  "74": {
+    "Rule No": 75,
+    "English Rule": "In reported speech, present changes to past",
+    "Telugu Rule": "పరోక్ష ప్రసంగంలో, వర్తమానం గతంగా మారుతుంది",
+    "When to Use": "When reporting someone's words",
+    "Example": "He said, 'I am busy' → He said he was busy."
+  },
+  "75": {
+    "Rule No": 76,
+    "English Rule": "Subject pronouns: I, you, he, she, it, we, they",
+    "Telugu Rule": "కర్త సర్వనామాలు: I, you, he, she, it, we, they",
+    "When to Use": "As subject of sentence (who does action)",
+    "Example": "She loves music."
+  },
+  "76": {
+    "Rule No": 77,
+    "English Rule": "Object pronouns: me, you, him, her, it, us, them",
+    "Telugu Rule": "కర్మ సర్వనామాలు: me, you, him, her, it, us, them",
+    "When to Use": "As object of verb or after preposition",
+    "Example": "He loves her. Talk to me."
+  },
+  "77": {
+    "Rule No": 78,
+    "English Rule": "Possessive adjectives: my, your, his, her, its, our, their",
+    "Telugu Rule": "స్వత్వ విశేషణాలు: my, your, his, her, its, our, their",
+    "When to Use": "Before noun to show possession",
+    "Example": "This is my book."
+  },
+  "78": {
+    "Rule No": 79,
+    "English Rule": "Possessive pronouns: mine, yours, his, hers, ours, theirs",
+    "Telugu Rule": "స్వత్వ సర్వనామాలు: mine, yours, his, hers, ours, theirs",
+    "When to Use": "Alone, without noun after",
+    "Example": "This book is mine."
+  },
+  "79": {
+    "Rule No": 80,
+    "English Rule": "Use 'it' for things and animals (general)",
+    "Telugu Rule": "వస్తువులు మరియు జంతువులకు 'it' ఉపయోగించండి",
+    "When to Use": "For non-human subjects",
+    "Example": "It is a cat."
+  },
+  "80": {
+    "Rule No": 81,
+    "English Rule": "Use 'they/them' for people (gender-neutral)",
+    "Telugu Rule": "వ్యక్తుల కోసం (లింగ తటస్థ) 'they/them' ఉపయోగించండి",
+    "When to Use": "For unknown or non-binary gender",
+    "Example": "Someone left their bag."
+  },
+  "81": {
+    "Rule No": 82,
+    "English Rule": "Reflexive pronouns: myself, yourself, himself, herself, ourselves",
+    "Telugu Rule": "ప్రతిఫలన సర్వనామాలు: myself, yourself, himself, herself, ourselves",
+    "When to Use": "When subject and object are same person",
+    "Example": "I hurt myself."
+  },
+  "82": {
+    "Rule No": 83,
+    "English Rule": "Use 'who' for people (subject)",
+    "Telugu Rule": "వ్యక్తుల కోసం (కర్త) 'who' ఉపయోగించండి",
+    "When to Use": "When asking about people doing action",
+    "Example": "Who is coming?"
+  },
+  "83": {
+    "Rule No": 84,
+    "English Rule": "Use 'whom' for people (object)",
+    "Telugu Rule": "వ్యక్తుల కోసం (కర్మ) 'whom' ఉపయోగించండి",
+    "When to Use": "When asking about people receiving action",
+    "Example": "Whom did you meet?"
+  },
+  "84": {
+    "Rule No": 85,
+    "English Rule": "Use 'which' for things and animals",
+    "Telugu Rule": "వస్తువులు మరియు జంతువుల కోసం 'which' ఉపయోగించండి",
+    "When to Use": "When choosing from limited options",
+    "Example": "Which book do you want?"
+  },
+  "85": {
+    "Rule No": 86,
+    "English Rule": "Use 'whose' to show possession in questions",
+    "Telugu Rule": "ప్రశ్నలలో స్వత్వం చూపించడానికి 'whose' ఉపయోగించండి",
+    "When to Use": "When asking about ownership",
+    "Example": "Whose bag is this?"
+  },
+  "86": {
+    "Rule No": 87,
+    "English Rule": "Use 'that' for people and things (informal)",
+    "Telugu Rule": "వ్యక్తులు మరియు వస్తువుల కోసం 'that' ఉపయోగించండి (అనధికారిక)",
+    "When to Use": "In defining relative clauses",
+    "Example": "The man that helped me."
+  },
+  "87": {
+    "Rule No": 88,
+    "English Rule": "This/these for near, that/those for far",
+    "Telugu Rule": "దగ్గరకు this/these, దూరానికి that/those",
+    "When to Use": "To show distance from speaker",
+    "Example": "This book (near), that book (far)"
+  },
+  "88": {
+    "Rule No": 89,
+    "English Rule": "Everyone/everybody takes singular verb",
+    "Telugu Rule": "Everyone/everybody ఏకవచన క్రియను తీసుకుంటుంది",
+    "When to Use": "With indefinite pronouns for people",
+    "Example": "Everyone is happy."
+  },
+  "89": {
+    "Rule No": 90,
+    "English Rule": "Pronoun must agree with noun it replaces",
+    "Telugu Rule": "సర్వనామం అది భర్తీ చేసే నామవాచకంతో సరిపోలాలి",
+    "When to Use": "Always when using pronouns",
+    "Example": "The girl... she (not 'he')"
+  },
+  "90": {
+    "Rule No": 91,
+    "English Rule": "Use 'in' for months, years, seasons, centuries",
+    "Telugu Rule": "నెలలు, సంవత్సరాలు, ఋతువులు, శతాబ్దాలకు 'in' ఉపయోగించండి",
+    "When to Use": "With longer time periods",
+    "Example": "in January, in 2024, in summer"
+  },
+  "91": {
+    "Rule No": 92,
+    "English Rule": "Use 'on' for days and dates",
+    "Telugu Rule": "రోజులు మరియు తేదీలకు 'on' ఉపయోగించండి",
+    "When to Use": "With specific days",
+    "Example": "on Monday, on 15th January"
+  },
+  "92": {
+    "Rule No": 93,
+    "English Rule": "Use 'at' for specific times",
+    "Telugu Rule": "నిర్దిష్ట సమయాలకు 'at' ఉపయోగించండి",
+    "When to Use": "With clock times",
+    "Example": "at 5 PM, at noon, at midnight"
+  },
+  "93": {
+    "Rule No": 94,
+    "English Rule": "Use 'in' for cities, states, countries",
+    "Telugu Rule": "నగరాలు, రాష్ట్రాలు, దేశాలకు 'in' ఉపయోగించండి",
+    "When to Use": "For larger places",
+    "Example": "in Delhi, in India"
+  },
+  "94": {
+    "Rule No": 95,
+    "English Rule": "Use 'at' for specific locations/addresses",
+    "Telugu Rule": "నిర్దిష్ట స్థానాలు/చిరునామాలకు 'at' ఉపయోగించండి",
+    "When to Use": "For exact points",
+    "Example": "at the bus stop, at home"
+  },
+  "95": {
+    "Rule No": 96,
+    "English Rule": "Use 'on' for surfaces",
+    "Telugu Rule": "ఉపరితలాలకు 'on' ఉపయోగించండి",
+    "When to Use": "When something touches surface",
+    "Example": "on the table, on the wall"
+  },
+  "96": {
+    "Rule No": 97,
+    "English Rule": "Use 'in' for enclosed spaces",
+    "Telugu Rule": "మూసివున్న స్థలాలకు 'in' ఉపయోగించండి",
+    "When to Use": "When inside something",
+    "Example": "in the room, in the box"
+  },
+  "97": {
+    "Rule No": 98,
+    "English Rule": "Use 'to' for movement toward a place",
+    "Telugu Rule": "ఒక ప్రదేశం వైపు కదలికకు 'to' ఉపయోగించండి",
+    "When to Use": "When showing direction",
+    "Example": "go to school, come to me"
+  },
+  "98": {
+    "Rule No": 99,
+    "English Rule": "Use 'from' to show starting point",
+    "Telugu Rule": "ప్రారంభ బిందువును చూపించడానికి 'from' ఉపయోగించండి",
+    "When to Use": "For origin or source",
+    "Example": "from Delhi, from morning"
+  },
+  "99": {
+    "Rule No": 100,
+    "English Rule": "Use 'by' for transport methods",
+    "Telugu Rule": "రవాణా పద్ధతులకు 'by' ఉపయోగించండి",
+    "When to Use": "With bus, car, train, plane",
+    "Example": "by bus, by train (but 'on foot')"
+  },
+  "100": {
+    "Rule No": 101,
+    "English Rule": "Use 'with' to show accompaniment or tool",
+    "Telugu Rule": "తోడు లేదా సాధనాన్ని చూపించడానికి 'with' ఉపయోగించండి",
+    "When to Use": "For company or instrument",
+    "Example": "with friends, write with a pen"
+  },
+  "101": {
+    "Rule No": 102,
+    "English Rule": "Use 'for' to show purpose or duration",
+    "Telugu Rule": "ఉద్దేశం లేదా వ్యవధిని చూపించడానికి 'for' ఉపయోగించండి",
+    "When to Use": "For reason or time period",
+    "Example": "for you, for 2 hours"
+  },
+  "102": {
+    "Rule No": 103,
+    "English Rule": "Use 'during' for specific period when something happens",
+    "Telugu Rule": "ఏదైనా జరిగే నిర్దిష్ట కాలానికి 'during' ఉపయోగించండి",
+    "When to Use": "With nouns showing time period",
+    "Example": "during the meeting, during summer"
+  },
+  "103": {
+    "Rule No": 104,
+    "English Rule": "Use 'between' for two things/people",
+    "Telugu Rule": "రెండు వస్తువులు/వ్యక్తులకు 'between' ఉపయోగించండి",
+    "When to Use": "When there are exactly two",
+    "Example": "between you and me"
+  },
+  "104": {
+    "Rule No": 105,
+    "English Rule": "Use 'among' for more than two",
+    "Telugu Rule": "రెండు కంటే ఎక్కువకు 'among' ఉపయోగించండి",
+    "When to Use": "When there are three or more",
+    "Example": "among the students"
+  },
+  "105": {
+    "Rule No": 106,
+    "English Rule": "Use 'above' for higher position (not touching)",
+    "Telugu Rule": "ఎత్తైన స్థానానికి (తాకకుండా) 'above' ఉపయోగించండి",
+    "When to Use": "For higher level without contact",
+    "Example": "above the clouds"
+  },
+  "106": {
+    "Rule No": 107,
+    "English Rule": "Use 'over' for higher position (may touch)",
+    "Telugu Rule": "ఎత్తైన స్థానానికి (తాకవచ్చు) 'over' ఉపయోగించండి",
+    "When to Use": "For covering or crossing",
+    "Example": "over the bridge, over my head"
+  },
+  "107": {
+    "Rule No": 108,
+    "English Rule": "Use 'under' for lower position",
+    "Telugu Rule": "తక్కువ స్థానానికి 'under' ఉపయోగించండి",
+    "When to Use": "For beneath or below",
+    "Example": "under the table"
+  },
+  "108": {
+    "Rule No": 109,
+    "English Rule": "Use 'before' for earlier time",
+    "Telugu Rule": "ముందు సమయానికి 'before' ఉపయోగించండి",
+    "When to Use": "For time or sequence earlier",
+    "Example": "before lunch, before me"
+  },
+  "109": {
+    "Rule No": 110,
+    "English Rule": "Use 'after' for later time",
+    "Telugu Rule": "తర్వాత సమయానికి 'after' ఉపయోగించండి",
+    "When to Use": "For time or sequence later",
+    "Example": "after dinner, after you"
+  },
+  "110": {
+    "Rule No": 111,
+    "English Rule": "Use 'since' for starting point of time",
+    "Telugu Rule": "సమయం యొక్క ప్రారంభ బిందువుకు 'since' ఉపయోగించండి",
+    "When to Use": "With specific starting time",
+    "Example": "since 2020, since morning"
+  },
+  "111": {
+    "Rule No": 112,
+    "English Rule": "Use 'until/till' for ending point of time",
+    "Telugu Rule": "సమయం యొక్క ముగింపు బిందువుకు 'until/till' ఉపయోగించండి",
+    "When to Use": "For when something stops",
+    "Example": "until 5 PM, till tomorrow"
+  },
+  "112": {
+    "Rule No": 113,
+    "English Rule": "Use 'about' for approximate topic or number",
+    "Telugu Rule": "సుమారు అంశం లేదా సంఖ్యకు 'about' ఉపయోగించండి",
+    "When to Use": "For topic or estimation",
+    "Example": "talk about politics, about 100 people"
+  },
+  "113": {
+    "Rule No": 114,
+    "English Rule": "Use 'of' to show belonging or material",
+    "Telugu Rule": "చెందినది లేదా పదార్థాన్ని చూపించడానికి 'of' ఉపయోగించండి",
+    "When to Use": "For possession or composition",
+    "Example": "roof of the house, made of wood"
+  },
+  "114": {
+    "Rule No": 115,
+    "English Rule": "Preposition + gerund (verb+ing), not infinitive",
+    "Telugu Rule": "ప్రిపోజిషన్ + క్రియార్థక నామం (verb+ing), అవ్యయం కాదు",
+    "When to Use": "After prepositions, always use -ing form",
+    "Example": "good at swimming (not 'to swim')"
+  },
+  "115": {
+    "Rule No": 116,
+    "English Rule": "Use 'can' for ability and possibility",
+    "Telugu Rule": "సామర్థ్యం మరియు అవకాశానికి 'can' ఉపయోగించండి",
+    "When to Use": "For what someone is able to do",
+    "Example": "I can swim. It can rain."
+  },
+  "116": {
+    "Rule No": 117,
+    "English Rule": "Use 'could' for past ability or polite request",
+    "Telugu Rule": "గత సామర్థ్యం లేదా మర్యాదపూర్వక అభ్యర్థనకు 'could' ఉపయోగించండి",
+    "When to Use": "For past ability or polite questions",
+    "Example": "I could swim when I was young. Could you help?"
+  },
+  "117": {
+    "Rule No": 118,
+    "English Rule": "Use 'may' for permission or possibility",
+    "Telugu Rule": "అనుమతి లేదా అవకాశానికి 'may' ఉపయోగించండి",
+    "When to Use": "For formal permission or possibility",
+    "Example": "May I come in? It may rain."
+  },
+  "118": {
+    "Rule No": 119,
+    "English Rule": "Use 'might' for lower possibility",
+    "Telugu Rule": "తక్కువ అవకాశానికి 'might' ఉపయోగించండి",
+    "When to Use": "For less likely possibility",
+    "Example": "It might rain (less certain)."
+  },
+  "119": {
+    "Rule No": 120,
+    "English Rule": "Use 'must' for strong obligation or certainty",
+    "Telugu Rule": "బలమైన బాధ్యత లేదా నిశ్చయతకు 'must' ఉపయోగించండి",
+    "When to Use": "For necessity or logical conclusion",
+    "Example": "You must study. He must be tired."
+  },
+  "120": {
+    "Rule No": 121,
+    "English Rule": "Use 'should' for advice or recommendation",
+    "Telugu Rule": "సలహా లేదా సిఫార్సు కోసం 'should' ఉపయోగించండి",
+    "When to Use": "For suggestions",
+    "Example": "You should rest."
+  },
+  "121": {
+    "Rule No": 122,
+    "English Rule": "Use 'would' for polite requests or past habits",
+    "Telugu Rule": "మర్యాదపూర్వక అభ్యర్థనలు లేదా గత అలవాట్లకు 'would' ఉపయోగించండి",
+    "When to Use": "For politeness or repeated past actions",
+    "Example": "Would you help? He would visit daily."
+  },
+  "122": {
+    "Rule No": 123,
+    "English Rule": "Use 'ought to' for moral duty or advice",
+    "Telugu Rule": "నైతిక కర్తవ్యం లేదా సలహా కోసం 'ought to' ఉపయోగించండి",
+    "When to Use": "For what is right to do",
+    "Example": "You ought to respect elders."
+  },
+  "123": {
+    "Rule No": 124,
+    "English Rule": "Modal + base form of verb (no 'to', no -s/-ing/-ed)",
+    "Telugu Rule": "మోడల్ + క్రియ మూల రూపం ('to', -s/-ing/-ed లేకుండా)",
+    "When to Use": "Always after modal verbs",
+    "Example": "can go (not 'can to go' or 'can goes')"
+  },
+  "124": {
+    "Rule No": 125,
+    "English Rule": "Can't/cannot for inability or prohibition",
+    "Telugu Rule": "అసమర్థత లేదా నిషేధానికి can't/cannot",
+    "When to Use": "For what is not possible or allowed",
+    "Example": "I can't swim. You cannot smoke here."
+  },
+  "125": {
+    "Rule No": 126,
+    "English Rule": "Must not/mustn't for prohibition",
+    "Telugu Rule": "నిషేధానికి must not/mustn't",
+    "When to Use": "For strong prohibition",
+    "Example": "You mustn't lie."
+  },
+  "126": {
+    "Rule No": 127,
+    "English Rule": "Don't have to/need not for no necessity",
+    "Telugu Rule": "అవసరం లేనప్పుడు don't have to/need not",
+    "When to Use": "When something is not required",
+    "Example": "You don't have to come (optional)."
+  },
+  "127": {
+    "Rule No": 128,
+    "English Rule": "Have to/has to for external obligation",
+    "Telugu Rule": "బాహ్య బాధ్యతకు have to/has to",
+    "When to Use": "For rules, laws, requirements",
+    "Example": "I have to wear uniform."
+  },
+  "128": {
+    "Rule No": 129,
+    "English Rule": "Use 'shall' for offers and suggestions (I/we)",
+    "Telugu Rule": "ప్రతిపాదనలు మరియు సూచనలకు 'shall' (I/we)",
+    "When to Use": "For formal offers or suggestions",
+    "Example": "Shall I help? Shall we dance?"
+  },
+  "129": {
+    "Rule No": 130,
+    "English Rule": "Will for promises and decisions",
+    "Telugu Rule": "వాగ్దానాలు మరియు నిర్ణయాలకు will",
+    "When to Use": "For instant decisions and promises",
+    "Example": "I will help you."
+  },
+  "130": {
+    "Rule No": 131,
+    "English Rule": "Would you like for polite offers",
+    "Telugu Rule": "మర్యాదపూర్వక ప్రతిపాదనల కోసం would you like",
+    "When to Use": "To offer something politely",
+    "Example": "Would you like tea?"
+  },
+  "131": {
+    "Rule No": 132,
+    "English Rule": "Could have/would have + V3 for past possibilities",
+    "Telugu Rule": "గత అవకాశాల కోసం could have/would have + V3",
+    "When to Use": "For unrealized past possibilities",
+    "Example": "I could have helped (but didn't)."
+  },
+  "132": {
+    "Rule No": 133,
+    "English Rule": "Must have + V3 for past certainty",
+    "Telugu Rule": "గత నిశ్చయతకు must have + V3",
+    "When to Use": "For logical conclusions about past",
+    "Example": "He must have left already."
+  },
+  "133": {
+    "Rule No": 134,
+    "English Rule": "May/might have + V3 for past possibility",
+    "Telugu Rule": "గత అవకాశానికి may/might have + V3",
+    "When to Use": "For uncertain past events",
+    "Example": "She might have forgotten."
+  },
+  "134": {
+    "Rule No": 135,
+    "English Rule": "Should have + V3 for past advice/regret",
+    "Telugu Rule": "గత సలహా/పశ్చాత్తాపానికి should have + V3",
+    "When to Use": "For what was right to do but wasn't done",
+    "Example": "You should have studied."
+  },
+  "135": {
+    "Rule No": 136,
+    "English Rule": "Yes/No questions: Auxiliary + subject + main verb",
+    "Telugu Rule": "అవును/కాదు ప్రశ్నలు: సహాయక క్రియ + కర్త + ప్రధాన క్రియ",
+    "When to Use": "For questions with yes/no answers",
+    "Example": "Are you ready? Do you like it?"
+  },
+  "136": {
+    "Rule No": 137,
+    "English Rule": "Use 'do/does' for present simple questions",
+    "Telugu Rule": "వర్తమాన సాధారణ ప్రశ్నలకు 'do/does' ఉపయోగించండి",
+    "When to Use": "With action verbs in present tense",
+    "Example": "Do you work? Does he study?"
+  },
+  "137": {
+    "Rule No": 138,
+    "English Rule": "Use 'did' for past simple questions",
+    "Telugu Rule": "గత సాధారణ ప్రశ్నలకు 'did' ఉపయోగించండి",
+    "When to Use": "For past tense questions",
+    "Example": "Did you go? Did she call?"
+  },
+  "138": {
+    "Rule No": 139,
+    "English Rule": "WH-questions: WH-word + auxiliary + subject + verb",
+    "Telugu Rule": "WH-ప్రశ్నలు: WH-పదం + సహాయక క్రియ + కర్త + క్రియ",
+    "When to Use": "With what, when, where, why, how, who",
+    "Example": "Where do you live?"
+  },
+  "139": {
+    "Rule No": 140,
+    "English Rule": "Use 'what' for things and actions",
+    "Telugu Rule": "వస్తువులు మరియు చర్యలకు 'what' ఉపయోగించండి",
+    "When to Use": "To ask about things or information",
+    "Example": "What is your name?"
+  },
+  "140": {
+    "Rule No": 141,
+    "English Rule": "Use 'when' for time",
+    "Telugu Rule": "సమయానికి 'when' ఉపయోగించండి",
+    "When to Use": "To ask about time",
+    "Example": "When will you come?"
+  },
+  "141": {
+    "Rule No": 142,
+    "English Rule": "Use 'where' for place",
+    "Telugu Rule": "స్థలానికి 'where' ఉపయోగించండి",
+    "When to Use": "To ask about location",
+    "Example": "Where is the station?"
+  },
+  "142": {
+    "Rule No": 143,
+    "English Rule": "Use 'why' for reason",
+    "Telugu Rule": "కారణానికి 'why' ఉపయోగించండి",
+    "When to Use": "To ask for explanation",
+    "Example": "Why are you late?"
+  },
+  "143": {
+    "Rule No": 144,
+    "English Rule": "Use 'how' for manner or method",
+    "Telugu Rule": "విధానం లేదా పద్ధతికి 'how' ఉపయోగించండి",
+    "When to Use": "To ask about way/method",
+    "Example": "How do you do this?"
+  },
+  "144": {
+    "Rule No": 145,
+    "English Rule": "Use 'how much' for uncountable quantities",
+    "Telugu Rule": "లెక్కింపరాని పరిమాణాలకు 'how much' ఉపయోగించండి",
+    "When to Use": "With uncountable nouns",
+    "Example": "How much water?"
+  },
+  "145": {
+    "Rule No": 146,
+    "English Rule": "Use 'how many' for countable quantities",
+    "Telugu Rule": "లెక్కించదగిన పరిమాణాలకు 'how many' ఉపయోగించండి",
+    "When to Use": "With countable nouns",
+    "Example": "How many books?"
+  },
+  "146": {
+    "Rule No": 147,
+    "English Rule": "Use 'how long' for duration",
+    "Telugu Rule": "వ్యవధికి 'how long' ఉపయోగించండి",
+    "When to Use": "To ask about time period",
+    "Example": "How long have you lived here?"
+  },
+  "147": {
+    "Rule No": 148,
+    "English Rule": "Use 'how often' for frequency",
+    "Telugu Rule": "ఫ్రీక్వెన్సీకి 'how often' ఉపయోగించండి",
+    "When to Use": "To ask about regularity",
+    "Example": "How often do you exercise?"
+  },
+  "148": {
+    "Rule No": 149,
+    "English Rule": "Use 'which' for choice between options",
+    "Telugu Rule": "ఎంపికల మధ్య ఎంపిక కోసం 'which' ఉపయోగించండి",
+    "When to Use": "When there are limited options",
+    "Example": "Which color do you prefer?"
+  },
+  "149": {
+    "Rule No": 150,
+    "English Rule": "Subject questions: WH-word + verb (no auxiliary)",
+    "Telugu Rule": "కర్త ప్రశ్నలు: WH-పదం + క్రియ (సహాయక క్రియ లేకుండా)",
+    "When to Use": "When asking about the subject",
+    "Example": "Who called you? (not 'Who did call')"
+  },
+  "150": {
+    "Rule No": 151,
+    "English Rule": "Adjectives describe nouns",
+    "Telugu Rule": "విశేషణాలు నామవాచకాలను వర్ణిస్తాయి",
+    "When to Use": "To add description to nouns",
+    "Example": "beautiful girl, big house"
+  },
+  "151": {
+    "Rule No": 152,
+    "English Rule": "Adverbs describe verbs, adjectives, other adverbs",
+    "Telugu Rule": "క్రియా విశేషణాలు క్రియలు, విశేషణాలు, ఇతర క్రియా విశేషణాలను వర్ణిస్తాయి",
+    "When to Use": "To describe actions or modify adjectives",
+    "Example": "run quickly, very beautiful"
+  },
+  "152": {
+    "Rule No": 153,
+    "English Rule": "Adjective order: Opinion-Size-Age-Shape-Color-Origin-Material-Purpose",
+    "Telugu Rule": "విశేషణ క్రమం: అభిప్రాయం-పరిమాణం-వయస్సు-ఆకారం-రంగు-మూలం-పదార్థం-ఉద్దేశం",
+    "When to Use": "When using multiple adjectives",
+    "Example": "a beautiful big old round red Italian wooden dining table"
+  },
+  "153": {
+    "Rule No": 154,
+    "English Rule": "Opinion adjectives come first",
+    "Telugu Rule": "అభిప్రాయ విశేషణాలు మొదట వస్తాయి",
+    "When to Use": "Before fact adjectives",
+    "Example": "a lovely small house"
+  },
+  "154": {
+    "Rule No": 155,
+    "English Rule": "Add '-ly' to make adverbs from adjectives",
+    "Telugu Rule": "విశేషణాల నుండి క్రియా విశేషణాలు చేయడానికి '-ly' జోడించండి",
+    "When to Use": "To create adverbs",
+    "Example": "quick → quickly, careful → carefully"
+  },
+  "155": {
+    "Rule No": 156,
+    "English Rule": "Some adverbs don't end in '-ly'",
+    "Telugu Rule": "కొన్ని క్రియా విశేషణాలు '-ly'తో ముగియవు",
+    "When to Use": "Common irregular adverbs",
+    "Example": "fast, hard, well, late, early"
+  },
+  "156": {
+    "Rule No": 157,
+    "English Rule": "Good (adjective) vs Well (adverb)",
+    "Telugu Rule": "Good (విశేషణం) vs Well (క్రియా విశేషణం)",
+    "When to Use": "Good with nouns, well with verbs",
+    "Example": "good student / speak well"
+  },
+  "157": {
+    "Rule No": 158,
+    "English Rule": "Comparative: -er/more for comparing two things",
+    "Telugu Rule": "తులనాత్మక: రెండు వస్తువులను పోల్చడానికి -er/more",
+    "When to Use": "When comparing two items",
+    "Example": "taller, more beautiful"
+  },
+  "158": {
+    "Rule No": 159,
+    "English Rule": "Superlative: -est/most for comparing three or more",
+    "Telugu Rule": "అత్యున్నత: మూడు లేదా అంతకంటే ఎక్కువ పోల్చడానికి -est/most",
+    "When to Use": "For the highest degree",
+    "Example": "tallest, most beautiful"
+  },
+  "159": {
+    "Rule No": 160,
+    "English Rule": "Use '-er/-est' for short adjectives (1-2 syllables)",
+    "Telugu Rule": "చిన్న విశేషణాలకు (1-2 అక్షరాలు) '-er/-est' ఉపయోగించండి",
+    "When to Use": "With short words",
+    "Example": "big-bigger-biggest"
+  },
+  "160": {
+    "Rule No": 161,
+    "English Rule": "Use 'more/most' for long adjectives (3+ syllables)",
+    "Telugu Rule": "పొడవైన విశేషణాలకు (3+ అక్షరాలు) 'more/most' ఉపయోగించండి",
+    "When to Use": "With longer words",
+    "Example": "beautiful-more beautiful-most beautiful"
+  },
+  "161": {
+    "Rule No": 162,
+    "English Rule": "Irregular comparatives: good-better-best, bad-worse-worst",
+    "Telugu Rule": "క్రమరహిత తులనాత్మకాలు: good-better-best, bad-worse-worst",
+    "When to Use": "With irregular adjectives",
+    "Example": "This is better than that."
+  },
+  "162": {
+    "Rule No": 163,
+    "English Rule": "Use 'than' after comparative adjectives",
+    "Telugu Rule": "తులనాత్మక విశేషణాల తర్వాత 'than' ఉపయోగించండి",
+    "When to Use": "When comparing",
+    "Example": "He is taller than me."
+  },
+  "163": {
+    "Rule No": 164,
+    "English Rule": "Use 'the' before superlative adjectives",
+    "Telugu Rule": "అత్యున్నత విశేషణాల ముందు 'the' ఉపయోగించండి",
+    "When to Use": "With superlatives",
+    "Example": "She is the best student."
+  },
+  "164": {
+    "Rule No": 165,
+    "English Rule": "Adverbs of frequency: always, usually, often, sometimes, rarely, never",
+    "Telugu Rule": "ఫ్రీక్వెన్సీ క్రియా విశేషణాలు: always, usually, often, sometimes, rarely, never",
+    "When to Use": "To show how often",
+    "Example": "I always wake up early."
+  },
+  "165": {
+    "Rule No": 166,
+    "English Rule": "Place adverbs of frequency before main verb",
+    "Telugu Rule": "ప్రధాన క్రియకు ముందు ఫ్రీక్వెన్సీ క్రియా విశేషణాలను ఉంచండి",
+    "When to Use": "With most verbs",
+    "Example": "She often goes there."
+  },
+  "166": {
+    "Rule No": 167,
+    "English Rule": "Place adverbs of frequency after 'be' verb",
+    "Telugu Rule": "'be' క్రియ తర్వాత ఫ్రీక్వెన్సీ క్రియా విశేషణాలను ఉంచండి",
+    "When to Use": "With am/is/are/was/were",
+    "Example": "She is always happy."
+  },
+  "167": {
+    "Rule No": 168,
+    "English Rule": "Adverbs of manner usually go at end of sentence",
+    "Telugu Rule": "విధాన క్రియా విశేషణాలు సాధారణంగా వాక్య చివర వెళ్తాయి",
+    "When to Use": "For how something is done",
+    "Example": "He speaks English fluently."
+  },
+  "168": {
+    "Rule No": 169,
+    "English Rule": "Very intensifies adjectives and adverbs",
+    "Telugu Rule": "Very విశేషణాలు మరియు క్రియా విశేషణాలను తీవ్రతరం చేస్తుంది",
+    "When to Use": "To make stronger",
+    "Example": "very good, very quickly"
+  },
+  "169": {
+    "Rule No": 170,
+    "English Rule": "Too means 'more than needed' (negative)",
+    "Telugu Rule": "Too అంటే 'అవసరం కంటే ఎక్కువ' (ప్రతికూలం)",
+    "When to Use": "For excessive amount",
+    "Example": "too hot (uncomfortably hot)"
+  },
+  "170": {
+    "Rule No": 171,
+    "English Rule": "Zero conditional: If + present simple, present simple",
+    "Telugu Rule": "శూన్య షరతు: If + వర్తమాన సాధారణం, వర్తమాన సాధారణం",
+    "When to Use": "For general truths and habits",
+    "Example": "If you heat water, it boils."
+  },
+  "171": {
+    "Rule No": 172,
+    "English Rule": "First conditional: If + present simple, will + V1",
+    "Telugu Rule": "మొదటి షరతు: If + వర్తమాన సాధారణం, will + V1",
+    "When to Use": "For real/possible future situations",
+    "Example": "If it rains, I will stay home."
+  },
+  "172": {
+    "Rule No": 173,
+    "English Rule": "Second conditional: If + past simple, would + V1",
+    "Telugu Rule": "రెండవ షరతు: If + గత సాధారణం, would + V1",
+    "When to Use": "For unreal/unlikely present/future situations",
+    "Example": "If I had money, I would buy a car."
+  },
+  "173": {
+    "Rule No": 174,
+    "English Rule": "Third conditional: If + past perfect, would have + V3",
+    "Telugu Rule": "మూడవ షరతు: If + గత పరిపూర్ణం, would have + V3",
+    "When to Use": "For unreal past situations",
+    "Example": "If I had studied, I would have passed."
+  },
+  "174": {
+    "Rule No": 175,
+    "English Rule": "Use 'unless' to mean 'if not'",
+    "Telugu Rule": "'if not' అర్థంలో 'unless' ఉపయోగించండి",
+    "When to Use": "For negative condition",
+    "Example": "Unless you study, you will fail."
+  },
+  "175": {
+    "Rule No": 176,
+    "English Rule": "Use 'if' for condition, 'when' for certainty",
+    "Telugu Rule": "షరతు కోసం 'if', నిశ్చయతకు 'when'",
+    "When to Use": "If for maybe, when for sure",
+    "Example": "If he comes vs When he comes"
+  },
+  "176": {
+    "Rule No": 177,
+    "English Rule": "Don't use 'will' in if-clause",
+    "Telugu Rule": "if-క్లాజ్లో 'will' ఉపయోగించవద్దు",
+    "When to Use": "In conditional sentences",
+    "Example": "If he comes (not 'will come')"
+  },
+  "177": {
+    "Rule No": 178,
+    "English Rule": "Use 'were' (not 'was') in second conditional with I/he/she/it",
+    "Telugu Rule": "రెండవ షరతులో I/he/she/it తో 'were' (not 'was') ఉపయోగించండి",
+    "When to Use": "In unreal conditions",
+    "Example": "If I were rich (not 'was rich')"
+  },
+  "178": {
+    "Rule No": 179,
+    "English Rule": "Mixed conditionals combine different times",
+    "Telugu Rule": "మిశ్రమ షరతులు వేర్వేరు సమయాలను కలుపుతాయి",
+    "When to Use": "When condition and result are in different times",
+    "Example": "If I had studied (past), I would be happy now (present)."
+  },
+  "179": {
+    "Rule No": 180,
+    "English Rule": "Use 'as long as' for condition with duration",
+    "Telugu Rule": "వ్యవధితో షరతు కోసం 'as long as' ఉపయోగించండి",
+    "When to Use": "For conditions that continue",
+    "Example": "You can stay as long as you want."
+  },
+  "180": {
+    "Rule No": 181,
+    "English Rule": "Use 'provided/providing that' for condition",
+    "Telugu Rule": "షరతు కోసం 'provided/providing that' ఉపయోగించండి",
+    "When to Use": "For formal conditions",
+    "Example": "You can go, provided you finish work."
+  },
+  "181": {
+    "Rule No": 182,
+    "English Rule": "Use 'in case' for precaution",
+    "Telugu Rule": "ముందుజాగ్రత్త కోసం 'in case' ఉపయోగించండి",
+    "When to Use": "For preparation for possibility",
+    "Example": "Take umbrella in case it rains."
+  },
+  "182": {
+    "Rule No": 183,
+    "English Rule": "First conditional shows real possibility",
+    "Telugu Rule": "మొదటి షరతు నిజమైన అవకాశాన్ని చూపిస్తుంది",
+    "When to Use": "When something is likely to happen",
+    "Example": "If I see him, I will tell him."
+  },
+  "183": {
+    "Rule No": 184,
+    "English Rule": "Second conditional shows imagination/unlikely",
+    "Telugu Rule": "రెండవ షరతు ఊహ/అసంభవ్యతను చూపిస్తుంది",
+    "When to Use": "For dreams or unlikely situations",
+    "Example": "If I were you, I would accept."
+  },
+  "184": {
+    "Rule No": 185,
+    "English Rule": "Third conditional shows regret about past",
+    "Telugu Rule": "మూడవ షరతు గతం గురించి పశ్చాత్తాపాన్ని చూపిస్తుంది",
+    "When to Use": "For past situations that can't be changed",
+    "Example": "If I had known, I would have helped."
+  },
+  "185": {
+    "Rule No": 186,
+    "English Rule": "Passive voice: Object becomes subject + be + V3",
+    "Telugu Rule": "కర్మ వాచకం: కర్మ కర్తగా మారుతుంది + be + V3",
+    "When to Use": "When focus is on action or receiver",
+    "Example": "The book was written by him."
+  },
+  "186": {
+    "Rule No": 187,
+    "English Rule": "Use passive when doer is unknown",
+    "Telugu Rule": "చేసేవారు తెలియనప్పుడు కర్మ వాచకం ఉపయోగించండి",
+    "When to Use": "When we don't know who did it",
+    "Example": "My car was stolen."
+  },
+  "187": {
+    "Rule No": 188,
+    "English Rule": "Use passive when doer is unimportant",
+    "Telugu Rule": "చేసేవారు ముఖ్యం కానప్పుడు కర్మ వాచకం ఉపయోగించండి",
+    "When to Use": "When action matters more than doer",
+    "Example": "English is spoken here."
+  },
+  "188": {
+    "Rule No": 189,
+    "English Rule": "Use 'by' to show the doer in passive",
+    "Telugu Rule": "కర్మ వాచకంలో చేసేవారిని చూపించడానికి 'by' ఉపయోగించండి",
+    "When to Use": "To mention who did action",
+    "Example": "It was done by John."
+  },
+  "189": {
+    "Rule No": 190,
+    "English Rule": "Present simple passive: am/is/are + V3",
+    "Telugu Rule": "వర్తమాన సాధారణ కర్మ వాచకం: am/is/are + V3",
+    "When to Use": "For present passive actions",
+    "Example": "Rice is grown in India."
+  },
+  "190": {
+    "Rule No": 191,
+    "English Rule": "Past simple passive: was/were + V3",
+    "Telugu Rule": "గత సాధారణ కర్మ వాచకం: was/were + V3",
+    "When to Use": "For past passive actions",
+    "Example": "The letter was sent yesterday."
+  },
+  "191": {
+    "Rule No": 192,
+    "English Rule": "Future passive: will be + V3",
+    "Telugu Rule": "భవిష్యత్ కర్మ వాచకం: will be + V3",
+    "When to Use": "For future passive actions",
+    "Example": "The work will be completed."
+  },
+  "192": {
+    "Rule No": 193,
+    "English Rule": "Present perfect passive: has/have been + V3",
+    "Telugu Rule": "వర్తమాన పరిపూర్ణ కర్మ వాచకం: has/have been + V3",
+    "When to Use": "For completed passive actions",
+    "Example": "The work has been done."
+  },
+  "193": {
+    "Rule No": 194,
+    "English Rule": "Modal passive: modal + be + V3",
+    "Telugu Rule": "మోడల్ కర్మ వాచకం: modal + be + V3",
+    "When to Use": "With can, should, must, etc.",
+    "Example": "It can be done. It must be finished."
+  },
+  "194": {
+    "Rule No": 195,
+    "English Rule": "Active voice is more direct and clear",
+    "Telugu Rule": "కర్త వాచకం మరింత ప్రత్యక్షంగా మరియు స్పష్టంగా ఉంటుంది",
+    "When to Use": "Prefer active unless specific reason for passive",
+    "Example": "I wrote the letter (better than 'was written by me')"
+  },
+  "195": {
+    "Rule No": 196,
+    "English Rule": "In reported speech, present changes to past",
+    "Telugu Rule": "పరోక్ష వాక్యంలో, వర్తమానం గతంగా మారుతుంది",
+    "When to Use": "When reporting someone's words",
+    "Example": "He said, 'I am busy' → He said he was busy"
+  },
+  "196": {
+    "Rule No": 197,
+    "English Rule": "Remove quotation marks in reported speech",
+    "Telugu Rule": "పరోక్ష వాక్యంలో కొటేషన్ గుర్తులను తొలగించండి",
+    "When to Use": "When converting direct to indirect speech",
+    "Example": "She said, 'I'm happy' → She said she was happy"
+  },
+  "197": {
+    "Rule No": 198,
+    "English Rule": "Use 'that' after reporting verbs (optional)",
+    "Telugu Rule": "రిపోర్టింగ్ క్రియల తర్వాత 'that' ఉపయోగించండి (ఐచ్ఛికం)",
+    "When to Use": "After said, told, etc.",
+    "Example": "He said (that) he was tired."
+  },
+  "198": {
+    "Rule No": 199,
+    "English Rule": "Change pronouns according to context",
+    "Telugu Rule": "సందర్భం ప్రకారం సర్వనామాలను మార్చండి",
+    "When to Use": "To match new perspective",
+    "Example": "She said, 'I like it' → She said she liked it"
+  },
+  "199": {
+    "Rule No": 200,
+    "English Rule": "Past simple changes to past perfect",
+    "Telugu Rule": "గత సాధారణం గత పరిపూర్ణంగా మారుతుంది",
+    "When to Use": "When reporting past events",
+    "Example": "He said, 'I went' → He said he had gone"
+  },
+  "200": {
+    "Rule No": 201,
+    "English Rule": "Will changes to would",
+    "Telugu Rule": "Will would గా మారుతుంది",
+    "When to Use": "In reported speech",
+    "Example": "She said, 'I will come' → She said she would come"
+  },
+  "201": {
+    "Rule No": 202,
+    "English Rule": "Can changes to could",
+    "Telugu Rule": "Can could గా మారుతుంది",
+    "When to Use": "In reported speech",
+    "Example": "He said, 'I can help' → He said he could help"
+  },
+  "202": {
+    "Rule No": 203,
+    "English Rule": "Change time expressions: today → that day, tomorrow → next day",
+    "Telugu Rule": "సమయ వ్యక్తీకరణలను మార్చండి: today → that day, tomorrow → next day",
+    "When to Use": "When time reference changes",
+    "Example": "She said, 'I'll come tomorrow' → She said she would come the next day"
+  },
+  "203": {
+    "Rule No": 204,
+    "English Rule": "Use 'tell' with object, 'say' without",
+    "Telugu Rule": "కర్మతో 'tell', కర్మ లేకుండా 'say'",
+    "When to Use": "tell someone, say to someone",
+    "Example": "He told me (not 'said me'). He said to me."
+  },
+  "204": {
+    "Rule No": 205,
+    "English Rule": "Questions in reported speech: ask + if/whether or WH-word",
+    "Telugu Rule": "పరోక్ష వాక్యంలో ప్రశ్నలు: ask + if/whether లేదా WH-పదం",
+    "When to Use": "When reporting questions",
+    "Example": "He asked, 'Are you ready?' → He asked if I was ready"
+  },
+  "205": {
+    "Rule No": 206,
+    "English Rule": "Don't use double negatives",
+    "Telugu Rule": "ద్వంద్వ ప్రతికూలాలను ఉపయోగించవద్దు",
+    "When to Use": "Avoid two negatives in same clause",
+    "Example": "I don't have anything (not 'don't have nothing')"
+  },
+  "206": {
+    "Rule No": 207,
+    "English Rule": "Use 'some' in positive, 'any' in negative/questions",
+    "Telugu Rule": "సానుకూలంలో 'some', ప్రతికూలం/ప్రశ్నలలో 'any'",
+    "When to Use": "With countable/uncountable nouns",
+    "Example": "I have some books. I don't have any books."
+  },
+  "207": {
+    "Rule No": 208,
+    "English Rule": "Use 'some' in offers and requests",
+    "Telugu Rule": "ప్రతిపాదనలు మరియు అభ్యర్థనలలో 'some' ఉపయోగించండి",
+    "When to Use": "In polite questions",
+    "Example": "Would you like some tea?"
+  },
+  "208": {
+    "Rule No": 209,
+    "English Rule": "Use 'much' with uncountable, 'many' with countable",
+    "Telugu Rule": "లెక్కింపరానివాటితో 'much', లెక్కించదగినవాటితో 'many'",
+    "When to Use": "For quantities",
+    "Example": "much water, many books"
+  },
+  "209": {
+    "Rule No": 210,
+    "English Rule": "Use 'few/a few' with countable nouns",
+    "Telugu Rule": "లెక్కించదగిన నామవాచకాలతో 'few/a few' ఉపయోగించండి",
+    "When to Use": "few = not many (negative), a few = some (positive)",
+    "Example": "few books (not many), a few books (some)"
+  },
+  "210": {
+    "Rule No": 211,
+    "English Rule": "Use 'little/a little' with uncountable nouns",
+    "Telugu Rule": "లెక్కింపరాని నామవాచకాలతో 'little/a little' ఉపయోగించండి",
+    "When to Use": "little = not much, a little = some",
+    "Example": "little money, a little water"
+  },
+  "211": {
+    "Rule No": 212,
+    "English Rule": "Both, either, neither - for two things",
+    "Telugu Rule": "Both, either, neither - రెండు వస్తువులకు",
+    "When to Use": "When discussing exactly two items",
+    "Example": "Both books, either option, neither choice"
+  },
+  "212": {
+    "Rule No": 213,
+    "English Rule": "All, every, each - usage differences",
+    "Telugu Rule": "All, every, each - వినియోగ భేదాలు",
+    "When to Use": "all = group, every = each one, each = individual",
+    "Example": "all students, every student, each student"
+  },
+  "213": {
+    "Rule No": 214,
+    "English Rule": "Make/do - different uses",
+    "Telugu Rule": "Make/do - వేర్వేరు ఉపయోగాలు",
+    "When to Use": "make = create, do = perform",
+    "Example": "make a cake, do homework"
+  },
+  "214": {
+    "Rule No": 215,
+    "English Rule": "See/look/watch differences",
+    "Telugu Rule": "See/look/watch భేదాలు",
+    "When to Use": "see = general, look = direct attention, watch = movement",
+    "Example": "see a bird, look at photo, watch TV"
+  },
+  "215": {
+    "Rule No": 216,
+    "English Rule": "Hear/listen differences",
+    "Telugu Rule": "Hear/listen భేదాలు",
+    "When to Use": "hear = automatic, listen = intentional",
+    "Example": "I hear noise. I listen to music."
+  },
+  "216": {
+    "Rule No": 217,
+    "English Rule": "Say/tell/speak/talk differences",
+    "Telugu Rule": "Say/tell/speak/talk భేదాలు",
+    "When to Use": "say words, tell someone, speak language, talk to someone",
+    "Example": "say hello, tell me, speak English, talk to him"
+  },
+  "217": {
+    "Rule No": 218,
+    "English Rule": "Lay/lie differences",
+    "Telugu Rule": "Lay/lie భేదాలు",
+    "When to Use": "lay = put down (transitive), lie = recline (intransitive)",
+    "Example": "lay the book down, lie on bed"
+  },
+  "218": {
+    "Rule No": 219,
+    "English Rule": "Borrow/lend differences",
+    "Telugu Rule": "Borrow/lend భేదాలు",
+    "When to Use": "borrow = take, lend = give",
+    "Example": "borrow money from, lend money to"
+  },
+  "219": {
+    "Rule No": 220,
+    "English Rule": "Its (possessive) vs It's (it is)",
+    "Telugu Rule": "Its (స్వత్వ) vs It's (it is)",
+    "When to Use": "its = belonging to it, it's = it is",
+    "Example": "Its color (belonging). It's raining (it is)."
+  },
+  "220": {
+    "Rule No": 221,
+    "English Rule": "Your (possessive) vs You're (you are)",
+    "Telugu Rule": "Your (స్వత్వ) vs You're (you are)",
+    "When to Use": "your = belonging to you, you're = you are",
+    "Example": "your book, you're late"
+  },
+  "221": {
+    "Rule No": 222,
+    "English Rule": "Their/there/they're differences",
+    "Telugu Rule": "Their/there/they're భేదాలు",
+    "When to Use": "their = possession, there = place, they're = they are",
+    "Example": "their house, over there, they're coming"
+  },
+  "222": {
+    "Rule No": 223,
+    "English Rule": "To/too/two differences",
+    "Telugu Rule": "To/too/two భేదాలు",
+    "When to Use": "to = direction, too = also/excessive, two = number",
+    "Example": "go to school, too hot, two books"
+  },
+  "223": {
+    "Rule No": 224,
+    "English Rule": "Affect (verb) vs Effect (noun)",
+    "Telugu Rule": "Affect (క్రియ) vs Effect (నామవాచకం)",
+    "When to Use": "affect = influence, effect = result",
+    "Example": "It affects me. The effect is bad."
+  },
+  "224": {
+    "Rule No": 225,
+    "English Rule": "Accept (receive) vs Except (exclude)",
+    "Telugu Rule": "Accept (స్వీకరించు) vs Except (మినహాయించు)",
+    "When to Use": "accept = agree to take, except = not including",
+    "Example": "accept gift, all except him"
+  },
+  "225": {
+    "Rule No": 226,
+    "English Rule": "Beside (next to) vs Besides (in addition to)",
+    "Telugu Rule": "Beside (పక్కన) vs Besides (అదనంగా)",
+    "When to Use": "beside = at the side of, besides = also",
+    "Example": "sit beside me, besides this"
+  },
+  "226": {
+    "Rule No": 227,
+    "English Rule": "Use gerund (-ing) after certain verbs",
+    "Telugu Rule": "కొన్ని క్రియల తర్వాత క్రియార్థక నామం (-ing) ఉపయోగించండి",
+    "When to Use": "After enjoy, finish, avoid, mind, etc.",
+    "Example": "I enjoy reading. She finished working."
+  },
+  "227": {
+    "Rule No": 228,
+    "English Rule": "Use infinitive (to + V1) after certain verbs",
+    "Telugu Rule": "కొన్ని క్రియల తర్వాత అవ్యయం (to + V1) ఉపయోగించండి",
+    "When to Use": "After want, decide, plan, hope, etc.",
+    "Example": "I want to go. She decided to stay."
+  },
+  "228": {
+    "Rule No": 229,
+    "English Rule": "Some verbs take both gerund and infinitive with same meaning",
+    "Telugu Rule": "కొన్ని క్రియలు ఒకే అర్థంతో క్రియార్థక నామం మరియు అవ్యయం రెండింటినీ తీసుకుంటాయి",
+    "When to Use": "With begin, start, continue, like, love, hate",
+    "Example": "I like reading = I like to read"
+  },
+  "229": {
+    "Rule No": 230,
+    "English Rule": "Some verbs change meaning with gerund vs infinitive",
+    "Telugu Rule": "కొన్ని క్రియలు క్రియార్థక నామం vs అవ్యయంతో అర్థం మారుతుంది",
+    "When to Use": "With stop, remember, forget, try",
+    "Example": "stop smoking (quit) vs stop to smoke (pause to smoke)"
+  },
+  "230": {
+    "Rule No": 231,
+    "English Rule": "Use 'enough' after adjectives/adverbs",
+    "Telugu Rule": "విశేషణాలు/క్రియా విశేషణాల తర్వాత 'enough' ఉపయోగించండి",
+    "When to Use": "For sufficient amount",
+    "Example": "tall enough, quickly enough"
+  },
+  "231": {
+    "Rule No": 232,
+    "English Rule": "Use 'enough' before nouns",
+    "Telugu Rule": "నామవాచకాల ముందు 'enough' ఉపయోగించండి",
+    "When to Use": "With nouns",
+    "Example": "enough money, enough time"
+  },
+  "232": {
+    "Rule No": 233,
+    "English Rule": "Use 'so' with adjectives/adverbs",
+    "Telugu Rule": "విశేషణాలు/క్రియా విశేషణాలతో 'so' ఉపయోగించండి",
+    "When to Use": "For intensity",
+    "Example": "so beautiful, so quickly"
+  },
+  "233": {
+    "Rule No": 234,
+    "English Rule": "Use 'such' with nouns (with adjective)",
+    "Telugu Rule": "నామవాచకాలతో (విశేషణంతో) 'such' ఉపయోగించండి",
+    "When to Use": "Before noun phrases",
+    "Example": "such a beautiful girl, such good food"
+  },
+  "234": {
+    "Rule No": 235,
+    "English Rule": "Countable nouns have singular and plural forms",
+    "Telugu Rule": "లెక్కించదగిన నామవాచకాలకు ఏకవచనం మరియు బహువచన రూపాలు ఉంటాయి",
+    "When to Use": "Things you can count",
+    "Example": "book-books, car-cars"
+  },
+  "235": {
+    "Rule No": 236,
+    "English Rule": "Uncountable nouns have no plural form",
+    "Telugu Rule": "లెక్కింపరాని నామవాచకాలకు బహువచన రూపం లేదు",
+    "When to Use": "With water, information, advice, etc.",
+    "Example": "water (not 'waters'), information (not 'informations')"
+  },
+  "236": {
+    "Rule No": 237,
+    "English Rule": "Use capital letter for first word of sentence",
+    "Telugu Rule": "వాక్య మొదటి పదానికి పెద్ద అక్షరం ఉపయోగించండి",
+    "When to Use": "At beginning of every sentence",
+    "Example": "The sun rises in the east."
+  },
+  "237": {
+    "Rule No": 238,
+    "English Rule": "Use capital letters for proper nouns",
+    "Telugu Rule": "సంజ్ఞా నామాలకు పెద్ద అక్షరాలు ఉపయోగించండి",
+    "When to Use": "For names, places, months, days",
+    "Example": "John, India, January, Monday"
+  },
+  "238": {
+    "Rule No": 239,
+    "English Rule": "Use capital 'I' for first person pronoun",
+    "Telugu Rule": "మొదటి పురుష సర్వనామానికి పెద్ద 'I' ఉపయోగించండి",
+    "When to Use": "Always when referring to yourself",
+    "Example": "I am happy. (not 'i')"
+  },
+  "239": {
+    "Rule No": 240,
+    "English Rule": "End statements with period (.)",
+    "Telugu Rule": "ప్రకటనలను పూర్ణ విరామంతో (.) ముగించండి",
+    "When to Use": "At end of declarative sentences",
+    "Example": "I like books."
+  },
+  "240": {
+    "Rule No": 241,
+    "English Rule": "End questions with question mark (?)",
+    "Telugu Rule": "ప్రశ్నలను ప్రశ్న గుర్తుతో (?) ముగించండి",
+    "When to Use": "At end of all questions",
+    "Example": "Do you like books?"
+  },
+  "241": {
+    "Rule No": 242,
+    "English Rule": "Use exclamation mark (!) for strong emotion",
+    "Telugu Rule": "బలమైన భావోద్వేగానికి ఆశ్చర్య గుర్తు (!) ఉపయోగించండి",
+    "When to Use": "For excitement, surprise, anger",
+    "Example": "What a beautiful day!"
+  },
+  "242": {
+    "Rule No": 243,
+    "English Rule": "Use comma to separate items in a list",
+    "Telugu Rule": "జాబితాలోని అంశాలను వేరు చేయడానికి కామా ఉపయోగించండి",
+    "When to Use": "Between list items",
+    "Example": "I need bread, milk, and eggs."
+  },
+  "243": {
+    "Rule No": 244,
+    "English Rule": "Use comma after introductory words/phrases",
+    "Telugu Rule": "పరిచయ పదాలు/పదబంధాల తర్వాత కామా ఉపయోగించండి",
+    "When to Use": "After words like however, therefore, etc.",
+    "Example": "However, I disagree."
+  },
+  "244": {
+    "Rule No": 245,
+    "English Rule": "Use apostrophe for contractions",
+    "Telugu Rule": "సంకోచనాలకు అపోస్ట్రఫీ ఉపయోగించండి",
+    "When to Use": "To show missing letters",
+    "Example": "don't (do not), I'm (I am)"
+  },
+  "245": {
+    "Rule No": 246,
+    "English Rule": "Use apostrophe + s for possession (singular)",
+    "Telugu Rule": "స్వత్వం (ఏకవచనం) కోసం అపోస్ట్రఫీ + s ఉపయోగించండి",
+    "When to Use": "To show ownership by one person/thing",
+    "Example": "John's book, the cat's tail"
+  },
+  "246": {
+    "Rule No": 247,
+    "English Rule": "Use s + apostrophe for plural possession",
+    "Telugu Rule": "బహువచన స్వత్వం కోసం s + అపోస్ట్రఫీ ఉపయోగించండి",
+    "When to Use": "When plural noun already ends in s",
+    "Example": "the students' books"
+  },
+  "247": {
+    "Rule No": 248,
+    "English Rule": "Use quotation marks for direct speech",
+    "Telugu Rule": "ప్రత్యక్ష ప్రసంగానికి కొటేషన్ గుర్తులు ఉపయోగించండి",
+    "When to Use": "For exact words someone said",
+    "Example": "He said, \"I am happy.\""
+  },
+  "248": {
+    "Rule No": 249,
+    "English Rule": "Relative clause with 'who' for people",
+    "Telugu Rule": "వ్యక్తుల కోసం 'who' తో సంబంధ వాక్యం",
+    "When to Use": "To give more information about person",
+    "Example": "The man who called you is here."
+  },
+  "249": {
+    "Rule No": 250,
+    "English Rule": "Relative clause with 'which' for things",
+    "Telugu Rule": "వస్తువుల కోసం 'which' తో సంబంధ వాక్యం",
+    "When to Use": "To give more information about thing",
+    "Example": "The book which I bought is good."
+  },
+  "250": {
+    "Rule No": 251,
+    "English Rule": "Use 'where' for places in relative clauses",
+    "Telugu Rule": "సంబంధ వాక్యాలలో స్థలాలకు 'where' ఉపయోగించండి",
+    "When to Use": "To describe places",
+    "Example": "The hotel where we stayed was nice."
+  },
+  "251": {
+    "Rule No": 252,
+    "English Rule": "Use 'when' for time in relative clauses",
+    "Telugu Rule": "సంబంధ వాక్యాలలో సమయానికి 'when' ఉపయోగించండి",
+    "When to Use": "To describe when something happened",
+    "Example": "The day when I met her was special."
+  },
+  "252": {
+    "Rule No": 253,
+    "English Rule": "Don't use comma before 'that' in defining clauses",
+    "Telugu Rule": "నిర్వచించే వాక్యాలలో 'that' ముందు కామా ఉపయోగించవద్దు",
+    "When to Use": "In essential relative clauses",
+    "Example": "The book that I need is here."
+  },
+  "253": {
+    "Rule No": 254,
+    "English Rule": "Use comma before 'which' in non-defining clauses",
+    "Telugu Rule": "నిర్వచించని వాక్యాలలో 'which' ముందు కామా ఉపయోగించండి",
+    "When to Use": "In non-essential relative clauses",
+    "Example": "My car, which is red, is fast."
+  },
+  "254": {
+    "Rule No": 255,
+    "English Rule": "Use 'so' to show result",
+    "Telugu Rule": "ఫలితాన్ని చూపించడానికి 'so' ఉపయోగించండి",
+    "When to Use": "To connect cause and effect",
+    "Example": "I was tired, so I slept."
+  },
+  "255": {
+    "Rule No": 256,
+    "English Rule": "Use 'because' to show reason",
+    "Telugu Rule": "కారణాన్ని చూపించడానికి 'because' ఉపయోగించండి",
+    "When to Use": "To explain why",
+    "Example": "I slept because I was tired."
+  },
+  "256": {
+    "Rule No": 257,
+    "English Rule": "Use 'although/though' for contrast",
+    "Telugu Rule": "వ్యత్యాసానికి 'although/though' ఉపయోగించండి",
+    "When to Use": "To show opposite ideas",
+    "Example": "Although it rained, we went out."
+  },
+  "257": {
+    "Rule No": 258,
+    "English Rule": "Use 'but' to contrast within sentence",
+    "Telugu Rule": "వాక్యంలో వ్యత్యాసం చూపడానికి 'but' ఉపయోగించండి",
+    "When to Use": "To show opposite in same sentence",
+    "Example": "I like tea but not coffee."
+  },
+  "258": {
+    "Rule No": 259,
+    "English Rule": "Use 'and' to add information",
+    "Telugu Rule": "సమాచారాన్ని జోడించడానికి 'and' ఉపయోగించండి",
+    "When to Use": "To connect similar ideas",
+    "Example": "I like tea and coffee."
+  },
+  "259": {
+    "Rule No": 260,
+    "English Rule": "Use 'or' for alternatives",
+    "Telugu Rule": "ప్రత్యామ్నాయాలకు 'or' ఉపయోగించండి",
+    "When to Use": "To show choices",
+    "Example": "Tea or coffee?"
+  },
+  "260": {
+    "Rule No": 261,
+    "English Rule": "Tag questions: positive statement + negative tag",
+    "Telugu Rule": "ట్యాగ్ ప్రశ్నలు: సానుకూల ప్రకటన + ప్రతికూల ట్యాగ్",
+    "When to Use": "For confirmation",
+    "Example": "You like it, don't you?"
+  },
+  "261": {
+    "Rule No": 262,
+    "English Rule": "Tag questions: negative statement + positive tag",
+    "Telugu Rule": "ట్యాగ్ ప్రశ్నలు: ప్రతికూల ప్రకటన + సానుకూల ట్యాగ్",
+    "When to Use": "For confirmation",
+    "Example": "You don't like it, do you?"
+  },
+  "262": {
+    "Rule No": 263,
+    "English Rule": "Use 'while' for simultaneous actions",
+    "Telugu Rule": "ఏకకాల చర్యలకు 'while' ఉపయోగించండి",
+    "When to Use": "When two things happen at same time",
+    "Example": "I read while she cooked."
+  },
+  "263": {
+    "Rule No": 264,
+    "English Rule": "Use 'as soon as' for immediate sequence",
+    "Telugu Rule": "తక్షణ క్రమానికి 'as soon as' ఉపయోగించండి",
+    "When to Use": "When one thing follows immediately",
+    "Example": "I'll call you as soon as I arrive."
+  },
+  "264": {
+    "Rule No": 265,
+    "English Rule": "Use 'hardly/scarcely' with 'when' for quick sequence",
+    "Telugu Rule": "త్వరిత క్రమానికి 'when' తో 'hardly/scarcely' ఉపయోగించండి",
+    "When to Use": "For almost immediate following action",
+    "Example": "I had hardly arrived when it rained."
+  },
+  "265": {
+    "Rule No": 266,
+    "English Rule": "Use 'no sooner...than' for immediate past sequence",
+    "Telugu Rule": "తక్షణ గత క్రమానికి 'no sooner...than' ఉపయోగించండి",
+    "When to Use": "For one action immediately after another",
+    "Example": "No sooner had I left than it rained."
+  },
+  "266": {
+    "Rule No": 267,
+    "English Rule": "Use 'either...or' for two positive choices",
+    "Telugu Rule": "రెండు సానుకూల ఎంపికలకు 'either...or' ఉపయోగించండి",
+    "When to Use": "For selecting between two options",
+    "Example": "Either tea or coffee is fine."
+  },
+  "267": {
+    "Rule No": 268,
+    "English Rule": "Use 'neither...nor' for two negative choices",
+    "Telugu Rule": "రెండు ప్రతికూల ఎంపికలకు 'neither...nor' ఉపయోగించండి",
+    "When to Use": "When both options are rejected",
+    "Example": "Neither tea nor coffee for me."
+  },
+  "268": {
+    "Rule No": 269,
+    "English Rule": "Use 'not only...but also' for emphasis",
+    "Telugu Rule": "ఉద్ఘాటనకు 'not only...but also' ఉపయోగించండి",
+    "When to Use": "To emphasize two related points",
+    "Example": "He is not only smart but also kind."
+  },
+  "269": {
+    "Rule No": 270,
+    "English Rule": "Use 'whether...or' for uncertain alternatives",
+    "Telugu Rule": "అనిశ్చిత ప్రత్యామ్నాయాలకు 'whether...or' ఉపయోగించండి",
+    "When to Use": "When outcome is uncertain",
+    "Example": "I don't know whether to go or stay."
+  },
+  "270": {
+    "Rule No": 271,
+    "English Rule": "Use 'so that' for purpose",
+    "Telugu Rule": "ఉద్దేశ్యం కోసం 'so that' ఉపయోగించండి",
+    "When to Use": "To explain why something is done",
+    "Example": "I study so that I can pass."
+  },
+  "271": {
+    "Rule No": 272,
+    "English Rule": "Use 'in order to' for purpose (formal)",
+    "Telugu Rule": "ఉద్దేశ్యం కోసం (అధికారిక) 'in order to' ఉపయోగించండి",
+    "When to Use": "For formal purpose statements",
+    "Example": "I came in order to help."
+  },
+  "272": {
+    "Rule No": 273,
+    "English Rule": "Use 'in spite of/despite' + noun for contrast",
+    "Telugu Rule": "వ్యత్యాసానికి 'in spite of/despite' + నామవాచకం ఉపయోగించండి",
+    "When to Use": "Before nouns/gerunds to show contrast",
+    "Example": "Despite rain, we went out."
+  },
+  "273": {
+    "Rule No": 274,
+    "English Rule": "Use 'even if' for hypothetical contrast",
+    "Telugu Rule": "ఊహాత్మక వ్యత్యాసానికి 'even if' ఉపయోగించండి",
+    "When to Use": "For contrasting hypothetical situations",
+    "Example": "Even if it rains, I'll go."
+  },
+  "274": {
+    "Rule No": 275,
+    "English Rule": "Use 'as' for simultaneous actions or comparison",
+    "Telugu Rule": "ఏకకాల చర్యలు లేదా పోలికకు 'as' ఉపయోగించండి",
+    "When to Use": "For things happening together or being similar",
+    "Example": "As I walked, I thought. / He is as tall as me."
+  },
+  "275": {
+    "Rule No": 276,
+    "English Rule": "Use 'like' for comparison (informal)",
+    "Telugu Rule": "పోలిక కోసం (అనధికారిక) 'like' ఉపయోగించండి",
+    "When to Use": "To show similarity",
+    "Example": "He looks like his father."
+  },
+  "276": {
+    "Rule No": 277,
+    "English Rule": "Use 'as if/as though' for hypothetical comparison",
+    "Telugu Rule": "ఊహాత్మక పోలికకు 'as if/as though' ఉపయోగించండి",
+    "When to Use": "For unreal comparisons",
+    "Example": "He acts as if he knows everything."
+  },
+  "277": {
+    "Rule No": 278,
+    "English Rule": "Use 'wish' + past for present unreal situations",
+    "Telugu Rule": "వర్తమాన అవాస్తవ పరిస్థితులకు 'wish' + గతం ఉపయోగించండి",
+    "When to Use": "For present wishes that aren't true",
+    "Example": "I wish I were rich (but I'm not)."
+  },
+  "278": {
+    "Rule No": 279,
+    "English Rule": "Use 'wish' + past perfect for past regrets",
+    "Telugu Rule": "గత పశ్చాత్తాపాలకు 'wish' + గత పరిపూర్ణం ఉపయోగించండి",
+    "When to Use": "For regrets about past",
+    "Example": "I wish I had studied (but I didn't)."
+  },
+  "279": {
+    "Rule No": 280,
+    "English Rule": "Use 'would rather' + base verb for preference",
+    "Telugu Rule": "ప్రాధాన్యతకు 'would rather' + మూల క్రియ ఉపయోగించండి",
+    "When to Use": "To express what you prefer",
+    "Example": "I would rather stay home."
+  },
+  "280": {
+    "Rule No": 281,
+    "English Rule": "Use 'had better' + base verb for strong advice",
+    "Telugu Rule": "బలమైన సలహా కోసం 'had better' + మూల క్రియ ఉపయోగించండి",
+    "When to Use": "For warnings or strong recommendations",
+    "Example": "You had better study hard."
+  },
+  "281": {
+    "Rule No": 282,
+    "English Rule": "Use 'used to' only for past (not present)",
+    "Telugu Rule": "'used to' కేవలం గతం కోసం (వర్తమానం కాదు)",
+    "When to Use": "For past habits or states no longer true",
+    "Example": "I used to smoke (but not now)."
+  },
+  "282": {
+    "Rule No": 283,
+    "English Rule": "Use 'be used to' + gerund for familiarity",
+    "Telugu Rule": "పరిచయానికి 'be used to' + క్రియార్థక నామం ఉపయోగించండి",
+    "When to Use": "For things you're accustomed to",
+    "Example": "I'm used to waking early."
+  },
+  "283": {
+    "Rule No": 284,
+    "English Rule": "Use 'get used to' + gerund for becoming familiar",
+    "Telugu Rule": "పరిచయం పొందడానికి 'get used to' + క్రియార్థక నామం ఉపయోగించండి",
+    "When to Use": "For process of becoming accustomed",
+    "Example": "I'm getting used to the weather."
+  },
+  "284": {
+    "Rule No": 285,
+    "English Rule": "Use 'let' to allow/permit",
+    "Telugu Rule": "అనుమతించడానికి 'let' ఉపయోగించండి",
+    "When to Use": "To give permission",
+    "Example": "Let me help you."
+  },
+  "285": {
+    "Rule No": 286,
+    "English Rule": "Use 'make' to force/compel",
+    "Telugu Rule": "బలవంతం చేయడానికి 'make' ఉపయోగించండి",
+    "When to Use": "To cause someone to do something",
+    "Example": "My parents make me study."
+  },
+  "286": {
+    "Rule No": 287,
+    "English Rule": "Use 'have/get something done' for causative",
+    "Telugu Rule": "కార్య కారకానికి 'have/get something done' ఉపయోగించండి",
+    "When to Use": "When you arrange for someone to do something",
+    "Example": "I had my car repaired."
+  },
+  "287": {
+    "Rule No": 288,
+    "English Rule": "Prefer 'fewer' with countable, 'less' with uncountable",
+    "Telugu Rule": "లెక్కించదగినవాటితో 'fewer', లెక్కింపరానివాటితో 'less'",
+    "When to Use": "For comparisons of quantity",
+    "Example": "fewer books, less water"
+  },
+  "288": {
+    "Rule No": 289,
+    "English Rule": "Use 'the more...the more' for parallel increase",
+    "Telugu Rule": "సమాంతర పెరుగుదలకు 'the more...the more' ఉపయోగించండి",
+    "When to Use": "When two things increase together",
+    "Example": "The more you study, the more you learn."
+  },
+  "289": {
+    "Rule No": 290,
+    "English Rule": "Use 'so do I/neither do I' for agreement",
+    "Telugu Rule": "ఏకీభవించడానికి 'so do I/neither do I' ఉపయోగించండి",
+    "When to Use": "To show you agree or have same situation",
+    "Example": "I like it. - So do I. / I don't like it. - Neither do I."
+  },
+  "290": {
+    "Rule No": 291,
+    "English Rule": "Use emphatic 'do/does/did' for stress",
+    "Telugu Rule": "ఉద్ఘాటనకు 'do/does/did' ఉపయోగించండి",
+    "When to Use": "To emphasize truth of statement",
+    "Example": "I do like it (really like it)."
+  },
+  "291": {
+    "Rule No": 292,
+    "English Rule": "Use double comparative: more and more/less and less",
+    "Telugu Rule": "ద్వంద్వ తులనాత్మకం: more and more/less and less ఉపయోగించండి",
+    "When to Use": "For continuing increase/decrease",
+    "Example": "It's getting more and more difficult."
+  },
+  "292": {
+    "Rule No": 293,
+    "English Rule": "Avoid splitting infinitives when possible",
+    "Telugu Rule": "సాధ్యమైనప్పుడు అవ్యయాలను విభజించడం మానండి",
+    "When to Use": "Keep 'to' and verb together",
+    "Example": "to quickly run → to run quickly (better)"
+  },
+  "293": {
+    "Rule No": 294,
+    "English Rule": "End sentences with preposition in informal speech",
+    "Telugu Rule": "అనధికారిక ప్రసంగంలో ప్రిపోజిషన్తో వాక్యాలను ముగించవచ్చు",
+    "When to Use": "In casual conversation",
+    "Example": "Who are you talking to? (informal, acceptable)"
+  },
+  "294": {
+    "Rule No": 295,
+    "English Rule": "Use inversion after negative adverbs at sentence start",
+    "Telugu Rule": "వాక్య ప్రారంభంలో ప్రతికూల క్రియా విశేషణాల తర్వాత విలోమం ఉపయోగించండి",
+    "When to Use": "After never, seldom, rarely, etc. at start",
+    "Example": "Never have I seen such beauty."
+  },
+  "295": {
+    "Rule No": 296,
+    "English Rule": "Use present tense in time clauses for future",
+    "Telugu Rule": "భవిష్యత్తు కోసం సమయ వాక్యాలలో వర్తమాన కాలం ఉపయోగించండి",
+    "When to Use": "After when, before, after, as soon as, etc.",
+    "Example": "When I see him, I will tell him."
+  },
+  "296": {
+    "Rule No": 297,
+    "English Rule": "Use subjunctive 'were' in formal hypotheticals",
+    "Telugu Rule": "అధికారిక ఊహాత్మకాలలో సబ్జంక్టివ్ 'were' ఉపయోగించండి",
+    "When to Use": "In formal if-clauses with I/he/she/it",
+    "Example": "If I were you... (formal)"
+  },
+  "297": {
+    "Rule No": 298,
+    "English Rule": "Use 'may' for formal permission, 'can' for informal",
+    "Telugu Rule": "అధికారిక అనుమతికి 'may', అనధికారికానికి 'can'",
+    "When to Use": "may for polite/formal, can for casual",
+    "Example": "May I help you? (formal) / Can I help? (informal)"
+  },
+  "298": {
+    "Rule No": 299,
+    "English Rule": "Use participles as adjectives correctly",
+    "Telugu Rule": "పార్టిసిపుల్స్ను విశేషణాలుగా సరిగ్గా ఉపయోగించండి",
+    "When to Use": "-ing for causing feeling, -ed for experiencing feeling",
+    "Example": "boring book (causes boredom), bored person (feels boredom)"
+  },
+  "299": {
+    "Rule No": 300,
+    "English Rule": "Maintain parallel structure in lists and comparisons",
+    "Telugu Rule": "జాబితాలు మరియు పోలికలలో సమాంతర నిర్మాణాన్ని నిర్వహించండి",
+    "When to Use": "Use same grammatical form for similar elements",
+    "Example": "I like reading, writing, and speaking (all -ing forms)"
+  }
+}
