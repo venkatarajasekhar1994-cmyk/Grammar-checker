@@ -1,7 +1,12 @@
-const nlp = window.compromise;
+const nlp = window.nlp || window.compromise;
 let DICTIONARY = {};
 let VERBS = {};
 let RULES = {};
+
+if (!nlp) {
+  console.error('Compromise not loaded: window.nlp is undefined');
+}
+
 
 const textInput = document.getElementById('textInput');
 const checkButton = document.getElementById('checkButton');
@@ -94,7 +99,7 @@ function checkGrammarRule5(sentence) {
         let correctVerb = VERBS[baseVerb]["3rd Person Singular (he/she/it)  (V5)"];
         
         if (verbText.toLowerCase() !== correctVerb.toLowerCase()) {
-            const teluguRule = RULES[String(5)] ? RULES[String(5)].TeluguRule : "ఏకవచన కర్తతో ఏకవచన క్రియ వాడాలి.";
+            const teluguRule = (RULES && (RULES[String(5)]?.TeluguRule || Object.values(RULES).find(r => String(r?.['Rule No'])==='5')?.TeluguRule)) || "ఏకవచన కర్తతో ఏకవచన క్రియ వాడాలి.";
             mistakes.push({
                 wrongVerb: verbText,
                 correctVerb: correctVerb,
@@ -113,5 +118,4 @@ function showResultCard(title, explanation, type = "info", correction = "") {
     card.innerHTML = html;
     resultsEl.appendChild(card);
 }
-
 
