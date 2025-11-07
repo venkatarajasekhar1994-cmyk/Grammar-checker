@@ -1,0 +1,146 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilingual Grammar & Sentence Checker</title>
+    <!-- Load Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .result-card {
+            border-left-width: 4px;
+        }
+        .result-card-error {
+            border-left-color: #EF4444; /* red-500 */
+        }
+        .result-card-correct {
+            border-left-color: #22C55E; /* green-500 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Bilingual Grammar & Sentence Checker</h1>
+
+        <!-- Instructions -->
+        <p class="text-gray-600 mb-6 text-center">
+            Enter your English text below. The tool will check it against the rules you provided and offer explanations in both English and Telugu.
+        </p>
+
+        <!-- Text Input Area -->
+        <div class="mb-4">
+            <label for="text-input" class="block text-sm font-medium text-gray-700 mb-2">Your Text:</label>
+            <textarea id="text-input" rows="10" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Type or paste your English text here... (e.g., 'She walk to school.')"></textarea>
+        </div>
+
+        <!-- Check Button -->
+        <div class="text-center mb-6">
+            <button id="check-button" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-10 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                Check Grammar
+            </button>
+        </div>
+
+        <!-- Results Area -->
+        <div id="results-container">
+            <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Results:</h2>
+            <div id="results-output" class="space-y-4">
+                <p id="no-errors-message" class="text-gray-500 italic">No issues found yet. Click "Check Grammar" to start!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA FROM YOUR JSON FILES ---
+        // In a real web app, you'd fetch these. For this demo, they are embedded.
+
+        const rulesJSON = `{
+            "a singular subject takes a singular verb": { "Rule No": 1, "English Rule": "A singular subject takes a singular verb", "Telugu Rule": "ఏకవచన కర్త ఏకవచన క్రియను తీసుకుంటుంది", "When to Use": "When subject is singular (he, she, it, one person/thing)", "Example": "She walks to school.", "Incorrect Example": "She walk to school.", "Correct Example": "She walks to school.", "Pattern": "\\\\b(he|she|it|([A-Z][a-z]+(?!\\s+(and|or|nor))\\b))\\\\s+(walk|go|run|eat|play|study|work|come|have)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
+            "a plural subject takes a plural verb": { "Rule No": 2, "English Rule": "A plural subject takes a plural verb", "Telugu Rule": "బహువచన కర్త బహువచన క్రియను తీసుకుంటుంది", "When to Use": "When subject is plural (they, we, multiple people/things)", "Example": "They walk to school.", "Incorrect Example": "They walks to school.", "Correct Example": "They walk to school.", "Pattern": "\\\\b(they|we|You|They|We)\\\\s+(walks|goes|runs|eats|plays|studies|works|comes|has)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "plural-noun" },
+            "use 'is/was' with singular subjects": { "Rule No": 3, "English Rule": "Use 'is/was' with singular subjects", "Telugu Rule": "ఏకవచన కర్తలతో 'is/was' ఉపయోగించండి", "When to Use": "With he, she, it, or singular nouns", "Example": "He is a teacher.", "Incorrect Example": "He are a teacher.", "Correct Example": "He is a teacher.", "Pattern": "\\\\b(he|she|it|([A-Z][a-z]+(?!\\s+(and|or|nor))\\b))\\\\s+(are|were)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "subject-verb-3sg" },
+            "use 'are/were' with plural subjects": { "Rule No": 4, "English Rule": "Use 'are/were' with plural subjects", "Telugu Rule": "బహువచన కర్తలతో 'are/were' ఉపయోగించండి", "When to Use": "With they, we, you, or plural nouns", "Example": "They are students.", "Incorrect Example": "They is students.", "Correct Example": "They are students.", "Pattern": "\\\\b(they|we|you|They|We|You)\\\\s+(is|was)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "subject-verb-3sg" },
+            "everyone, somebody, nobody take singular verbs": { "Rule No": 8, "English Rule": "Everyone, somebody, nobody take singular verbs", "Telugu Rule": "Everyone, somebody, nobody ఏకవచన క్రియలను తీసుకుంటాయి", "When to Use": "With indefinite pronouns", "Example": "Everyone is here.", "Incorrect Example": "Everyone are here.", "Correct Example": "Everyone is here.", "Pattern": "\\\\b(everyone|somebody|nobody|anyone|someone|no one|Everyone|Somebody|Nobody|Anyone|Someone|No one)\\\\s+(are|were|have|walk|go|run)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
+            "use 'a' before consonant sounds": { "Rule No": 16, "English Rule": "Use 'a' before consonant sounds", "Telugu Rule": "హల్లు ధ్వనుల ముందు 'a' ఉపయోగించండి", "When to Use": "Before words starting with consonant sounds", "Example": "a book, a university", "Incorrect Example": "an book, a hour", "Correct Example": "a book, a university, an hour", "Pattern": "\\\\b(a)\\\\s+(apple|egg|idea|orange|umbrella|hour|honest)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
+            "use 'an' before vowel sounds": { "Rule No": 17, "English Rule": "Use 'an' before vowel sounds", "Telugu Rule": "అచ్చు ధ్వనుల ముందు 'an' ఉపయోగించండి", "When to Use": "Before words starting with vowel sounds", "Example": "an apple, an hour", "Incorrect Example": "a apple, an book", "Correct Example": "an apple, a book", "Pattern": "\\\\b(an)\\\\s+(book|cat|dog|university|house|user)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
+            "past simple negative: didn't + v1": { "Rule No": 54, "English Rule": "Past simple negative: didn't + V1", "Telugu Rule": "గత సాధారణ ప్రతికూలం: didn't + మొదటి రూపం", "When to Use": "For negative past sentences", "Example": "I didn't go to school.", "Incorrect Example": "I didn't went there.", "Correct Example": "I didn't go to school.", "Pattern": "\\\\b(didn't|did not)\\\\s+(went|came|ate|saw|took|got|gave)\\\\b", "Tags": "grammar,tense,past-tense,verb", "Severity": "high", "Detector Hint": "verb" },
+            "don't use 'will' in if-clause": { "Rule No": 177, "English Rule": "Don't use 'will' in if-clause", "Telugu Rule": "if-క్లాజ్లో 'will' ఉపయోగించవద్దు", "When to Use": "In conditional sentences", "Example": "If he comes (not 'will come')", "Incorrect Example": "If it will rain, I will stay.", "Correct Example": "If it rains, I will stay home.", "Pattern": "\\\\b(if|If)\\\\s+(.*)\\\\s+(will)\\\\b", "Tags": "grammar,modals,modal-verbs,syntax", "Severity": "medium", "Detector Hint": "syntax" },
+            "its (possessive) vs it's (it is)": { "Rule No": 220, "English Rule": "Its (possessive) vs It's (it is)", "Telugu Rule": "Its (స్వత్వ) vs It's (it is)", "When to Use": "its = belonging to it, it's = it is", "Example": "Its color (belonging). It's raining (it is).", "Incorrect Example": "The dog wagged it's tail.", "Correct Example": "The dog wagged its tail.", "Pattern": "\\\\b(it's|It's)\\\\s+(tail|color|own|door)\\\\b", "Tags": "grammar,pronouns", "Severity": "medium", "Detector Hint": "subject-verb-3sg" },
+            "their/there/they're differences": { "Rule No": 222, "English Rule": "Their/there/they're differences", "Telugu Rule": "Their/there/they're భేదాలు", "When to Use": "their = possession, there = place, they're = they are", "Example": "their house, over there, they're coming", "Incorrect Example": "They are over their.", "Correct Example": "They are over there.", "Pattern": "\\\\b(their)\\\\s+(is|are|was|were|here)\\\\b|\\\\b(there)\\\\s+(house|car|book)\\\\b|\\\\b(they're)\\\\s+(house|car|book)\\\\b", "Tags": "grammar,quantifiers,determiners", "Severity": "medium", "Detector Hint": "subject-verb-3sg" },
+            "use 'much' with uncountable, 'many' with countable": { "Rule No": 209, "English Rule": "Use 'much' with uncountable, 'many' with countable", "Telugu Rule": "లెక్కింపరానివాటితో 'much', లెక్కించదగినవాటితో 'many'", "When to Use": "For quantities", "Example": "much water, many books", "Incorrect Example": "How many water?", "Correct Example": "How much water?", "Pattern": "\\\\b(many)\\\\s+(water|money|time|sugar|information|advice|furniture|luggage)\\\\b|\\\\b(much)\\\\s+(books|cars|people|students|friends)\\\\b", "Tags": "grammar,quantifiers,determiners", "Severity": "medium", "Detector Hint": "determiners" },
+            "fewer vs less": { "Rule No": 288, "English Rule": "Prefer 'fewer' with countable, 'less' with uncountable", "Telugu Rule": "లెక్కించదగినవాటితో 'fewer', లెక్కింపరానివాటితో 'less'", "When to Use": "For comparisons of quantity", "Example": "fewer books, less water", "Incorrect Example": "I have less books than him.", "Correct Example": "I have fewer books than him.", "Pattern": "\\\\b(less)\\\\s+(books|cars|people|students|friends|items)\\\\b|\\\\b(fewer)\\\\s+(water|money|time|sugar|information|advice|furniture|luggage)\\\\b", "Tags": "grammar,verbals,gerunds,infinitives", "Severity": "medium", "Detector Hint": "subject-verb-3sg" }
+        }`;
+        
+        // Note: verbs.json and dictionary.json are very large.
+        // I will not embed them as it would make the file enormous and unreadable.
+        // The core logic for grammar checking only needs Rules.json.
+        // A full app would load these files, but for this demo, we'll focus on the rules.
+
+        const rules = JSON.parse(rulesJSON);
+
+        // --- APPLICATION LOGIC ---
+        
+        const checkButton = document.getElementById('check-button');
+        const textInput = document.getElementById('text-input');
+        const resultsOutput = document.getElementById('results-output');
+        const noErrorsMessage = document.getElementById('no-errors-message');
+
+        checkButton.addEventListener('click', checkGrammar);
+
+        function checkGrammar() {
+            const text = textInput.value;
+            if (!text) {
+                resultsOutput.innerHTML = '<p id="no-errors-message" class="text-gray-500 italic">Please enter some text to check.</p>';
+                return;
+            }
+
+            resultsOutput.innerHTML = ''; // Clear previous results
+            let errorsFound = 0;
+
+            // Loop through each rule in our rules object
+            for (const ruleName in rules) {
+                const rule = rules[ruleName];
+                const pattern = new RegExp(rule.Pattern, 'gi'); // 'g' for global, 'i' for case-insensitive
+                let match;
+
+                // Find all matches for this rule's error pattern in the text
+                while ((match = pattern.exec(text)) !== null) {
+                    errorsFound++;
+                    const incorrectText = match[0];
+                    
+                    // Create a result card for this error
+                    const errorCard = document.createElement('div');
+                    errorCard.className = 'result-card result-card-error bg-red-50 p-4 rounded-lg shadow-sm';
+                    
+                    errorCard.innerHTML = `
+                        <p class="font-semibold text-red-800"><strong>Found Issue:</strong> <span class="font-normal text-red-700 bg-red-200 px-2 py-1 rounded">${incorrectText}</span></p>
+                        <hr class="my-2 border-red-200">
+                        <p class="text-sm text-gray-700"><strong>Rule:</strong> ${rule['English Rule']}</p>
+                        <p class="text-sm text-gray-700"><strong>వివరణ (Rule):</strong> ${rule['Telugu Rule']}</p>
+                        <p class="text-sm text-green-700 mt-2"><strong>Suggestion:</strong> ${rule['Correct Example']}</p>
+                    `;
+                    
+                    resultsOutput.appendChild(errorCard);
+                }
+            }
+
+            if (errorsFound === 0) {
+                // If no errors were found, show a success message
+                const successCard = document.createElement('div');
+                successCard.className = 'result-card result-card-correct bg-green-50 p-4 rounded-lg shadow-sm';
+                successCard.innerHTML = `
+                    <p class="font-semibold text-green-800">All Clear!</p>
+                    <p class="text-sm text-gray-700">The checker didn't find any issues based on the provided rules.</p>
+                `;
+                resultsOutput.appendChild(successCard);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+
