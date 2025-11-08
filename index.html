@@ -1,52 +1,40 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilingual Grammar & Sentence Checker</title>
-    <!-- Load Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .result-card {
-            border-left-width: 4px;
-        }
-        .result-card-error {
-            border-left-color: #EF4444; /* red-500 */
-        }
-        .result-card-correct {
-            border-left-color: #22C55E; /* green-500 */
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .result-card { border-left-width: 4px; }
+        .result-card-error { border-left-color: #EF4444; } /* red-500 */
+        .result-card-correct { border-left-color: #22C55E; } /* green-500 */
+        .highlight-error { background-color: #FEE2E2; color: #DC2626; padding: 0 4px; border-radius: 3px; font-family: monospace; }
+        .highlight-correct { background-color: #ECFDF5; color: #047857; padding: 0 4px; border-radius: 3px; font-weight: bold; font-family: monospace;}
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 min-h-screen p-4 md:p-8">
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Bilingual Grammar & Sentence Checker</h1>
-
-        <!-- Instructions -->
         <p class="text-gray-600 mb-6 text-center">
-            Enter your English text below. The tool will check it against the rules you provided and offer explanations in both English and Telugu.
+            Enter your English text below. This tool checks for common grammar errors using a custom-built dictionary and rule set.
         </p>
 
-        <!-- Text Input Area -->
         <div class="mb-4">
             <label for="text-input" class="block text-sm font-medium text-gray-700 mb-2">Your Text:</label>
-            <textarea id="text-input" rows="10" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Type or paste your English text here... (e.g., 'She walk to school.')"></textarea>
+            <textarea id="text-input" rows="12" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Yesterday I goes to market..."></textarea>
         </div>
 
-        <!-- Check Button -->
         <div class="text-center mb-6">
-            <button id="check-button" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-10 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+            <button id="check-button" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-10 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
                 Check Grammar
             </button>
         </div>
 
-        <!-- Results Area -->
-        <div id="results-container">
+        <div>
             <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Results:</h2>
             <div id="results-output" class="space-y-4">
                 <p id="no-errors-message" class="text-gray-500 italic">No issues found yet. Click "Check Grammar" to start!</p>
@@ -55,92 +43,714 @@
     </div>
 
     <script>
-        // --- DATA FROM YOUR JSON FILES ---
-        // In a real web app, you'd fetch these. For this demo, they are embedded.
+        // --- OUR CUSTOM "BRAIN" (మన సొంత "మెదడు") ---
+        // This is the dictionary we must build ourselves, based on your JSONs and common English words.
+        // AI లేకుండా దీన్ని తెలివైనదిగా చేయడానికి, మనం ఈ డిక్షనరీని నిరంతరం పెద్దదిగా చేయాలి.
+        // మీ ఉదాహరణలోని అన్ని పదాలను నేను ఇక్కడ జోడించాను.
+        const wordData = {
+            // --- Nouns (నామవాచకాలు) - Integrated from singular_plural_words.json ---
+            "man": { "type": "Noun", "form": "Singular", "plural": "men" },
+            "men": { "type": "Noun", "form": "Plural", "singular": "man" },
+            "woman": { "type": "Noun", "form": "Singular", "plural": "women" },
+            "women": { "type": "Noun", "form": "Plural", "singular": "woman" },
+            "person": { "type": "Noun", "form": "Singular", "plural": "people" },
+            "people": { "type": "Noun", "form": "Plural", "singular": "person" },
+            "child": { "type": "Noun", "form": "Singular", "plural": "children" },
+            "children": { "type": "Noun", "form": "Plural", "singular": "child" },
+            "boy": { "type": "Noun", "form": "Singular", "plural": "boys" },
+            "boys": { "type": "Noun", "form": "Plural", "singular": "boy" },
+            "girl": { "type": "Noun", "form": "Singular", "plural": "girls" },
+            "girls": { "type": "Noun", "form": "Plural", "singular": "girl" },
+            "mother": { "type": "Noun", "form": "Singular", "plural": "mothers" },
+            "mothers": { "type": "Noun", "form": "Plural", "singular": "mother" },
+            "father": { "type": "Noun", "form": "Singular", "plural": "fathers" },
+            "fathers": { "type": "Noun", "form": "Plural", "singular": "father" },
+            "brother": { "type": "Noun", "form": "Singular", "plural": "brothers" },
+            "brothers": { "type": "Noun", "form": "Plural", "singular": "brother" },
+            "sister": { "type": "Noun", "form": "Singular", "plural": "sisters" },
+            "sisters": { "type": "Noun", "form": "Plural", "singular": "sister" },
+            "teacher": { "type": "Noun", "form": "Singular", "plural": "teachers" },
+            "teachers": { "type": "Noun", "form": "Plural", "singular": "teacher" },
+            "student": { "type": "Noun", "form": "Singular", "plural": "students" },
+            "students": { "type": "Noun", "form": "Plural", "singular": "student" },
+            "doctor": { "type": "Noun", "form": "Singular", "plural": "doctors" },
+            "doctors": { "type": "Noun", "form": "Plural", "singular": "doctor" },
+            "farmer": { "type": "Noun", "form": "Singular", "plural": "farmers" },
+            "farmers": { "type": "Noun", "form": "Plural", "singular": "farmer" },
+            "driver": { "type": "Noun", "form": "Singular", "plural": "drivers" },
+            "drivers": { "type": "Noun", "form": "Plural", "singular": "driver" },
+            "worker": { "type": "Noun", "form": "Singular", "plural": "workers" },
+            "workers": { "type": "Noun", "form": "Plural", "singular": "worker" },
+            "friend": { "type": "Noun", "form": "Singular", "plural": "friends" },
+            "friends": { "type": "Noun", "form": "Plural", "singular": "friend" },
+            "enemy": { "type": "Noun", "form": "Singular", "plural": "enemies" },
+            "enemies": { "type": "Noun", "form": "Plural", "singular": "enemy" },
+            "cop": { "type": "Noun", "form": "Singular", "plural": "police" },
+            "police": { "type": "Noun", "form": "Plural", "singular": "cop" },
+            "policeman": { "type": "Noun", "form": "Singular", "plural": "policemen" },
+            "policemen": { "type": "Noun", "form": "Plural", "singular": "policeman" },
+            "cat": { "type": "Noun", "form": "Singular", "plural": "cats" },
+            "cats": { "type": "Noun", "form": "Plural", "singular": "cat" },
+            "dog": { "type": "Noun", "form": "Singular", "plural": "dogs" },
+            "dogs": { "type": "Noun", "form": "Plural", "singular": "dog" },
+            "cow": { "type": "Noun", "form": "Singular", "plural": "cows" },
+            "cows": { "type": "Noun", "form": "Plural", "singular": "cow" },
+            "ox": { "type": "Noun", "form": "Singular", "plural": "oxen" },
+            "oxen": { "type": "Noun", "form": "Plural", "singular": "ox" },
+            "horse": { "type": "Noun", "form": "Singular", "plural": "horses" },
+            "horses": { "type": "Noun", "form": "Plural", "singular": "horse" },
+            "lion": { "type": "Noun", "form": "Singular", "plural": "lions" },
+            "lions": { "type": "Noun", "form": "Plural", "singular": "lion" },
+            "tiger": { "type": "Noun", "form": "Singular", "plural": "tigers" },
+            "tigers": { "type": "Noun", "form": "Plural", "singular": "tiger" },
+            "elephant": { "type": "Noun", "form": "Singular", "plural": "elephants" },
+            "elephants": { "type": "Noun", "form": "Plural", "singular": "elephant" },
+            "bird": { "type": "Noun", "form": "Singular", "plural": "birds" },
+            "birds": { "type": "Noun", "form": "Plural", "singular": "bird" },
+            "tree": { "type": "Noun", "form": "Singular", "plural": "trees" },
+            "trees": { "type": "Noun", "form": "Plural", "singular": "tree" },
+            "flower": { "type": "Noun", "form": "Singular", "plural": "flowers" },
+            "flowers": { "type": "Noun", "form": "Plural", "singular": "flower" },
+            "leaf": { "type": "Noun", "form": "Singular", "plural": "leaves" },
+            "leaves": { "type": "Noun", "form": "Plural", "singular": "leaf" },
+            "book": { "type": "Noun", "form": "Singular", "plural": "books" },
+            "books": { "type": "Noun", "form": "Plural", "singular": "book" },
+            "pen": { "type": "Noun", "form": "Singular", "plural": "pens" },
+            "pens": { "type": "Noun", "form": "Plural", "singular": "pen" },
+            "bag": { "type": "Noun", "form": "Singular", "plural": "bags" },
+            "bags": { "type": "Noun", "form": "Plural", "singular": "bag" },
+            "car": { "type": "Noun", "form": "Singular", "plural": "cars" },
+            "cars": { "type": "Noun", "form": "Plural", "singular": "car" },
+            "bus": { "type": "Noun", "form": "Singular", "plural": "buses" },
+            "buses": { "type": "Noun", "form": "Plural", "singular": "bus" },
+            "box": { "type": "Noun", "form": "Singular", "plural": "boxes" },
+            "boxes": { "type": "Noun", "form": "Plural", "singular": "box" },
+            "class": { "type": "Noun", "form": "Singular", "plural": "classes" },
+            "classes": { "type": "Noun", "form": "Plural", "singular": "class" },
+            "kiss": { "type": "Noun", "form": "Singular", "plural": "kisses" },
+            "kisses": { "type": "Noun", "form": "Plural", "singular": "kiss" },
+            "wish": { "type": "Noun", "form": "Singular", "plural": "wishes" },
+            "wishes": { "type": "Noun", "form": "Plural", "singular": "wish" },
+            "potato": { "type": "Noun", "form": "Singular", "plural": "potatoes" },
+            "potatoes": { "type": "Noun", "form": "Plural", "singular": "potato" },
+            "tomato": { "type": "Noun", "form": "Singular", "plural": "tomatoes" },
+            "tomatoes": { "type": "Noun", "form": "Plural", "singular": "tomato" },
+            "hero": { "type": "Noun", "form": "Singular", "plural": "heroes" },
+            "heroes": { "type": "Noun", "form": "Plural", "singular": "hero" },
+            "knife": { "type": "Noun", "form": "Singular", "plural": "knives" },
+            "knives": { "type": "Noun", "form": "Plural", "singular": "knife" },
+            "wife": { "type": "Noun", "form": "Singular", "plural": "wives" },
+            "wives": { "type": "Noun", "form": "Plural", "singular": "wife" },
+            "life": { "type": "Noun", "form": "Singular", "plural": "lives" },
+            "lives": { "type": "Noun", "form": "Plural", "singular": "life" },
+            "deer": { "type": "Noun", "form": "Singular", "plural": "deer" },
+            "sheep": { "type": "Noun", "form": "Singular", "plural": "sheep" },
+            "fish": { "type": "Noun", "form": "Singular", "plural": "fish" },
+            "army": { "type": "Noun", "form": "Singular", "plural": "armies" },
+            "armies": { "type": "Noun", "form": "Plural", "singular": "army" },
+            "family": { "type": "Noun", "form": "Singular", "plural": "families" },
+            "families": { "type": "Noun", "form": "Plural", "singular": "family" },
+            "city": { "type": "Noun", "form": "Singular", "plural": "cities" },
+            "cities": { "type": "Noun", "form": "Plural", "singular": "city" },
+            "country": { "type": "Noun", "form": "Singular", "plural": "countries" },
+            "countries": { "type": "Noun", "form": "Plural", "singular": "country" },
+            "baby": { "type": "Noun", "form": "Singular", "plural": "babies" },
+            "babies": { "type": "Noun", "form": "Plural", "singular": "baby" },
+            "lady": { "type": "Noun", "form": "Singular", "plural": "ladies" },
+            "ladies": { "type": "Noun", "form": "Plural", "singular": "lady" },
+            "party": { "type": "Noun", "form": "Singular", "plural": "parties" },
+            "parties": { "type": "Noun", "form": "Plural", "singular": "party" },
+            "story": { "type": "Noun", "form": "Singular", "plural": "stories" },
+            "stories": { "type": "Noun", "form": "Plural", "singular": "story" },
+            "key": { "type": "Noun", "form": "Singular", "plural": "keys" },
+            "keys": { "type": "Noun", "form": "Plural", "singular": "key" },
+            "monkey": { "type": "Noun", "form": "Singular", "plural": "monkeys" },
+            "monkeys": { "type": "Noun", "form": "Plural", "singular": "monkey" },
+            "donkey": { "type": "Noun", "form": "Singular", "plural": "donkeys" },
+            "donkeys": { "type": "Noun", "form": "Plural", "singular": "donkey" },
+            "house": { "type": "Noun", "form": "Singular", "plural": "houses" },
+            "houses": { "type": "Noun", "form": "Plural", "singular": "house" },
+            "room": { "type": "Noun", "form": "Singular", "plural": "rooms" },
+            "rooms": { "type": "Noun", "form": "Plural", "singular": "room" },
+            "door": { "type": "Noun", "form": "Singular", "plural": "doors" },
+            "doors": { "type": "Noun", "form": "Plural", "singular": "door" },
+            "window": { "type": "Noun", "form": "Singular", "plural": "windows" },
+            "windows": { "type": "Noun", "form": "Plural", "singular": "window" },
+            "chair": { "type": "Noun", "form": "Singular", "plural": "chairs" },
+            "chairs": { "type": "Noun", "form": "Plural", "singular": "chair" },
+            "table": { "type": "Noun", "form": "Singular", "plural": "tables" },
+            "tables": { "type": "Noun", "form": "Plural", "singular": "table" },
+            "bottle": { "type": "Noun", "form": "Singular", "plural": "bottles" },
+            "bottles": { "type": "Noun", "form": "Plural", "singular": "bottle" },
+            "cup": { "type": "Noun", "form": "Singular", "plural": "cups" },
+            "cups": { "type": "Noun", "form": "Plural", "singular": "cup" },
+            "plate": { "type": "Noun", "form": "Singular", "plural": "plates" },
+            "plates": { "type": "Noun", "form": "Plural", "singular": "plate" },
+            "watch": { "type": "Noun", "form": "Singular", "plural": "watches" },
+            "watches": { "type": "Noun", "form": "Plural", "singular": "watch" },
+            "shirt": { "type": "Noun", "form": "Singular", "plural": "shirts" },
+            "shirts": { "type": "Noun", "form": "Plural", "singular": "shirt" },
+            "shoe": { "type": "Noun", "form": "Singular", "plural": "shoes" },
+            "shoes": { "type": "Noun", "form": "Plural", "singular": "shoe" },
+            "market": { "type": "Noun", "form": "Singular", "plural": "markets" },
+            "markets": { "type": "Noun", "form": "Plural", "singular": "market" },
+            "shop": { "type": "Noun", "form": "Singular", "plural": "shops" },
+            "shops": { "type": "Noun", "form": "Plural", "singular": "shop" },
+            "road": { "type": "Noun", "form": "Singular", "plural": "roads" },
+            "roads": { "type": "Noun", "form": "Plural", "singular": "road" },
+            "river": { "type": "Noun", "form": "Singular", "plural": "rivers" },
+            "rivers": { "type": "Noun", "form": "Plural", "singular": "river" },
+            "mountain": { "type": "Noun", "form": "Singular", "plural": "mountains" },
+            "mountains": { "type": "Noun", "form": "Plural", "singular": "mountain" },
+            "star": { "type": "Noun", "form": "Singular", "plural": "stars" },
+            "stars": { "type": "Noun", "form": "Plural", "singular": "star" },
+            "planet": { "type": "Noun", "form": "Singular", "plural": "planets" },
+            "planets": { "type": "Noun", "form": "Plural", "singular": "planet" },
+            "idea": { "type": "Noun", "form": "Singular", "plural": "ideas" },
+            "ideas": { "type": "Noun", "form": "Plural", "singular": "idea" },
+            "word": { "type": "Noun", "form": "Singular", "plural": "words" },
+            "words": { "type": "Noun", "form": "Plural", "singular": "word" },
+            "line": { "type": "Noun", "form": "Singular", "plural": "lines" },
+            "lines": { "type": "Noun", "form": "Plural", "singular": "line" },
+            "game": { "type": "Noun", "form": "Singular", "plural": "games" },
+            "games": { "type": "Noun", "form": "Plural", "singular": "game" },
+            "movie": { "type": "Noun", "form": "Singular", "plural": "movies" },
+            "movies": { "type": "Noun", "form": "Plural", "singular": "movie" },
+            "song": { "type": "Noun", "form": "Singular", "plural": "songs" },
+            "songs": { "type": "Noun", "form": "Plural", "singular": "song" },
+            "photo": { "type": "Noun", "form": "Singular", "plural": "photos" },
+            "photos": { "type": "Noun", "form": "Plural", "singular": "photo" },
+            "phone": { "type": "Noun", "form": "Singular", "plural": "phones" },
+            "phones": { "type": "Noun", "form": "Plural", "singular": "phone" },
+            "principal": { "type": "Noun", "form": "Singular", "plural": "principals" },
+            "principals": { "type": "Noun", "form": "Plural", "singular": "principal" },
+            "headmaster": { "type": "Noun", "form": "Singular", "plural": "headmasters" },
+            "headmasters": { "type": "Noun", "form": "Plural", "singular": "headmaster" },
+            "author": { "type": "Noun", "form": "Singular", "plural": "authors" },
+            "authors": { "type": "Noun", "form": "Plural", "singular": "author" },
+            "singer": { "type": "Noun", "form": "Singular", "plural": "singers" },
+            "singers": { "type": "Noun", "form": "Plural", "singular": "singer" },
+            "dancer": { "type": "Noun", "form": "Singular", "plural": "dancers" },
+            "dancers": { "type": "Noun", "form": "Plural", "singular": "dancer" },
+            "actor": { "type": "Noun", "form": "Singular", "plural": "actors" },
+            "actors": { "type": "Noun", "form": "Plural", "singular": "actor" },
+            "actress": { "type": "Noun", "form": "Singular", "plural": "actresses" },
+            "actresses": { "type": "Noun", "form": "Plural", "singular": "actress" },
+            "engineer": { "type": "Noun", "form": "Singular", "plural": "engineers" },
+            "engineers": { "type": "Noun", "form": "Plural", "singular": "engineer" },
+            "scientist": { "type": "Noun", "form": "Singular", "plural": "scientists" },
+            "scientists": { "type": "Noun", "form": "Plural", "singular": "scientist" },
+            "player": { "type": "Noun", "form": "Singular", "plural": "players" },
+            "players": { "type": "Noun", "form": "Plural", "singular": "player" },
+            "team": { "type": "Noun", "form": "Singular", "plural": "teams" },
+            "teams": { "type": "Noun", "form": "Plural", "singular": "team" },
+            "computer": { "type": "Noun", "form": "Singular", "plural": "computers" },
+            "computers": { "type": "Noun", "form": "Plural", "singular": "computer" },
+            "laptop": { "type": "Noun", "form": "Singular", "plural": "laptops" },
+            "laptops": { "type": "Noun", "form": "Plural", "singular": "laptop" },
+            "bookcase": { "type": "Noun", "form": "Singular", "plural": "bookcases" },
+            "bookcases": { "type": "Noun", "form": "Plural", "singular": "bookcase" },
+            "school": { "type": "Noun", "form": "Singular", "plural": "schools" },
+            "schools": { "type": "Noun", "form": "Plural", "singular": "school" },
+            "college": { "type": "Noun", "form": "Singular", "plural": "colleges" },
+            "colleges": { "type": "Noun", "form": "Plural", "singular": "college" },
+            "university": { "type": "Noun", "form": "Singular", "plural": "universities" },
+            "universities": { "type": "Noun", "form": "Plural", "singular": "university" },
+            "page": { "type": "Noun", "form": "Singular", "plural": "pages" },
+            "pages": { "type": "Noun", "form": "Plural", "singular": "page" },
+            "sentence": { "type": "Noun", "form": "Singular", "plural": "sentences" },
+            "sentences": { "type": "Noun", "form": "Plural", "singular": "sentence" },
+            "question": { "type": "Noun", "form": "Singular", "plural": "questions" },
+            "questions": { "type": "Noun", "form": "Plural", "singular": "question" },
+            "answer": { "type": "Noun", "form": "Singular", "plural": "answers" },
+            "answers": { "type": "Noun", "form": "Plural", "singular": "answer" },
+            "example": { "type": "Noun", "form": "Singular", "plural": "examples" },
+            "examples": { "type": "Noun", "form": "Plural", "singular": "example" },
+            "rule": { "type": "Noun", "form": "Singular", "plural": "rules" },
+            "rules": { "type": "Noun", "form": "Plural", "singular": "rule" },
+            "error": { "type": "Noun", "form": "Singular", "plural": "errors" },
+            "errors": { "type": "Noun", "form": "Plural", "singular": "error" },
+            "success": { "type": "Noun", "form": "Singular", "plural": "successes" },
+            "successes": { "type": "Noun", "form": "Plural", "singular": "success" },
+            "problem": { "type": "Noun", "form": "Singular", "plural": "problems" },
+            "problems": { "type": "Noun", "form": "Plural", "singular": "problem" },
+            "solution": { "type": "Noun", "form": "Singular", "plural": "solutions" },
+            "solutions": { "type": "Noun", "form": "Plural", "singular": "solution" },
+            "picture": { "type": "Noun", "form": "Singular", "plural": "pictures" },
+            "pictures": { "type": "Noun", "form": "Plural", "singular": "picture" },
 
-        const rulesJSON = `{
-            "a singular subject takes a singular verb": { "Rule No": 1, "English Rule": "A singular subject takes a singular verb", "Telugu Rule": "ఏకవచన కర్త ఏకవచన క్రియను తీసుకుంటుంది", "When to Use": "When subject is singular (he, she, it, one person/thing)", "Example": "She walks to school.", "Incorrect Example": "She walk to school.", "Correct Example": "She walks to school.", "Pattern": "\\\\b(he|she|it|([A-Z][a-z]+(?!\\s+(and|or|nor))\\b))\\\\s+(walk|go|run|eat|play|study|work|come|have)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
-            "a plural subject takes a plural verb": { "Rule No": 2, "English Rule": "A plural subject takes a plural verb", "Telugu Rule": "బహువచన కర్త బహువచన క్రియను తీసుకుంటుంది", "When to Use": "When subject is plural (they, we, multiple people/things)", "Example": "They walk to school.", "Incorrect Example": "They walks to school.", "Correct Example": "They walk to school.", "Pattern": "\\\\b(they|we|You|They|We)\\\\s+(walks|goes|runs|eats|plays|studies|works|comes|has)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "plural-noun" },
-            "use 'is/was' with singular subjects": { "Rule No": 3, "English Rule": "Use 'is/was' with singular subjects", "Telugu Rule": "ఏకవచన కర్తలతో 'is/was' ఉపయోగించండి", "When to Use": "With he, she, it, or singular nouns", "Example": "He is a teacher.", "Incorrect Example": "He are a teacher.", "Correct Example": "He is a teacher.", "Pattern": "\\\\b(he|she|it|([A-Z][a-z]+(?!\\s+(and|or|nor))\\b))\\\\s+(are|were)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "subject-verb-3sg" },
-            "use 'are/were' with plural subjects": { "Rule No": 4, "English Rule": "Use 'are/were' with plural subjects", "Telugu Rule": "బహువచన కర్తలతో 'are/were' ఉపయోగించండి", "When to Use": "With they, we, you, or plural nouns", "Example": "They are students.", "Incorrect Example": "They is students.", "Correct Example": "They are students.", "Pattern": "\\\\b(they|we|you|They|We|You)\\\\s+(is|was)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "subject-verb-3sg" },
-            "everyone, somebody, nobody take singular verbs": { "Rule No": 8, "English Rule": "Everyone, somebody, nobody take singular verbs", "Telugu Rule": "Everyone, somebody, nobody ఏకవచన క్రియలను తీసుకుంటాయి", "When to Use": "With indefinite pronouns", "Example": "Everyone is here.", "Incorrect Example": "Everyone are here.", "Correct Example": "Everyone is here.", "Pattern": "\\\\b(everyone|somebody|nobody|anyone|someone|no one|Everyone|Somebody|Nobody|Anyone|Someone|No one)\\\\s+(are|were|have|walk|go|run)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
-            "use 'a' before consonant sounds": { "Rule No": 16, "English Rule": "Use 'a' before consonant sounds", "Telugu Rule": "హల్లు ధ్వనుల ముందు 'a' ఉపయోగించండి", "When to Use": "Before words starting with consonant sounds", "Example": "a book, a university", "Incorrect Example": "an book, a hour", "Correct Example": "a book, a university, an hour", "Pattern": "\\\\b(a)\\\\s+(apple|egg|idea|orange|umbrella|hour|honest)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
-            "use 'an' before vowel sounds": { "Rule No": 17, "English Rule": "Use 'an' before vowel sounds", "Telugu Rule": "అచ్చు ధ్వనుల ముందు 'an' ఉపయోగించండి", "When to Use": "Before words starting with vowel sounds", "Example": "an apple, an hour", "Incorrect Example": "a apple, an book", "Correct Example": "an apple, a book", "Pattern": "\\\\b(an)\\\\s+(book|cat|dog|university|house|user)\\\\b", "Tags": "grammar,subject-verb-agreement,verb,syntax", "Severity": "high", "Detector Hint": "syntax" },
-            "past simple negative: didn't + v1": { "Rule No": 54, "English Rule": "Past simple negative: didn't + V1", "Telugu Rule": "గత సాధారణ ప్రతికూలం: didn't + మొదటి రూపం", "When to Use": "For negative past sentences", "Example": "I didn't go to school.", "Incorrect Example": "I didn't went there.", "Correct Example": "I didn't go to school.", "Pattern": "\\\\b(didn't|did not)\\\\s+(went|came|ate|saw|took|got|gave)\\\\b", "Tags": "grammar,tense,past-tense,verb", "Severity": "high", "Detector Hint": "verb" },
-            "don't use 'will' in if-clause": { "Rule No": 177, "English Rule": "Don't use 'will' in if-clause", "Telugu Rule": "if-క్లాజ్లో 'will' ఉపయోగించవద్దు", "When to Use": "In conditional sentences", "Example": "If he comes (not 'will come')", "Incorrect Example": "If it will rain, I will stay.", "Correct Example": "If it rains, I will stay home.", "Pattern": "\\\\b(if|If)\\\\s+(.*)\\\\s+(will)\\\\b", "Tags": "grammar,modals,modal-verbs,syntax", "Severity": "medium", "Detector Hint": "syntax" },
-            "its (possessive) vs it's (it is)": { "Rule No": 220, "English Rule": "Its (possessive) vs It's (it is)", "Telugu Rule": "Its (స్వత్వ) vs It's (it is)", "When to Use": "its = belonging to it, it's = it is", "Example": "Its color (belonging). It's raining (it is).", "Incorrect Example": "The dog wagged it's tail.", "Correct Example": "The dog wagged its tail.", "Pattern": "\\\\b(it's|It's)\\\\s+(tail|color|own|door)\\\\b", "Tags": "grammar,pronouns", "Severity": "medium", "Detector Hint": "subject-verb-3sg" },
-            "their/there/they're differences": { "Rule No": 222, "English Rule": "Their/there/they're differences", "Telugu Rule": "Their/there/they're భేదాలు", "When to Use": "their = possession, there = place, they're = they are", "Example": "their house, over there, they're coming", "Incorrect Example": "They are over their.", "Correct Example": "They are over there.", "Pattern": "\\\\b(their)\\\\s+(is|are|was|were|here)\\\\b|\\\\b(there)\\\\s+(house|car|book)\\\\b|\\\\b(they're)\\\\s+(house|car|book)\\\\b", "Tags": "grammar,quantifiers,determiners", "Severity": "medium", "Detector Hint": "subject-verb-3sg" },
-            "use 'much' with uncountable, 'many' with countable": { "Rule No": 209, "English Rule": "Use 'much' with uncountable, 'many' with countable", "Telugu Rule": "లెక్కింపరానివాటితో 'much', లెక్కించదగినవాటితో 'many'", "When to Use": "For quantities", "Example": "much water, many books", "Incorrect Example": "How many water?", "Correct Example": "How much water?", "Pattern": "\\\\b(many)\\\\s+(water|money|time|sugar|information|advice|furniture|luggage)\\\\b|\\\\b(much)\\\\s+(books|cars|people|students|friends)\\\\b", "Tags": "grammar,quantifiers,determiners", "Severity": "medium", "Detector Hint": "determiners" },
-            "fewer vs less": { "Rule No": 288, "English Rule": "Prefer 'fewer' with countable, 'less' with uncountable", "Telugu Rule": "లెక్కించదగినవాటితో 'fewer', లెక్కింపరానివాటితో 'less'", "When to Use": "For comparisons of quantity", "Example": "fewer books, less water", "Incorrect Example": "I have less books than him.", "Correct Example": "I have fewer books than him.", "Pattern": "\\\\b(less)\\\\s+(books|cars|people|students|friends|items)\\\\b|\\\\b(fewer)\\\\s+(water|money|time|sugar|information|advice|furniture|luggage)\\\\b", "Tags": "grammar,verbals,gerunds,infinitives", "Severity": "medium", "Detector Hint": "subject-verb-3sg" }
-        }`;
-        
-        // Note: verbs.json and dictionary.json are very large.
-        // I will not embed them as it would make the file enormous and unreadable.
-        // The core logic for grammar checking only needs Rules.json.
-        // A full app would load these files, but for this demo, we'll focus on the rules.
+            // --- Other Nouns from original file ---
+            "name": { type: "Noun", form: "Singular" },
+            "names": { type: "Noun", form: "Plural" },
+            "apples": { type: "Noun", form: "Plural" },
+            "apple": { type: "Noun", form: "Singular" },
+            "mango": { type: "Noun", form: "Singular" },
+            "bananas": { type: "Noun", form: "Plural" },
+            "fruits": { type: "Noun", form: "Plural" },
+            "home": { type: "Noun", form: "Singular" },
+            "theatre": { type: "Noun", form: "Singular" },
+            "garden": { type: "Noun", form: "Singular" },
+            "store": { type: "Noun", form: "Singular" },
+            "project": { type: "Noun", form: "Singular" },
 
-        const rules = JSON.parse(rulesJSON);
+            // --- Irregular Plurals (క్రమరహిత బహువచనాలు) ---
+            "childs": { type: "Noun", form: "Misspelled", correct: "children" },
 
-        // --- APPLICATION LOGIC ---
+            // --- Uncountable Nouns (లెక్కించలేనివి) ---
+            "pizza": { type: "Noun", form: "Uncountable" },
+            "homework": { type: "Noun", form: "Uncountable" },
+            "food": { type: "Noun", form: "Uncountable" },
+            "bread": { type: "Noun", form: "Uncountable" },
+            "foods": { type: "Noun", form: "Misspelled", correct: "food" },
+            "breads": { type: "Noun", form: "Misspelled", correct: "bread" },
+            "every": { type: "Determiner" },
+            "days": { type: "Noun", form: "Plural" },
+            "day": { type: "Noun", form: "Singular" },
+            
+            // --- Pronouns (సర్వనామాలు) ---
+            "i": { type: "Pronoun", form: "Singular", special: "I" },
+            "he": { type: "Pronoun", form: "Singular" },
+            "she": { type: "Pronoun", form: "Singular" },
+            "it": { type: "Pronoun", form: "Singular" },
+            "they": { type: "Pronoun", form: "Plural" },
+            "we": { type: "Pronoun", form: "Plural" },
+            "you": { type: "Pronoun", form: "Plural" }, // 'you' always takes a plural verb
+            "me": { type: "Pronoun", form: "Object" },
+            "him": { type: "Pronoun", form: "Object" },
+            "my": { type: "Determiner" },
+
+            // --- Verbs (క్రియలు) ---
+            "is": { type: "Verb", form: "Singular", tense: "Present", plural: "are", base: "be", v2: "was" },
+            "are": { type: "Verb", form: "Plural", tense: "Present", singular: "is", base: "be", v2: "were" },
+            "was": { type: "Verb", form: "Singular", tense: "Past", plural: "were", base: "be" },
+            "were": { type: "Verb", form: "Plural", tense: "Past", singular: "was", base: "be" },
+            "has": { type: "Verb", form: "Singular", tense: "Present", plural: "have", base: "have", v2: "had" },
+            "have": { type: "Verb", form: "Plural", tense: "Present", singular: "has", base: "have", v2: "had" },
+            "goes": { type: "Verb", form: "Singular", tense: "Present", base: "go", v2: "went", plural: "go" },
+            "go": { type: "Verb", form: "Plural", tense: "Present", base: "go", v2: "went", v5: "goes" },
+            "tell": { type: "Verb", form: "Plural", tense: "Present", base: "tell", v2: "told", v5: "tells" },
+            "tells": { type: "Verb", form: "Singular", tense: "Present", base: "tell", v2: "told", plural: "tell" },
+            "look": { type: "Verb", form: "Plural", tense: "Present", base: "look", v2: "looked", v5: "looks" },
+            "looks": { type: "Verb", form: "Singular", tense: "Present", base: "look", v2: "looked", plural: "look" },
+            "give": { type: "Verb", form: "Plural", tense: "Present", base: "give", v2: "gave" },
+            "smile": { type: "Verb", form: "Plural", tense: "Present", base: "smile", v2: "smiled", v5: "smiles" },
+            "smiles": { type: "Verb", form: "Singular", tense: "Present", base: "smile", v2: "smiled", plural: "smile" },
+            "do": { type: "Verb", form: "Plural", tense: "Present", base: "do", v2: "did", v5: "does" },
+            "scold": { type: "Verb", form: "Plural", tense: "Present", base: "scold", v2: "scolded" },
+            "like": { type: "Verb", form: "Plural", tense: "Present", base: "like", v5: "likes" },
+            "likes": { type: "Verb", form: "Singular", tense: "Present", base: "like", plural: "like" },
+            "cook": { type: "Verb", form: "Plural", tense: "Present", base: "cook", v2: "cooked", v5: "cooks" },
+            "cooks": { type: "Verb", form: "Singular", tense: "Present", base: "cook", v2: "cooked", plural: "cook" },
+            "plays": { type: "Verb", form: "Singular", tense: "Present", base: "play", v2: "played", plural: "play" },
+            "play": { type: "Verb", form: "Plural", tense: "Present", base: "play", v2: "played", v5: "plays" },
+            
+            // --- Progressive Verbs (కొనసాగుతున్న క్రియలు) ---
+            "eating": { type: "Verb", form: "Progressive", base: "eat" },
+            "coming": { type: "Verb", form: "Progressive", base: "come" },
+            "going": { type: "Verb", form: "Progressive", base: "go" },
+            "watching": { type: "Verb", form: "Progressive", base: "watch" },
+            "selling": { type: "Verb", form: "Progressive", base: "sell" },
+
+            // --- Tense Indicators (కాల సూచికలు) ---
+            "yesterday": { type: "TenseIndicator", tense: "Past" },
+            "ago": { type: "TenseIndicator", tense: "Past" },
+            "last": { type: "TenseIndicator", tense: "Past" }, // e.g., last night
+
+            // --- Prepositions / Conjunctions ---
+            "to": { type: "Preposition" },
+            "at": { type: "Preposition" },
+            "in": { type: "Preposition" },
+            "not": { type: "Negative" },
+            "and": { type: "Conjunction" },
+            "but": { type: "Conjunction" },
+            "which": { type: "Pronoun", relative: true }, // "which" for person is wrong
+
+            // --- Misspelled Verbs (తప్పు క్రియలు) ---
+            "buyed": { type: "Verb", form: "Misspelled", base: "buy", correct: "bought" },
+            "comed": { type: "Verb", form: "Misspelled", base: "come", correct: "came" },
+            "seen": { type: "Verb", form: "PastParticiple", base: "see", v2: "saw" }, // V3 used as V2
+            "runned": { type: "Verb", form: "Misspelled", base: "run", correct: "ran" },
+            "speaked": { type: "Verb", form: "Misspelled", base: "speak", correct: "spoke" },
+
+            // --- Helping Verbs (సహాయక క్రియలు) ---
+            "don't": { type: "Verb", form: "Plural", tense: "Present", negative: true, singular: "doesn't", v2: "didn't" },
+            "doesn't": { type: "Verb", form: "Singular", tense: "Present", negative: true, plural: "don't", v2: "didn't" },
+            "didn't": { type: "Verb", form: "Past", negative: true }
+        };
+
+        // --- APPLICATION LOGIC (Smarter v7 with Full Sentence Correction) ---
         
         const checkButton = document.getElementById('check-button');
         const textInput = document.getElementById('text-input');
         const resultsOutput = document.getElementById('results-output');
-        const noErrorsMessage = document.getElementById('no-errors-message');
 
         checkButton.addEventListener('click', checkGrammar);
+        
+        // Helper to match original word case
+        function replaceWithSameCase(original, suggestion) {
+            if (!original || !suggestion) return suggestion;
+
+            // Case 1: ALL CAPS
+            if (original === original.toUpperCase()) {
+                return suggestion.toUpperCase();
+            }
+            
+            // Case 2: Title Case (First letter capitalized, rest lowercase)
+            if (original.charAt(0) === original.charAt(0).toUpperCase() && original.slice(1) === original.slice(1).toLowerCase()) {
+                 return suggestion.charAt(0).toUpperCase() + suggestion.slice(1).toLowerCase();
+            }
+            
+            // Default: return suggestion as-is (likely lowercase)
+            return suggestion;
+        }
+
 
         function checkGrammar() {
             const text = textInput.value;
-            if (!text) {
-                resultsOutput.innerHTML = '<p id="no-errors-message" class="text-gray-500 italic">Please enter some text to check.</p>';
-                return;
-            }
-
             resultsOutput.innerHTML = ''; // Clear previous results
             let errorsFound = 0;
+            let overallErrors = 0; // To track total errors across all sentences
 
-            // Loop through each rule in our rules object
-            for (const ruleName in rules) {
-                const rule = rules[ruleName];
-                const pattern = new RegExp(rule.Pattern, 'gi'); // 'g' for global, 'i' for case-insensitive
-                let match;
+            const sentences = text.match(/[^.!?]+[.!?]*/g) || [text]; // Split into sentences
+            
+            sentences.forEach(sentence => {
+                let originalSentence = sentence.trim();
+                if (!originalSentence) return;
+                
+                errorsFound = 0; // Reset for each sentence
+                let hasCorrections = false; // Track if we made simple replacements
+                
+                // Store words with original punctuation for accurate suggestions
+                const wordsWithPunct = originalSentence.split(/(\s+)/); // Split but keep spaces
+                let correctedWords = [...wordsWithPunct]; // Copy for modifications
+                const cleanWords = originalSentence.toLowerCase().split(/\s+/).map(w => w.replace(/[.,!?]/g, ''));
+                
+                let requiredTense = "Present"; // Default
+                let subject = null;
+                let subjectWord = "";
+                let subjectIndex = -1;
+                let lastVerbIndex = -1; // To link tense errors to verbs
 
-                // Find all matches for this rule's error pattern in the text
-                while ((match = pattern.exec(text)) !== null) {
-                    errorsFound++;
-                    const incorrectText = match[0];
-                    
-                    // Create a result card for this error
-                    const errorCard = document.createElement('div');
-                    errorCard.className = 'result-card result-card-error bg-red-50 p-4 rounded-lg shadow-sm';
-                    
-                    errorCard.innerHTML = `
-                        <p class="font-semibold text-red-800"><strong>Found Issue:</strong> <span class="font-normal text-red-700 bg-red-200 px-2 py-1 rounded">${incorrectText}</span></p>
-                        <hr class="my-2 border-red-200">
-                        <p class="text-sm text-gray-700"><strong>Rule:</strong> ${rule['English Rule']}</p>
-                        <p class="text-sm text-gray-700"><strong>వివరణ (Rule):</strong> ${rule['Telugu Rule']}</p>
-                        <p class="text-sm text-green-700 mt-2"><strong>Suggestion:</strong> ${rule['Correct Example']}</p>
-                    `;
-                    
-                    resultsOutput.appendChild(errorCard);
+                // --- 1. Tense Check (కాలం తనిఖీ) ---
+                // "Yesterday", "last night" వంటి పదాల కోసం వాక్యం మొత్తం తనిఖీ చేయండి
+                for (const word of cleanWords) {
+                    if (wordData[word]?.type === "TenseIndicator" && wordData[word].tense === "Past") {
+                        requiredTense = "Past";
+                        break;
+                    }
                 }
-            }
 
-            if (errorsFound === 0) {
-                // If no errors were found, show a success message
-                const successCard = document.createElement('div');
-                successCard.className = 'result-card result-card-correct bg-green-50 p-4 rounded-lg shadow-sm';
-                successCard.innerHTML = `
-                    <p class="font-semibold text-green-800">All Clear!</p>
-                    <p class="text-sm text-gray-700">The checker didn't find any issues based on the provided rules.</p>
-                `;
-                resultsOutput.appendChild(successCard);
+                // --- 2. Iterate through words to find errors ---
+                for (let i = 0; i < cleanWords.length; i++) {
+                    const word = cleanWords[i];
+                    const data = wordData[word];
+                    
+                    if (!data) continue; // Word not in our dictionary
+
+                    // Find Subject (కర్తను కనుగొనండి)
+                    if (!subject && (data.type === "Noun" || data.type === "Pronoun") && data.form !== "Object") {
+                        subject = data;
+                        subjectWord = wordsWithPunct[i*2].replace(/[.,!?]/g, ''); // Original case
+                        subjectIndex = i;
+                    }
+
+                    // --- ERROR CHECKS (తప్పుల తనిఖీ) ---
+
+                    // A. Tense Error (కాలం తప్పు)
+                    // e.g., "Yesterday I *goes*..." or "We *is watching* movie last night"
+                    if (requiredTense === "Past" && data.type === "Verb" && data.tense === "Present") {
+                        if (subject && i > subjectIndex) { // Verb must follow subject
+                            errorsFound++;
+                            const originalVerb = wordsWithPunct[i*2];
+                            
+                            // Determine correct past tense verb
+                            let correctVerb = data.v2; // e.g., "goes" -> "went", "don't" -> "didn't"
+                            if (!correctVerb) {
+                                if (word === 'is') correctVerb = 'was';
+                                else if (word === 'are') correctVerb = 'were';
+                                else if (data.base) correctVerb = data.base + 'ed'; // Simple guess
+                            }
+                            // Fallback for words like 'cooks' which might not have v2 defined
+                            if (!correctVerb && data.base) correctVerb = data.base + 'ed'; 
+                            
+                            if (correctVerb) {
+                                correctedWords[i*2] = replaceWithSameCase(originalVerb, correctVerb);
+                                hasCorrections = true;
+                                displayError(
+                                    `Found Issue: <span class="highlight-error">${originalVerb}</span> (with 'Yesterday'/'last')`,
+                                    "Past Tense Error (గత కాలం తప్పు)",
+                                    `The sentence indicates past time (e.g., 'Yesterday', 'last night'), but you used a present tense verb.`,
+                                    `వాక్యం గతాన్ని సూచిస్తుంది, కానీ మీరు వర్తమాన కాల క్రియను ఉపయోగించారు.`,
+                                    `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${correctVerb}</span>`
+                                );
+                            }
+                            // DO NOT reset subject: subject = null;
+                        }
+                    }
+
+                    // B. Misspelled/Irregular Verb Error (తప్పు క్రియ)
+                    // e.g., "...I *buyed*..." or "...He *runned*..."
+                    if (data.type === "Verb" && data.form === "Misspelled") {
+                         errorsFound++;
+                         const suggestedWord = data.correct;
+                         correctedWords[i*2] = replaceWithSameCase(wordsWithPunct[i*2], suggestedWord);
+                         hasCorrections = true;
+                         displayError(
+                            `Found Issue: <span class="highlight-error">${wordsWithPunct[i*2]}</span>`,
+                            "Irregular Verb Error (క్రమరహిత క్రియ తప్పు)",
+                            `'${word}' is not the correct past tense for '${data.base}'.`,
+                            `'${data.base}' యొక్క సరైన గత కాల రూపం '${word}' కాదు.`,
+                            `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
+                        );
+                    }
+                    
+                    // C. V2/V3 Confusion (V2/V3 గందరగోళం)
+                    // e.g., "I *seen*..."
+                    if (data.type === "Verb" && data.form === "PastParticiple" && subject && i > subjectIndex) {
+                        if (cleanWords[i-1] !== 'have' && cleanWords[i-1] !== 'has' && cleanWords[i-1] !== 'had') {
+                             errorsFound++;
+                             const suggestedWord = data.v2;
+                             correctedWords[i*2] = replaceWithSameCase(wordsWithPunct[i*2], suggestedWord);
+                             hasCorrections = true;
+                             displayError(
+                                `Found Issue: <span class="highlight-error">${wordsWithPunct[i*2]}</span>`,
+                                "Verb Form Error (క్రియా రూపం తప్పు)",
+                                `'${word}' (V3) needs a helping verb (have, has, had). You probably mean the simple past tense (V2).`,
+                                `'${word}' (V3)కు సహాయక క్రియ అవసరం. మీరు V2 రూపాన్ని వాడాలనుకుంటున్నారు.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
+                            );
+                             // DO NOT reset subject: subject = null;
+                        }
+                    }
+
+                    // D. Subject-Verb Agreement (SVA) Error (కర్త-క్రియ ఒప్పందం తప్పు)
+                    // e.g., "apples *is*..." or "She *don't*..." or "I *has*..."
+                    // This rule should NOT run if a Tense Error was already found for this word
+                    if (data.type === "Verb" && data.tense === "Present" && requiredTense !== "Past" && subject && i > subjectIndex) {
+                        const originalVerb = wordsWithPunct[i*2];
+                        if (subject.form === "Singular" && subject.special !== "I" && data.form === "Plural") {
+                             errorsFound++;
+                             const suggestedWord = data.v5 || data.singular || (data.base + 's');
+                             correctedWords[i*2] = replaceWithSameCase(originalVerb, suggestedWord);
+                             hasCorrections = true;
+                             displayError(
+                                `Found Issue: <span class="highlight-error">${subjectWord} ${originalVerb}</span>`,
+                                "Subject-Verb Agreement Error",
+                                `A singular subject (ఏకవచన కర్త) like '${subjectWord}' needs a singular verb.`,
+                                `'${subjectWord}' ఏకవచనం, కాబట్టి ఏకవచన క్రియ వాడాలి.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
+                            );
+                            // DO NOT reset subject: subject = null; 
+                        } else if (subject.form === "Plural" && data.form === "Singular") {
+                             errorsFound++;
+                             const suggestedWord = data.plural || data.base;
+                             correctedWords[i*2] = replaceWithSameCase(originalVerb, suggestedWord);
+                             hasCorrections = true;
+                             displayError(
+                                `Found Issue: <span class="highlight-error">${subjectWord} ${originalVerb}</span>`,
+                                "Subject-Verb Agreement Error",
+                                `A plural subject (బహువచన కర్త) like '${subjectWord}' needs a plural verb.`,
+                                `'${subjectWord}' బహువచనం, కాబట్టి బహువచన క్రియ వాడాలి.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
+                            );
+                             // DO NOT reset subject: subject = null;
+                        } else if (subject.special === "I" && (word === "is" || word === "has" || (data.form === "Singular" && word !== 'am'))) {
+                             // Special case for "I" (e.g. "I is", "I has", "I goes")
+                             errorsFound++;
+                             let suggestedWord = data.plural || data.base;
+                             if (word === 'is') suggestedWord = 'am';
+                             if (word === 'has') suggestedWord = 'have';
+                             
+                             correctedWords[i*2] = replaceWithSameCase(originalVerb, suggestedWord);
+                             hasCorrections = true;
+                             displayError(
+                                `Found Issue: <span class="highlight-error">I ${originalVerb}</span>`,
+                                "Subject-Verb Agreement Error",
+                                `The pronoun 'I' is used with 'am', 'have', or the base verb (e.g., 'go').`,
+                                `'I' తో 'am', 'have', లేదా బహువచన క్రియ (go) వాడాలి.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">I ${suggestedWord}</span>`
+                            );
+                             // DO NOT reset subject: subject = null;
+                        }
+                    }
+                    
+                    // E. SVA Error with "was/were"
+                    if (data.type === "Verb" && data.tense === "Past" && (word === 'was' || word === 'were') && subject && i > subjectIndex) {
+                         if (subject.form === "Singular" && subject.special !== "I" && word === "were") {
+                             errorsFound++;
+                             correctedWords[i*2] = replaceWithSameCase(wordsWithPunct[i*2], "was");
+                             hasCorrections = true;
+                             displayError(
+                                `Found Issue: <span class="highlight-error">${subjectWord} were</span>`,
+                                "Subject-Verb Agreement Error",
+                                `A singular subject (ఏకవచన కర్త) like '${subjectWord}' needs the singular verb 'was'.`,
+                                `'${subjectWord}' ఏకవచనం, కాబట్టి 'was' వాడాలి.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">was</span>`
+                            );
+                         } else if (subject.form === "Plural" && word === "was") {
+                             errorsFound++;
+                             correctedWords[i*2] = replaceWithSameCase(wordsWithPunct[i*2], "were");
+                             hasCorrections = true;
+                             displayError(
+                                `Found Issue: <span class="highlight-error">${subjectWord} was</span>`,
+                                "Subject-Verb Agreement Error",
+                                `A plural subject (బహువచన కర్త) like '${subjectWord}' needs the plural verb 'were'.`,
+                                `'${subjectWord}' బహువచనం, కాబట్టి 'were' వాడాలి.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">were</span>`
+                            );
+                         }
+                         // DO NOT reset subject: subject = null;
+                    }
+                    
+                    // F. Irregular Plural Error
+                    if (data.type === "Noun" && data.form === "Misspelled") {
+                        errorsFound++;
+                         const suggestedWord = data.correct;
+                         correctedWords[i*2] = replaceWithSameCase(wordsWithPunct[i*2], suggestedWord);
+                         hasCorrections = true;
+                         displayError(
+                            `Found Issue: <span class="highlight-error">${wordsWithPunct[i*2]}</span>`,
+                            "Irregular Plural Error (క్రమరహిత బహువచన తప్పు)",
+                            `The plural of '${word.slice(0, -1)}' is not '${word}'.`,
+                            `'${word.slice(0, -1)}' యొక్క బహువచనం '${word}' కాదు.`,
+                            `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
+                        );
+                    }
+                    
+                    // G. Uncountable Noun Error
+                    if (data.type === "Noun" && data.form === "Misspelled" && (cleanWords[i-1] === 'some' || cleanWords[i-1] === 'delicious')) {
+                        errorsFound++;
+                         const suggestedWord = data.correct;
+                         correctedWords[i*2] = replaceWithSameCase(wordsWithPunct[i*2], suggestedWord);
+                         hasCorrections = true;
+                         displayError(
+                            `Found Issue: <span class="highlight-error">${wordsWithPunct[i*2]}</span>`,
+                            "Uncountable Noun Error (లెక్కించలేని నామవాచకం)",
+                            `'${data.correct}' is usually an uncountable noun and doesn't have a plural form 's'.`,
+                            `'${data.correct}' సాధారణంగా లెక్కించలేనిది, దానికి 's' ఉండదు.`,
+                            `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
+                        );
+                    }
+                    
+                    // H. Gerund Error (e.g., "like to eating")
+                    if (word === "to" && cleanWords[i+1] && wordData[cleanWords[i+1]]?.form === "Progressive") {
+                        if (cleanWords[i-1] === "like") { // like to eating
+                            errorsFound++;
+                            // This is a complex correction, so we don't modify correctedWords[]
+                            displayError(
+                                `Found Issue: <span class="highlight-error">like to ${cleanWords[i+1]}</span>`,
+                                "Gerund/Infinitive Error",
+                                `After 'like', you can use 'to' + base verb (to eat) or just the '-ing' form (eating), but not both.`,
+                                `'like' తర్వాత, 'to eat' లేదా 'eating' వాడవచ్చు, కానీ 'to eating' వాడకూడదు.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">like to eat</span> / <span class="highlight-correct">like eating</span>`
+                            );
+                        }
+                    }
+                    
+                    // I. Missing Preposition (e.g., "going store")
+                    if (data.type === "Verb" && word === "going" && cleanWords[i+1] && wordData[cleanWords[i+1]]?.type === "Noun") {
+                        if(wordData[cleanWords[i+1]].form === "Singular") {
+                             errorsFound++;
+                             // Complex correction
+                             displayError(
+                                `Found Issue: <span class="highlight-error">going ${cleanWords[i+1]}</span>`,
+                                "Missing Preposition Error (ప్రిపోజిషన్ లేదు)",
+                                `When 'going' is followed by a place, you usually need 'to' (e.g., 'going *to* the store').`,
+                                `'going' తర్వాత ఒక స్థలం వస్తే, 'to' వాడాలి.`,
+                                `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">going to the ${cleanWords[i+1]}</span>`
+                            );
+                        }
+                    }
+                    
+                    // J. Wrong Pronoun (e.g., "boy which")
+                    if (data.type === "Pronoun" && word === "which" && subject && subject.type === "Noun" && (subjectWord === "boy" || subjectWord === "person")) {
+                         errorsFound++;
+                         // Complex correction
+                         displayError(
+                            `Found Issue: <span class="highlight-error">boy which</span>`,
+                            "Pronoun Error (సర్వనామం తప్పు)",
+                            `Use 'who' or 'that' for people. 'Which' is used for things or animals.`,
+                            `మనుషులకు 'who' లేదా 'that' వాడాలి. 'Which' వస్తువులకు వాడతారు.`,
+                            `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">boy who</span>`
+                        );
+                    }
+                    
+                    // Reset subject after a conjunction (e.g., and, but)
+                    if (data.type === "Conjunction") {
+                        subject = null;
+                        subjectIndex = -1;
+                        subjectWord = "";
+                    }
+                }
+                
+                // --- 3. Display Full Corrected Sentence (NEW) ---
+                if (errorsFound > 0 && hasCorrections) {
+                    displayFullCorrection(correctedWords.join(''), originalSentence);
+                }
+                
+                overallErrors += errorsFound;
+            });
+
+            // Final check
+            if (overallErrors === 0) {
+                // Clear the "No issues found" message if it exists
+                const noErrorsMsg = document.getElementById('no-errors-message');
+                if (noErrorsMsg) noErrorsMsg.remove();
+                
+                resultsOutput.innerHTML = `
+                    <div class="result-card result-card-correct bg-green-50 p-4 rounded-lg shadow-sm">
+                        <p class="font-semibold text-green-800">All Clear!</p>
+                        <p class="text-sm text-gray-700">The checker didn't find any issues based on its current rules.</p>
+                    </div>`;
+            } else {
+                 // Remove the "No issues found" message if any errors were found
+                const noErrorsMsg = document.getElementById('no-errors-message');
+                if (noErrorsMsg) noErrorsMsg.remove();
             }
+        }
+
+        // Helper function to display the full corrected sentence
+        function displayFullCorrection(correctedSentence, originalSentence) {
+            const correctionCard = document.createElement('div');
+            correctionCard.className = 'result-card result-card-correct bg-green-50 p-4 rounded-lg shadow-sm mb-4';
+            
+            correctionCard.innerHTML = `
+                <p class="font-semibold text-green-800">Suggested Full Sentence (Best Effort):</p>
+                <p class="text-sm text-gray-500 line-through">Original: ${originalSentence}</p>
+                <p class="text-lg text-gray-900 font-medium">${correctedSentence}</p>
+                <p class="text-xs text-gray-600 mt-2"><strong>Note:</strong> This is an automated correction. For complex errors (like "didn't went"), it might still be incorrect. Always review the individual error cards below.</p>
+            `;
+            
+            // Add this card to the top of the results for prominence
+            if (resultsOutput.firstChild) {
+                resultsOutput.insertBefore(correctionCard, resultsOutput.firstChild);
+            } else {
+                resultsOutput.appendChild(correctionCard);
+            }
+        }
+
+        // Helper function to display errors
+        function displayError(issue, rule, englishRule, teluguRule, suggestion) {
+             // Remove the "No issues found" message if it exists
+            const noErrorsMsg = document.getElementById('no-errors-message');
+            if (noErrorsMsg) noErrorsMsg.remove();
+            
+            const errorCard = document.createElement('div');
+            errorCard.className = 'result-card result-card-error bg-red-50 p-4 rounded-lg shadow-sm';
+            
+            errorCard.innerHTML = `
+                <p class="font-semibold text-red-800">${issue}</p>
+                <hr class="my-2 border-red-200">
+                <p class="text-sm text-gray-700"><strong>Rule:</strong> ${rule}</p>
+                <p class="text-sm text-gray-600">${englishRule}</p>
+                <p class="text-sm text-gray-700"><strong>వివరణ (Rule):</strong> ${teluguRule}</p>
+                <p class="text-sm text-green-700 mt-2"><strong>Suggestion (సూచన):</strong> ${suggestion}</p>
+            `;
+            
+            resultsOutput.appendChild(errorCard);
         }
 
     </script>
 
 </body>
 </html>
-
