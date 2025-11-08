@@ -13,6 +13,14 @@
         .result-card-correct { border-left-color: #22C55E; } /* green-500 */
         .highlight-error { background-color: #FEE2E2; color: #DC2626; padding: 0 4px; border-radius: 3px; font-family: monospace; }
         .highlight-correct { background-color: #ECFDF5; color: #047857; padding: 0 4px; border-radius: 3px; font-weight: bold; font-family: monospace;}
+        /* Added style for loading message */
+        #loading-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 1rem;
+            color: #4B5563; /* gray-600 */
+            font-style: italic;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 min-h-screen p-4 md:p-8">
@@ -29,361 +37,87 @@
         </div>
 
         <div class="text-center mb-6">
-            <button id="check-button" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-10 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
-                Check Grammar
+            <button id="check-button" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-10 rounded-lg shadow-md hover:bg-blue-700 transition duration-300" disabled>
+                Loading Dictionary...
             </button>
         </div>
 
         <div>
             <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Results:</h2>
+            <div id="loading-message">
+                Loading data from JSON files... Please wait.
+            </div>
             <div id="results-output" class="space-y-4">
-                <p id="no-errors-message" class="text-gray-500 italic">No issues found yet. Click "Check Grammar" to start!</p>
+                <p id="no-errors-message" class="text-gray-500 italic">Please wait for the dictionary to load, then click "Check Grammar" to start!</p>
             </div>
         </div>
     </div>
 
     <script>
         // --- OUR CUSTOM "BRAIN" (మన సొంత "మెదడు") ---
-        // This is the dictionary we must build ourselves, based on your JSONs and common English words.
-        // AI లేకుండా దీన్ని తెలివైనదిగా చేయడానికి, మనం ఈ డిక్షనరీని నిరంతరం పెద్దదిగా చేయాలి.
-        // మీ ఉదాహరణలోని అన్ని పదాలను నేను ఇక్కడ జోడించాను.
-        const wordData = {
-            // --- Nouns (నామవాచకాలు) - Integrated from singular_plural_words.json ---
-            "man": { "type": "Noun", "form": "Singular", "plural": "men" },
-            "men": { "type": "Noun", "form": "Plural", "singular": "man" },
-            "woman": { "type": "Noun", "form": "Singular", "plural": "women" },
-            "women": { "type": "Noun", "form": "Plural", "singular": "woman" },
-            "person": { "type": "Noun", "form": "Singular", "plural": "people" },
-            "people": { "type": "Noun", "form": "Plural", "singular": "person" },
-            "child": { "type": "Noun", "form": "Singular", "plural": "children" },
-            "children": { "type": "Noun", "form": "Plural", "singular": "child" },
-            "boy": { "type": "Noun", "form": "Singular", "plural": "boys" },
-            "boys": { "type": "Noun", "form": "Plural", "singular": "boy" },
-            "girl": { "type": "Noun", "form": "Singular", "plural": "girls" },
-            "girls": { "type": "Noun", "form": "Plural", "singular": "girl" },
-            "mother": { "type": "Noun", "form": "Singular", "plural": "mothers" },
-            "mothers": { "type": "Noun", "form": "Plural", "singular": "mother" },
-            "father": { "type": "Noun", "form": "Singular", "plural": "fathers" },
-            "fathers": { "type": "Noun", "form": "Plural", "singular": "father" },
-            "brother": { "type": "Noun", "form": "Singular", "plural": "brothers" },
-            "brothers": { "type": "Noun", "form": "Plural", "singular": "brother" },
-            "sister": { "type": "Noun", "form": "Singular", "plural": "sisters" },
-            "sisters": { "type": "Noun", "form": "Plural", "singular": "sister" },
-            "teacher": { "type": "Noun", "form": "Singular", "plural": "teachers" },
-            "teachers": { "type": "Noun", "form": "Plural", "singular": "teacher" },
-            "student": { "type": "Noun", "form": "Singular", "plural": "students" },
-            "students": { "type": "Noun", "form": "Plural", "singular": "student" },
-            "doctor": { "type": "Noun", "form": "Singular", "plural": "doctors" },
-            "doctors": { "type": "Noun", "form": "Plural", "singular": "doctor" },
-            "farmer": { "type": "Noun", "form": "Singular", "plural": "farmers" },
-            "farmers": { "type": "Noun", "form": "Plural", "singular": "farmer" },
-            "driver": { "type": "Noun", "form": "Singular", "plural": "drivers" },
-            "drivers": { "type": "Noun", "form": "Plural", "singular": "driver" },
-            "worker": { "type": "Noun", "form": "Singular", "plural": "workers" },
-            "workers": { "type": "Noun", "form": "Plural", "singular": "worker" },
-            "friend": { "type": "Noun", "form": "Singular", "plural": "friends" },
-            "friends": { "type": "Noun", "form": "Plural", "singular": "friend" },
-            "enemy": { "type": "Noun", "form": "Singular", "plural": "enemies" },
-            "enemies": { "type": "Noun", "form": "Plural", "singular": "enemy" },
-            "cop": { "type": "Noun", "form": "Singular", "plural": "police" },
-            "police": { "type": "Noun", "form": "Plural", "singular": "cop" },
-            "policeman": { "type": "Noun", "form": "Singular", "plural": "policemen" },
-            "policemen": { "type": "Noun", "form": "Plural", "singular": "policeman" },
-            "cat": { "type": "Noun", "form": "Singular", "plural": "cats" },
-            "cats": { "type": "Noun", "form": "Plural", "singular": "cat" },
-            "dog": { "type": "Noun", "form": "Singular", "plural": "dogs" },
-            "dogs": { "type": "Noun", "form": "Plural", "singular": "dog" },
-            "cow": { "type": "Noun", "form": "Singular", "plural": "cows" },
-            "cows": { "type": "Noun", "form": "Plural", "singular": "cow" },
-            "ox": { "type": "Noun", "form": "Singular", "plural": "oxen" },
-            "oxen": { "type": "Noun", "form": "Plural", "singular": "ox" },
-            "horse": { "type": "Noun", "form": "Singular", "plural": "horses" },
-            "horses": { "type": "Noun", "form": "Plural", "singular": "horse" },
-            "lion": { "type": "Noun", "form": "Singular", "plural": "lions" },
-            "lions": { "type": "Noun", "form": "Plural", "singular": "lion" },
-            "tiger": { "type": "Noun", "form": "Singular", "plural": "tigers" },
-            "tigers": { "type": "Noun", "form": "Plural", "singular": "tiger" },
-            "elephant": { "type": "Noun", "form": "Singular", "plural": "elephants" },
-            "elephants": { "type": "Noun", "form": "Plural", "singular": "elephant" },
-            "bird": { "type": "Noun", "form": "Singular", "plural": "birds" },
-            "birds": { "type": "Noun", "form": "Plural", "singular": "bird" },
-            "tree": { "type": "Noun", "form": "Singular", "plural": "trees" },
-            "trees": { "type": "Noun", "form": "Plural", "singular": "tree" },
-            "flower": { "type": "Noun", "form": "Singular", "plural": "flowers" },
-            "flowers": { "type": "Noun", "form": "Plural", "singular": "flower" },
-            "leaf": { "type": "Noun", "form": "Singular", "plural": "leaves" },
-            "leaves": { "type": "Noun", "form": "Plural", "singular": "leaf" },
-            "book": { "type": "Noun", "form": "Singular", "plural": "books" },
-            "books": { "type": "Noun", "form": "Plural", "singular": "book" },
-            "pen": { "type": "Noun", "form": "Singular", "plural": "pens" },
-            "pens": { "type": "Noun", "form": "Plural", "singular": "pen" },
-            "bag": { "type": "Noun", "form": "Singular", "plural": "bags" },
-            "bags": { "type": "Noun", "form": "Plural", "singular": "bag" },
-            "car": { "type": "Noun", "form": "Singular", "plural": "cars" },
-            "cars": { "type": "Noun", "form": "Plural", "singular": "car" },
-            "bus": { "type": "Noun", "form": "Singular", "plural": "buses" },
-            "buses": { "type": "Noun", "form": "Plural", "singular": "bus" },
-            "box": { "type": "Noun", "form": "Singular", "plural": "boxes" },
-            "boxes": { "type": "Noun", "form": "Plural", "singular": "box" },
-            "class": { "type": "Noun", "form": "Singular", "plural": "classes" },
-            "classes": { "type": "Noun", "form": "Plural", "singular": "class" },
-            "kiss": { "type": "Noun", "form": "Singular", "plural": "kisses" },
-            "kisses": { "type": "Noun", "form": "Plural", "singular": "kiss" },
-            "wish": { "type": "Noun", "form": "Singular", "plural": "wishes" },
-            "wishes": { "type": "Noun", "form": "Plural", "singular": "wish" },
-            "potato": { "type": "Noun", "form": "Singular", "plural": "potatoes" },
-            "potatoes": { "type": "Noun", "form": "Plural", "singular": "potato" },
-            "tomato": { "type": "Noun", "form": "Singular", "plural": "tomatoes" },
-            "tomatoes": { "type": "Noun", "form": "Plural", "singular": "tomato" },
-            "hero": { "type": "Noun", "form": "Singular", "plural": "heroes" },
-            "heroes": { "type": "Noun", "form": "Plural", "singular": "hero" },
-            "knife": { "type": "Noun", "form": "Singular", "plural": "knives" },
-            "knives": { "type": "Noun", "form": "Plural", "singular": "knife" },
-            "wife": { "type": "Noun", "form": "Singular", "plural": "wives" },
-            "wives": { "type": "Noun", "form": "Plural", "singular": "wife" },
-            "life": { "type": "Noun", "form": "Singular", "plural": "lives" },
-            "lives": { "type": "Noun", "form": "Plural", "singular": "life" },
-            "deer": { "type": "Noun", "form": "Singular", "plural": "deer" },
-            "sheep": { "type": "Noun", "form": "Singular", "plural": "sheep" },
-            "fish": { "type": "Noun", "form": "Singular", "plural": "fish" },
-            "army": { "type": "Noun", "form": "Singular", "plural": "armies" },
-            "armies": { "type": "Noun", "form": "Plural", "singular": "army" },
-            "family": { "type": "Noun", "form": "Singular", "plural": "families" },
-            "families": { "type": "Noun", "form": "Plural", "singular": "family" },
-            "city": { "type": "Noun", "form": "Singular", "plural": "cities" },
-            "cities": { "type": "Noun", "form": "Plural", "singular": "city" },
-            "country": { "type": "Noun", "form": "Singular", "plural": "countries" },
-            "countries": { "type": "Noun", "form": "Plural", "singular": "country" },
-            "baby": { "type": "Noun", "form": "Singular", "plural": "babies" },
-            "babies": { "type": "Noun", "form": "Plural", "singular": "baby" },
-            "lady": { "type": "Noun", "form": "Singular", "plural": "ladies" },
-            "ladies": { "type": "Noun", "form": "Plural", "singular": "lady" },
-            "party": { "type": "Noun", "form": "Singular", "plural": "parties" },
-            "parties": { "type": "Noun", "form": "Plural", "singular": "party" },
-            "story": { "type": "Noun", "form": "Singular", "plural": "stories" },
-            "stories": { "type": "Noun", "form": "Plural", "singular": "story" },
-            "key": { "type": "Noun", "form": "Singular", "plural": "keys" },
-            "keys": { "type": "Noun", "form": "Plural", "singular": "key" },
-            "monkey": { "type": "Noun", "form": "Singular", "plural": "monkeys" },
-            "monkeys": { "type": "Noun", "form": "Plural", "singular": "monkey" },
-            "donkey": { "type": "Noun", "form": "Singular", "plural": "donkeys" },
-            "donkeys": { "type": "Noun", "form": "Plural", "singular": "donkey" },
-            "house": { "type": "Noun", "form": "Singular", "plural": "houses" },
-            "houses": { "type": "Noun", "form": "Plural", "singular": "house" },
-            "room": { "type": "Noun", "form": "Singular", "plural": "rooms" },
-            "rooms": { "type": "Noun", "form": "Plural", "singular": "room" },
-            "door": { "type": "Noun", "form": "Singular", "plural": "doors" },
-            "doors": { "type": "Noun", "form": "Plural", "singular": "door" },
-            "window": { "type": "Noun", "form": "Singular", "plural": "windows" },
-            "windows": { "type": "Noun", "form": "Plural", "singular": "window" },
-            "chair": { "type": "Noun", "form": "Singular", "plural": "chairs" },
-            "chairs": { "type": "Noun", "form": "Plural", "singular": "chair" },
-            "table": { "type": "Noun", "form": "Singular", "plural": "tables" },
-            "tables": { "type": "Noun", "form": "Plural", "singular": "table" },
-            "bottle": { "type": "Noun", "form": "Singular", "plural": "bottles" },
-            "bottles": { "type": "Noun", "form": "Plural", "singular": "bottle" },
-            "cup": { "type": "Noun", "form": "Singular", "plural": "cups" },
-            "cups": { "type": "Noun", "form": "Plural", "singular": "cup" },
-            "plate": { "type": "Noun", "form": "Singular", "plural": "plates" },
-            "plates": { "type": "Noun", "form": "Plural", "singular": "plate" },
-            "watch": { "type": "Noun", "form": "Singular", "plural": "watches" },
-            "watches": { "type": "Noun", "form": "Plural", "singular": "watch" },
-            "shirt": { "type": "Noun", "form": "Singular", "plural": "shirts" },
-            "shirts": { "type": "Noun", "form": "Plural", "singular": "shirt" },
-            "shoe": { "type": "Noun", "form": "Singular", "plural": "shoes" },
-            "shoes": { "type": "Noun", "form": "Plural", "singular": "shoe" },
-            "market": { "type": "Noun", "form": "Singular", "plural": "markets" },
-            "markets": { "type": "Noun", "form": "Plural", "singular": "market" },
-            "shop": { "type": "Noun", "form": "Singular", "plural": "shops" },
-            "shops": { "type": "Noun", "form": "Plural", "singular": "shop" },
-            "road": { "type": "Noun", "form": "Singular", "plural": "roads" },
-            "roads": { "type": "Noun", "form": "Plural", "singular": "road" },
-            "river": { "type": "Noun", "form": "Singular", "plural": "rivers" },
-            "rivers": { "type": "Noun", "form": "Plural", "singular": "river" },
-            "mountain": { "type": "Noun", "form": "Singular", "plural": "mountains" },
-            "mountains": { "type": "Noun", "form": "Plural", "singular": "mountain" },
-            "star": { "type": "Noun", "form": "Singular", "plural": "stars" },
-            "stars": { "type": "Noun", "form": "Plural", "singular": "star" },
-            "planet": { "type": "Noun", "form": "Singular", "plural": "planets" },
-            "planets": { "type": "Noun", "form": "Plural", "singular": "planet" },
-            "idea": { "type": "Noun", "form": "Singular", "plural": "ideas" },
-            "ideas": { "type": "Noun", "form": "Plural", "singular": "idea" },
-            "word": { "type": "Noun", "form": "Singular", "plural": "words" },
-            "words": { "type": "Noun", "form": "Plural", "singular": "word" },
-            "line": { "type": "Noun", "form": "Singular", "plural": "lines" },
-            "lines": { "type": "Noun", "form": "Plural", "singular": "line" },
-            "game": { "type": "Noun", "form": "Singular", "plural": "games" },
-            "games": { "type": "Noun", "form": "Plural", "singular": "game" },
-            "movie": { "type": "Noun", "form": "Singular", "plural": "movies" },
-            "movies": { "type": "Noun", "form": "Plural", "singular": "movie" },
-            "song": { "type": "Noun", "form": "Singular", "plural": "songs" },
-            "songs": { "type": "Noun", "form": "Plural", "singular": "song" },
-            "photo": { "type": "Noun", "form": "Singular", "plural": "photos" },
-            "photos": { "type": "Noun", "form": "Plural", "singular": "photo" },
-            "phone": { "type": "Noun", "form": "Singular", "plural": "phones" },
-            "phones": { "type": "Noun", "form": "Plural", "singular": "phone" },
-            "principal": { "type": "Noun", "form": "Singular", "plural": "principals" },
-            "principals": { "type": "Noun", "form": "Plural", "singular": "principal" },
-            "headmaster": { "type": "Noun", "form": "Singular", "plural": "headmasters" },
-            "headmasters": { "type": "Noun", "form": "Plural", "singular": "headmaster" },
-            "author": { "type": "Noun", "form": "Singular", "plural": "authors" },
-            "authors": { "type": "Noun", "form": "Plural", "singular": "author" },
-            "singer": { "type": "Noun", "form": "Singular", "plural": "singers" },
-            "singers": { "type": "Noun", "form": "Plural", "singular": "singer" },
-            "dancer": { "type": "Noun", "form": "Singular", "plural": "dancers" },
-            "dancers": { "type": "Noun", "form": "Plural", "singular": "dancer" },
-            "actor": { "type": "Noun", "form": "Singular", "plural": "actors" },
-            "actors": { "type": "Noun", "form": "Plural", "singular": "actor" },
-            "actress": { "type": "Noun", "form": "Singular", "plural": "actresses" },
-            "actresses": { "type": "Noun", "form": "Plural", "singular": "actress" },
-            "engineer": { "type": "Noun", "form": "Singular", "plural": "engineers" },
-            "engineers": { "type": "Noun", "form": "Plural", "singular": "engineer" },
-            "scientist": { "type": "Noun", "form": "Singular", "plural": "scientists" },
-            "scientists": { "type": "Noun", "form": "Plural", "singular": "scientist" },
-            "player": { "type": "Noun", "form": "Singular", "plural": "players" },
-            "players": { "type": "Noun", "form": "Plural", "singular": "player" },
-            "team": { "type": "Noun", "form": "Singular", "plural": "teams" },
-            "teams": { "type": "Noun", "form": "Plural", "singular": "team" },
-            "computer": { "type": "Noun", "form": "Singular", "plural": "computers" },
-            "computers": { "type": "Noun", "form": "Plural", "singular": "computer" },
-            "laptop": { "type": "Noun", "form": "Singular", "plural": "laptops" },
-            "laptops": { "type": "Noun", "form": "Plural", "singular": "laptop" },
-            "bookcase": { "type": "Noun", "form": "Singular", "plural": "bookcases" },
-            "bookcases": { "type": "Noun", "form": "Plural", "singular": "bookcase" },
-            "school": { "type": "Noun", "form": "Singular", "plural": "schools" },
-            "schools": { "type": "Noun", "form": "Plural", "singular": "school" },
-            "college": { "type": "Noun", "form": "Singular", "plural": "colleges" },
-            "colleges": { "type": "Noun", "form": "Plural", "singular": "college" },
-            "university": { "type": "Noun", "form": "Singular", "plural": "universities" },
-            "universities": { "type": "Noun", "form": "Plural", "singular": "university" },
-            "page": { "type": "Noun", "form": "Singular", "plural": "pages" },
-            "pages": { "type": "Noun", "form": "Plural", "singular": "page" },
-            "sentence": { "type": "Noun", "form": "Singular", "plural": "sentences" },
-            "sentences": { "type": "Noun", "form": "Plural", "singular": "sentence" },
-            "question": { "type": "Noun", "form": "Singular", "plural": "questions" },
-            "questions": { "type": "Noun", "form": "Plural", "singular": "question" },
-            "answer": { "type": "Noun", "form": "Singular", "plural": "answers" },
-            "answers": { "type": "Noun", "form": "Plural", "singular": "answer" },
-            "example": { "type": "Noun", "form": "Singular", "plural": "examples" },
-            "examples": { "type": "Noun", "form": "Plural", "singular": "example" },
-            "rule": { "type": "Noun", "form": "Singular", "plural": "rules" },
-            "rules": { "type": "Noun", "form": "Plural", "singular": "rule" },
-            "error": { "type": "Noun", "form": "Singular", "plural": "errors" },
-            "errors": { "type": "Noun", "form": "Plural", "singular": "error" },
-            "success": { "type": "Noun", "form": "Singular", "plural": "successes" },
-            "successes": { "type": "Noun", "form": "Plural", "singular": "success" },
-            "problem": { "type": "Noun", "form": "Singular", "plural": "problems" },
-            "problems": { "type": "Noun", "form": "Plural", "singular": "problem" },
-            "solution": { "type": "Noun", "form": "Singular", "plural": "solutions" },
-            "solutions": { "type": "Noun", "form": "Plural", "singular": "solution" },
-            "picture": { "type": "Noun", "form": "Singular", "plural": "pictures" },
-            "pictures": { "type": "Noun", "form": "Plural", "singular": "picture" },
+        // ఇది ఇప్పుడు ఖాళీగా ప్రారంభమవుతుంది మరియు ఫైల్స్ నుండి డేటాను లోడ్ చేస్తుంది
+        let wordData = {};
 
-            // --- Other Nouns from original file ---
-            "name": { type: "Noun", form: "Singular" },
-            "names": { type: "Noun", form: "Plural" },
-            "apples": { type: "Noun", form: "Plural" },
-            "apple": { type: "Noun", form: "Singular" },
-            "mango": { type: "Noun", form: "Singular" },
-            "bananas": { type: "Noun", form: "Plural" },
-            "fruits": { type: "Noun", form: "Plural" },
-            "home": { type: "Noun", form: "Singular" },
-            "theatre": { type: "Noun", form: "Singular" },
-            "garden": { type: "Noun", form: "Singular" },
-            "store": { type: "Noun", form: "Singular" },
-            "project": { type: "Noun", form: "Singular" },
-
-            // --- Irregular Plurals (క్రమరహిత బహువచనాలు) ---
-            "childs": { type: "Noun", form: "Misspelled", correct: "children" },
-
-            // --- Uncountable Nouns (లెక్కించలేనివి) ---
-            "pizza": { type: "Noun", form: "Uncountable" },
-            "homework": { type: "Noun", form: "Uncountable" },
-            "food": { type: "Noun", form: "Uncountable" },
-            "bread": { type: "Noun", form: "Uncountable" },
-            "foods": { type: "Noun", form: "Misspelled", correct: "food" },
-            "breads": { type: "Noun", form: "Misspelled", correct: "bread" },
-            "every": { type: "Determiner" },
-            "days": { type: "Noun", form: "Plural" },
-            "day": { type: "Noun", form: "Singular" },
-            
-            // --- Pronouns (సర్వనామాలు) ---
-            "i": { type: "Pronoun", form: "Singular", special: "I" },
-            "he": { type: "Pronoun", form: "Singular" },
-            "she": { type: "Pronoun", form: "Singular" },
-            "it": { type: "Pronoun", form: "Singular" },
-            "they": { type: "Pronoun", form: "Plural" },
-            "we": { type: "Pronoun", form: "Plural" },
-            "you": { type: "Pronoun", form: "Plural" }, // 'you' always takes a plural verb
-            "me": { type: "Pronoun", form: "Object" },
-            "him": { type: "Pronoun", form: "Object" },
-            "my": { type: "Determiner" },
-
-            // --- Verbs (క్రియలు) ---
-            "is": { type: "Verb", form: "Singular", tense: "Present", plural: "are", base: "be", v2: "was" },
-            "are": { type: "Verb", form: "Plural", tense: "Present", singular: "is", base: "be", v2: "were" },
-            "was": { type: "Verb", form: "Singular", tense: "Past", plural: "were", base: "be" },
-            "were": { type: "Verb", form: "Plural", tense: "Past", singular: "was", base: "be" },
-            "has": { type: "Verb", form: "Singular", tense: "Present", plural: "have", base: "have", v2: "had" },
-            "have": { type: "Verb", form: "Plural", tense: "Present", singular: "has", base: "have", v2: "had" },
-            "goes": { type: "Verb", form: "Singular", tense: "Present", base: "go", v2: "went", plural: "go" },
-            "go": { type: "Verb", form: "Plural", tense: "Present", base: "go", v2: "went", v5: "goes" },
-            "tell": { type: "Verb", form: "Plural", tense: "Present", base: "tell", v2: "told", v5: "tells" },
-            "tells": { type: "Verb", form: "Singular", tense: "Present", base: "tell", v2: "told", plural: "tell" },
-            "look": { type: "Verb", form: "Plural", tense: "Present", base: "look", v2: "looked", v5: "looks" },
-            "looks": { type: "Verb", form: "Singular", tense: "Present", base: "look", v2: "looked", plural: "look" },
-            "give": { type: "Verb", form: "Plural", tense: "Present", base: "give", v2: "gave" },
-            "smile": { type: "Verb", form: "Plural", tense: "Present", base: "smile", v2: "smiled", v5: "smiles" },
-            "smiles": { type: "Verb", form: "Singular", tense: "Present", base: "smile", v2: "smiled", plural: "smile" },
-            "do": { type: "Verb", form: "Plural", tense: "Present", base: "do", v2: "did", v5: "does" },
-            "scold": { type: "Verb", form: "Plural", tense: "Present", base: "scold", v2: "scolded" },
-            "like": { type: "Verb", form: "Plural", tense: "Present", base: "like", v5: "likes" },
-            "likes": { type: "Verb", form: "Singular", tense: "Present", base: "like", plural: "like" },
-            "cook": { type: "Verb", form: "Plural", tense: "Present", base: "cook", v2: "cooked", v5: "cooks" },
-            "cooks": { type: "Verb", form: "Singular", tense: "Present", base: "cook", v2: "cooked", plural: "cook" },
-            "plays": { type: "Verb", form: "Singular", tense: "Present", base: "play", v2: "played", plural: "play" },
-            "play": { type: "Verb", form: "Plural", tense: "Present", base: "play", v2: "played", v5: "plays" },
-            
-            // --- Progressive Verbs (కొనసాగుతున్న క్రియలు) ---
-            "eating": { type: "Verb", form: "Progressive", base: "eat" },
-            "coming": { type: "Verb", form: "Progressive", base: "come" },
-            "going": { type: "Verb", form: "Progressive", base: "go" },
-            "watching": { type: "Verb", form: "Progressive", base: "watch" },
-            "selling": { type: "Verb", form: "Progressive", base: "sell" },
-
-            // --- Tense Indicators (కాల సూచికలు) ---
-            "yesterday": { type: "TenseIndicator", tense: "Past" },
-            "ago": { type: "TenseIndicator", tense: "Past" },
-            "last": { type: "TenseIndicator", tense: "Past" }, // e.g., last night
-
-            // --- Prepositions / Conjunctions ---
-            "to": { type: "Preposition" },
-            "at": { type: "Preposition" },
-            "in": { type: "Preposition" },
-            "not": { type: "Negative" },
-            "and": { type: "Conjunction" },
-            "but": { type: "Conjunction" },
-            "which": { type: "Pronoun", relative: true }, // "which" for person is wrong
-
-            // --- Misspelled Verbs (తప్పు క్రియలు) ---
-            "buyed": { type: "Verb", form: "Misspelled", base: "buy", correct: "bought" },
-            "comed": { type: "Verb", form: "Misspelled", base: "come", correct: "came" },
-            "seen": { type: "Verb", form: "PastParticiple", base: "see", v2: "saw" }, // V3 used as V2
-            "runned": { type: "Verb", form: "Misspelled", base: "run", correct: "ran" },
-            "speaked": { type: "Verb", form: "Misspelled", base: "speak", correct: "spoke" },
-
-            // --- Helping Verbs (సహాయక క్రియలు) ---
-            "don't": { type: "Verb", form: "Plural", tense: "Present", negative: true, singular: "doesn't", v2: "didn't" },
-            "doesn't": { type: "Verb", form: "Singular", tense: "Present", negative: true, plural: "don't", v2: "didn't" },
-            "didn't": { type: "Verb", form: "Past", negative: true }
-        };
-
-        // --- APPLICATION LOGIC (Smarter v7 with Full Sentence Correction) ---
-        
         const checkButton = document.getElementById('check-button');
         const textInput = document.getElementById('text-input');
         const resultsOutput = document.getElementById('results-output');
+        const loadingMessage = document.getElementById('loading-message');
+        const noErrorsMessage = document.getElementById('no-errors-message');
 
+        // --- NEW DYNAMIC DATA LOADING ---
+
+        // Function to fetch a JSON file
+        async function fetchJSON(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${url}: ${response.statusText}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(error);
+                return {}; // Return empty object on error
+            }
+        }
+
+        // Function to load all data files and merge them
+        async function loadAllData() {
+            console.log('Starting data load...');
+            loadingMessage.style.display = 'block';
+            noErrorsMessage.textContent = 'Loading dictionary... Please wait.';
+
+            const [verbs, dictionary, nouns] = await Promise.all([
+                fetchJSON('verbs.json'),
+                fetchJSON('dictionary.json'),
+                fetchJSON('singular_plural_words.json')
+            ]);
+
+            // Merge all data into the main wordData object
+            Object.assign(wordData, dictionary, verbs, nouns);
+
+            const totalWords = Object.keys(wordData).length;
+            if (totalWords > 0) {
+                console.log(`Brain loaded! Total words: ${totalWords}`);
+                checkButton.disabled = false;
+                checkButton.textContent = 'Check Grammar';
+                loadingMessage.style.display = 'none';
+                noErrorsMessage.textContent = 'No issues found yet. Click "Check Grammar" to start!';
+            } else {
+                console.error('All JSON files failed to load or are empty.');
+                checkButton.textContent = 'Error: Dictionary Failed';
+                loadingMessage.textContent = 'Error: Could not load dictionary files. Please check console.';
+                noErrorsMessage.textContent = 'Could not load data. Please ensure verbs.json, dictionary.json, and singular_plural_words.json are in the same folder.';
+            }
+        }
+
+        // Load data when the window is ready
+        window.addEventListener('DOMContentLoaded', loadAllData);
+        
+        // --- END OF NEW LOADING LOGIC ---
+
+
+        // --- APPLICATION LOGIC (Smarter v7 with Full Sentence Correction) ---
+        
         checkButton.addEventListener('click', checkGrammar);
         
         // Helper to match original word case
@@ -528,9 +262,11 @@
                     // This rule should NOT run if a Tense Error was already found for this word
                     if (data.type === "Verb" && data.tense === "Present" && requiredTense !== "Past" && subject && i > subjectIndex) {
                         const originalVerb = wordsWithPunct[i*2];
+                        // Check for singular subject (he, she, it, man, teacher) + plural verb (go, have, are)
                         if (subject.form === "Singular" && subject.special !== "I" && data.form === "Plural") {
                              errorsFound++;
-                             const suggestedWord = data.v5 || data.singular || (data.base + 's');
+                             // Find the correct singular form (v5 or singular property)
+                             const suggestedWord = data.v5 || data.singular || (data.base ? data.base + 's' : word + 's');
                              correctedWords[i*2] = replaceWithSameCase(originalVerb, suggestedWord);
                              hasCorrections = true;
                              displayError(
@@ -540,7 +276,7 @@
                                 `'${subjectWord}' ఏకవచనం, కాబట్టి ఏకవచన క్రియ వాడాలి.`,
                                 `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
                             );
-                            // DO NOT reset subject: subject = null; 
+                        // Check for plural subject (they, we, men, teachers) + singular verb (goes, has, is)
                         } else if (subject.form === "Plural" && data.form === "Singular") {
                              errorsFound++;
                              const suggestedWord = data.plural || data.base;
@@ -553,7 +289,6 @@
                                 `'${subjectWord}' బహువచనం, కాబట్టి బహువచన క్రియ వాడాలి.`,
                                 `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">${suggestedWord}</span>`
                             );
-                             // DO NOT reset subject: subject = null;
                         } else if (subject.special === "I" && (word === "is" || word === "has" || (data.form === "Singular" && word !== 'am'))) {
                              // Special case for "I" (e.g. "I is", "I has", "I goes")
                              errorsFound++;
@@ -570,7 +305,6 @@
                                 `'I' తో 'am', 'have', లేదా బహువచన క్రియ (go) వాడాలి.`,
                                 `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">I ${suggestedWord}</span>`
                             );
-                             // DO NOT reset subject: subject = null;
                         }
                     }
                     
@@ -599,7 +333,6 @@
                                 `మీరు బహుశా ఇలా చెప్పాలనుకున్నారు: <span class="highlight-correct">were</span>`
                             );
                          }
-                         // DO NOT reset subject: subject = null;
                     }
                     
                     // F. Irregular Plural Error
