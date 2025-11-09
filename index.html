@@ -10,7 +10,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').catch(e => console.error('SW Init Error:', e));
+                navigator.serviceWorker.register('service-worker.js').catch(e => console.error('SW Init Error:', e));
             });
         }
     </script>
@@ -286,61 +286,124 @@
         // --- GRAMMAR API ---
         
 async function checkGrammar() {
-    const text = grammarInput.value.trim();
-    if (!text) { grammarInput.focus(); return; }
+  const textValue = grammarInput.value.trim();
+  if (!textValue) { grammarInput.focus(); return; }
 
-    checkGrammarBtn.disabled = true;
-    grammarLoading.classList.remove('hidden');
-    grammarResults.classList.add('hidden');
+  checkGrammarBtn.disabled = true;
+  grammarLoading.classList.remove('hidden');
+  grammarResults.classList.add('hidden');
 
-    try {
-        const params = new URLSearchParams();
-        params.append('text', text);
-        params.append('language', 'en-US');
-        params.append('enabledOnly', 'true');
+  try {
+    const params = new URLSearchParams();
+    params.append('text', textValue);
+    params.append('language', 'en-US');
+    params.append('enabledOnly', 'true');
 
-        const response = await fetch('https://cors.isomorphic-git.org/https://api.languagetool.org/v2/check', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString(),
-        });
+    const response = await fetch('https://cors.isomorphic-git.org/https://api.languagetool.org/v2/check', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: params.toString()
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        let corrected = text;
-        for (let match of data.matches.reverse()) {
-            if (match.replacements.length > 0) {
-                corrected =
-                    corrected.slice(0, match.offset) +
-                    match.replacements[0].value +
-                    corrected.slice(match.offset + match.length);
-            }
+    let corrected = textValue;
+    for (let m of (data.matches || []).slice().reverse()) {
+      if (m.replacements && m.replacements.length > 0) {
+        corrected = corrected.slice(0, m.offset) + m.replacements[0].value + corrected.slice(m.offset + m.length);
+      }
+    }
+
+    const result = {
+      status: (data.matches && data.matches.length) ? 'incorrect' : 'correct',
+      corrected,
+      explanationEN: (data.matches && data.matches.length) ? data.matches[0].message : 'Your sentence is correct.',
+      explanationTE: (data.matches && data.matches.length) ? 'తప్పు: ' + data.matches[0].message : 'మీ వాక్యం సరిగా ఉంది.'
+    };
+
+    displayResults(result);
+
+  } catch (err) {
+    alert("Check failed. Try switching network.
+" + err);
+  } finally {
+    checkGrammarBtn.disabled = false;
+    grammarLoading.classList.add('hidden');
+  }
+}
+checkGrammarBtn.disabled = true;
+  grammarLoading.classList.remove('hidden');
+  grammarResults.classList.add('hidden');
+
+  try {
+    const params = new URLSearchParams();
+    params.append('text', text);
+    params.append('language', 'en-US');
+    params.append('enabledOnly', 'true');
+
+    const response = await fetch('https://api.languagetool.org/v2/check', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: params.toString(),
+    });
+
+    if (!response.ok) throw new Error('API Error ' + response.status);
+    const data = await response.json();
+
+    const corrections = data.matches.map(match => {
+      return {
+        message: match.message,
+        offset: match.offset,
+        length: match.length,
+        replacements: match.replacements.map(r => r.value),
+        context: match.context,
+      };
+    });
+
+    displayResults(corrections);
+    playHaptic(true);
+  } catch (error) {
+    console.error('Check failed', error);
+    alert('Error checking grammar. Check internet connection.');
+  } finally {
+    checkGrammarBtn.disabled = false;
+    grammarLoading.classList.add('hidden');
+  }
+}; 
+            // ---------------------------------
+
+            const systemPrompt = `You are a friendly English grammar coach for Telugu speakers. Analyze the user's input text. 
+            1. Determine if it is grammatically correct.
+            2. If incorrect, provide the corrected version.
+            3. Provide a simple explanation in English of WHY it was wrong (or why it's good).
+            4. Provide the SAME explanation translated into natural Telugu.
+            Return ONLY a JSON object: { "status": "correct" OR "incorrect", "corrected": "full corrected text", "explanationEN": "...", "explanationTE": "..." }`;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `Check this text: "${text}"` }] }], systemInstruction: { parts: [{ text: systemPrompt }] }, generationConfig: { responseMimeType: "application/json" } })
+                });
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                const data = await response.json();
+                displayResults(JSON.parse(data.candidates[0].content.parts[0].text)); playHaptic(true);
+            } catch (error) { console.error("Check failed:", error); alert("Error checking grammar. Check internet and API key."); } 
+            finally { checkGrammarBtn.disabled = false; grammarLoading.classList.add('hidden'); }
         }
 
-        const result = {
-            status: data.matches.length === 0 ? "correct" : "incorrect",
-            corrected,
-            explanationEN: data.matches.length === 0 
-                ? "Your sentence is correct." 
-                : data.matches[0].message,
-            explanationTE: data.matches.length === 0
-                ? "మీ వాక్యం సరిగా ఉంది."
-                : "తప్పు: " + data.matches[0].message
-        };
+        function displayResults(data) {
+            grammarResults.classList.remove('hidden'); grammarResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const isCorrect = data.status === 'correct';
+            grammarStatus.className = `p-4 rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-md transition-all ${isCorrect ? 'bg-green-500/80' : 'bg-amber-500/80'}`;
+            grammarStatus.innerHTML = isCorrect ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg> Perfect!` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg> Needs Improvement`;
+            if (isCorrect) correctionCard.classList.add('hidden'); else { correctionCard.classList.remove('hidden'); correctedTextEl.textContent = data.corrected; speakCorrectedBtn.onclick = () => speak(data.corrected); copyCorrectedBtn.onclick = () => copyToClipboard(data.corrected, copyCorrectedBtn); }
+            expEnEl.textContent = data.explanationEN; expTeEl.textContent = data.explanationTE;
+            speakExpEnBtn.onclick = () => speak(data.explanationEN, 'en-US'); speakExpTeBtn.onclick = () => speak(data.explanationTE, 'te-IN');
+        }
 
-        displayResults(result);
-
-    } catch (e) {
-        alert("Check failed. Internet problem or API blocked.");
-        console.error(e);
-    } finally {
-        checkGrammarBtn.disabled = false;
-        grammarLoading.classList.add('hidden');
-    }
-}
-
-
-// --- INITIALIZATION ---
+        // --- INITIALIZATION ---
         window.onload = () => {
             settingsModal = document.getElementById('settings-modal'); themeToggle = document.getElementById('theme-toggle'); themeIconLight = document.getElementById('theme-icon-light'); themeIconDark = document.getElementById('theme-icon-dark'); themeIconSystem = document.getElementById('theme-icon-system'); readModeToggle = document.getElementById('read-mode-toggle');
             bodyFontBtn = document.getElementById('body-font-button'); titleFontBtn = document.getElementById('title-font-button'); colorBtn = document.getElementById('color-button'); currentBodyFont = document.getElementById('current-body-font'); currentTitleFont = document.getElementById('current-title-font'); currentAccentColor = document.getElementById('current-accent-color'); colorPreview = document.getElementById('color-preview');
